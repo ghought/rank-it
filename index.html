@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Rank It</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --border: #E8E8E8;
+    --correct: #6AAA64;
+    --incorrect-flash: #C9B458;
+    --incorrect: #787C7F;
+    --drag-active: #F0F0F0;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-user-select: none;
+    user-select: none;
+    overscroll-behavior: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Header */
+  header {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .wordmark {
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .puzzle-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .puzzle-meta .category-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* Criterion */
+  .criterion {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 0 8px;
+    color: var(--text-primary);
+  }
+
+  /* Item List */
+  .item-list {
+    width: 100%;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .item {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: grab;
+    position: relative;
+    transition: transform 200ms ease-out, box-shadow 200ms ease, background-color 400ms ease, border-color 400ms ease;
+    touch-action: none;
+    z-index: 1;
+  }
+
+  .item:last-child { margin-bottom: 0; }
+
+  .item.dragging {
+    cursor: grabbing;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    transform: scale(1.03);
+    z-index: 100;
+    background: var(--bg);
+    opacity: 0.95;
+  }
+
+  .item.drag-over-above { transform: translateY(8px); }
+  .item.drag-over-below { transform: translateY(-8px); }
+
+  .item.locked {
+    background: #F0F8F0;
+    border-color: var(--correct);
+    cursor: default;
+  }
+
+  .item.correct-flash {
+    animation: correctPulse 400ms ease;
+    background: #F0F8F0;
+    border-color: var(--correct);
+  }
+
+  .item.incorrect-flash {
+    animation: incorrectShake 300ms ease;
+  }
+
+  .item.selected {
+    border-color: var(--text-primary);
+    border-width: 2px;
+    background: #FAFAFA;
+  }
+
+  @keyframes correctPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); background: #D4EDDA; }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes incorrectShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+  }
+
+  .item-rank {
+    width: 32px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+  }
+
+  .item.locked .item-rank {
+    color: var(--correct);
+  }
+
+  .item-name {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+    padding-right: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-status {
+    width: 32px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .item.locked .item-status,
+  .item.correct-flash .item-status {
+    opacity: 1;
+    color: var(--correct);
+  }
+
+  .item.incorrect-flash .item-status {
+    opacity: 1;
+    color: var(--incorrect);
+  }
+
+  .item-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    padding-right: 12px;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    white-space: nowrap;
+  }
+
+  .item-value.visible { opacity: 1; }
+
+  .drag-handle {
+    width: 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #CCC;
+    margin-right: 4px;
+  }
+
+  .item.locked .drag-handle { opacity: 0.3; }
+
+  /* Attempt counter */
+  .attempt-counter {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    text-align: center;
+    transition: transform 200ms ease;
+    min-height: 20px;
+  }
+
+  .attempt-counter.bounce {
+    animation: counterBounce 200ms ease;
+  }
+
+  @keyframes counterBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  /* Submit button */
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 48px;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 150ms ease, transform 100ms ease, opacity 200ms ease;
+  }
+
+  .submit-btn:hover { background: #333; }
+  .submit-btn:active { transform: scale(0.97); }
+  .submit-btn:disabled {
+    background: #D4D4D4;
+    cursor: not-allowed;
+  }
+  .submit-btn:disabled:hover { background: #D4D4D4; }
+
+  /* Results */
+  .results {
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
+
+  .results.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .results-score {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .results-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 36px;
+    background: var(--correct);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 150ms ease, transform 100ms ease;
+  }
+
+  .share-btn:hover { background: #5B9B55; }
+  .share-btn:active { transform: scale(0.97); }
+
+  .copied-toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text-primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 200ms ease, transform 200ms ease;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .copied-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Streak */
+  .streak-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    width: 100%;
+  }
+
+  .streak-stat {
+    text-align: center;
+  }
+
+  .streak-stat .stat-value {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .streak-stat .stat-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Solve celebration */
+  @keyframes solveGlow {
+    0% { box-shadow: 0 0 0 0 rgba(106, 170, 100, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(106, 170, 100, 0.1); }
+    100% { box-shadow: 0 0 0 0 rgba(106, 170, 100, 0); }
+  }
+
+  .item.celebrate {
+    animation: solveGlow 600ms ease-out;
+  }
+
+  /* Tap-to-swap hint */
+  .swap-hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 8px;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    min-height: 18px;
+  }
+  .swap-hint.visible { opacity: 1; }
+
+  /* Countdown timer */
+  .next-puzzle-timer {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .next-puzzle-timer .timer-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .next-puzzle-timer .timer-value {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    margin-top: 4px;
+  }
+
+  /* Source attribution */
+  .source-attr {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* How to play modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    padding: 20px;
+  }
+
+  .modal-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 12px;
+    padding: 32px 28px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.95);
+    transition: transform 200ms ease;
+  }
+
+  .modal-overlay.visible .modal {
+    transform: scale(1);
+  }
+
+  .modal h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .modal p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+
+  .modal .example-row {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin: 8px 0;
+  }
+
+  .modal .example-square {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .modal .sq-green { background: var(--correct); }
+  .modal .sq-gray { background: #D3D6DA; }
+
+  .modal-close {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 32px;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Help button */
+  .help-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .help-btn:hover { border-color: var(--text-secondary); }
+
+  /* Completed view */
+  .completed-banner {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header style="position:relative;">
+    <div class="wordmark">RANK IT</div>
+    <div class="puzzle-meta">
+      <span id="puzzleNumber"></span> · <span id="puzzleDate"></span>
+      <span id="categoryBadge" class="category-badge"></span>
+    </div>
+    <button class="help-btn" id="helpBtn" aria-label="How to play">?</button>
+  </header>
+
+  <div class="criterion" id="criterion" role="heading" aria-level="2"></div>
+
+  <div class="swap-hint" id="swapHint">Tap two items to swap, or drag to reorder</div>
+
+  <div class="item-list" id="itemList" role="listbox" aria-label="Ranking items"></div>
+
+  <div class="attempt-counter" id="attemptCounter"></div>
+
+  <button class="submit-btn" id="submitBtn" disabled>Submit</button>
+
+  <div class="results" id="results">
+    <div class="results-score" id="resultsScore"></div>
+    <div class="results-label" id="resultsLabel"></div>
+    <button class="share-btn" id="shareBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+    <div class="source-attr" id="sourceAttr"></div>
+    <div class="streak-bar" id="streakBar">
+      <div class="streak-stat"><div class="stat-value" id="statPlayed">0</div><div class="stat-label">Played</div></div>
+      <div class="streak-stat"><div class="stat-value" id="statAvg">0</div><div class="stat-label">Avg Score</div></div>
+      <div class="streak-stat"><div class="stat-value" id="statStreak">0</div><div class="stat-label">Streak</div></div>
+      <div class="streak-stat"><div class="stat-value" id="statBest">0</div><div class="stat-label">Best</div></div>
+    </div>
+    <div class="next-puzzle-timer" id="nextPuzzleTimer">
+      <div class="timer-label">Next puzzle</div>
+      <div class="timer-value" id="timerValue">--:--:--</div>
+    </div>
+  </div>
+</div>
+
+<div class="copied-toast" id="copiedToast">Copied to clipboard!</div>
+
+<!-- How to play modal -->
+<div class="modal-overlay" id="howToPlay">
+  <div class="modal">
+    <h2>How to Play</h2>
+    <p>You get <strong>5 items</strong> and a ranking criterion. Drag (or tap) them into the correct order, then hit <strong>Submit</strong>.</p>
+    <p>After each attempt, correctly placed items lock in <span style="color:var(--correct);">green</span>. Rearrange the rest and try again.</p>
+    <p>Your score is the number of attempts — fewer is better!</p>
+    <div class="example-row">
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-gray"></div>
+      <div class="example-square sq-gray"></div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--text-secondary);">3 correct on first attempt</p>
+    <div class="example-row">
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-green"></div>
+      <div class="example-square sq-green"></div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--text-secondary);">All correct — solved in 2!</p>
+    <button class="modal-close" id="modalClose">Got it</button>
+  </div>
+</div>
+
+<script>
+// ==================== PUZZLE DATA ====================
+const PUZZLES = [
+  {
+    id: 1, date: "2026-04-01", category: "Geography",
+    criterion: "Rank these mountains by height, tallest to shortest.",
+    unit: "ft", source: "National Geographic",
+    items: [
+      { name: "Mount Everest", value: "29,032" },
+      { name: "K2", value: "28,251" },
+      { name: "Kangchenjunga", value: "28,169" },
+      { name: "Mount Kilimanjaro", value: "19,341" },
+      { name: "Mont Blanc", value: "15,774" }
+    ]
+  },
+  {
+    id: 2, date: "2026-04-02", category: "Pop Culture",
+    criterion: "Rank these films by worldwide box office gross, highest to lowest.",
+    unit: "billion $", source: "Box Office Mojo",
+    items: [
+      { name: "Avatar", value: "2.92" },
+      { name: "Avengers: Endgame", value: "2.80" },
+      { name: "Titanic", value: "2.26" },
+      { name: "Star Wars: The Force Awakens", value: "2.07" },
+      { name: "Barbie", value: "1.44" }
+    ]
+  },
+  {
+    id: 3, date: "2026-04-03", category: "Science",
+    criterion: "Rank these planets by distance from the Sun, closest to farthest.",
+    unit: "million mi", source: "NASA",
+    items: [
+      { name: "Mercury", value: "36" },
+      { name: "Earth", value: "93" },
+      { name: "Mars", value: "142" },
+      { name: "Jupiter", value: "484" },
+      { name: "Neptune", value: "2,793" }
+    ]
+  },
+  {
+    id: 4, date: "2026-04-04", category: "History",
+    criterion: "Rank these inventions by year of invention, earliest to most recent.",
+    unit: "", source: "Encyclopedia Britannica",
+    items: [
+      { name: "Wheel", value: "~3500 BC" },
+      { name: "Printing Press", value: "1440" },
+      { name: "Telephone", value: "1876" },
+      { name: "Light Bulb", value: "1879" },
+      { name: "Internet", value: "1983" }
+    ]
+  },
+  {
+    id: 5, date: "2026-04-05", category: "Sports",
+    criterion: "Rank these NBA players by career points scored, most to fewest.",
+    unit: "pts", source: "Basketball Reference",
+    items: [
+      { name: "LeBron James", value: "42,000+" },
+      { name: "Kareem Abdul-Jabbar", value: "38,387" },
+      { name: "Karl Malone", value: "36,928" },
+      { name: "Kobe Bryant", value: "33,643" },
+      { name: "Michael Jordan", value: "32,292" }
+    ]
+  },
+  {
+    id: 6, date: "2026-04-06", category: "Geography",
+    criterion: "Rank these countries by total land area, largest to smallest.",
+    unit: "million km²", source: "World Bank",
+    items: [
+      { name: "Russia", value: "17.1" },
+      { name: "Canada", value: "10.0" },
+      { name: "United States", value: "9.8" },
+      { name: "Brazil", value: "8.5" },
+      { name: "Australia", value: "7.7" }
+    ]
+  },
+  {
+    id: 7, date: "2026-04-07", category: "Food & Drink",
+    criterion: "Rank these drinks by caffeine content per 8 oz serving, highest to lowest.",
+    unit: "mg", source: "USDA",
+    items: [
+      { name: "Cold Brew Coffee", value: "200" },
+      { name: "Drip Coffee", value: "95" },
+      { name: "Espresso (8 oz)", value: "63" },
+      { name: "Black Tea", value: "47" },
+      { name: "Green Tea", value: "28" }
+    ]
+  },
+  {
+    id: 8, date: "2026-04-08", category: "Pop Culture",
+    criterion: "Rank these TV shows by total number of episodes, most to fewest.",
+    unit: "episodes", source: "IMDb",
+    items: [
+      { name: "The Simpsons", value: "770+" },
+      { name: "Law & Order: SVU", value: "580+" },
+      { name: "Grey's Anatomy", value: "440+" },
+      { name: "The Office (US)", value: "201" },
+      { name: "Breaking Bad", value: "62" }
+    ]
+  },
+  {
+    id: 9, date: "2026-04-09", category: "Geography",
+    criterion: "Rank these cities by population, largest to smallest.",
+    unit: "million", source: "United Nations",
+    items: [
+      { name: "Tokyo", value: "37.4" },
+      { name: "Delhi", value: "32.9" },
+      { name: "Shanghai", value: "29.2" },
+      { name: "São Paulo", value: "22.6" },
+      { name: "Mexico City", value: "22.1" }
+    ]
+  },
+  {
+    id: 10, date: "2026-04-10", category: "Science",
+    criterion: "Rank these animals by average lifespan, longest to shortest.",
+    unit: "years", source: "National Geographic",
+    items: [
+      { name: "Greenland Shark", value: "400" },
+      { name: "Galápagos Tortoise", value: "175" },
+      { name: "African Elephant", value: "70" },
+      { name: "Bottlenose Dolphin", value: "45" },
+      { name: "Domestic Dog", value: "13" }
+    ]
+  },
+  {
+    id: 11, date: "2026-04-11", category: "History",
+    criterion: "Rank these structures by year of completion, oldest to newest.",
+    unit: "", source: "World History Encyclopedia",
+    items: [
+      { name: "Great Pyramid of Giza", value: "~2560 BC" },
+      { name: "Colosseum", value: "80 AD" },
+      { name: "Machu Picchu", value: "~1450" },
+      { name: "Taj Mahal", value: "1653" },
+      { name: "Empire State Building", value: "1931" }
+    ]
+  },
+  {
+    id: 12, date: "2026-04-12", category: "Food & Drink",
+    criterion: "Rank these fruits by sugar content per 100g, highest to lowest.",
+    unit: "g sugar", source: "USDA",
+    items: [
+      { name: "Dates", value: "63.4" },
+      { name: "Grapes", value: "16.3" },
+      { name: "Banana", value: "12.2" },
+      { name: "Apple", value: "10.4" },
+      { name: "Strawberry", value: "4.9" }
+    ]
+  },
+  {
+    id: 13, date: "2026-04-13", category: "Pop Culture",
+    criterion: "Rank these albums by worldwide sales, most to fewest.",
+    unit: "million copies", source: "IFPI / Guinness Records",
+    items: [
+      { name: "Thriller (Michael Jackson)", value: "70" },
+      { name: "Back in Black (AC/DC)", value: "50" },
+      { name: "The Dark Side of the Moon", value: "45" },
+      { name: "The Bodyguard (Soundtrack)", value: "45" },
+      { name: "Rumours (Fleetwood Mac)", value: "40" }
+    ]
+  },
+  {
+    id: 14, date: "2026-04-14", category: "Geography",
+    criterion: "Rank these rivers by length, longest to shortest.",
+    unit: "mi", source: "National Geographic",
+    items: [
+      { name: "Nile", value: "4,132" },
+      { name: "Amazon", value: "3,976" },
+      { name: "Yangtze", value: "3,917" },
+      { name: "Mississippi", value: "2,340" },
+      { name: "Danube", value: "1,770" }
+    ]
+  },
+  {
+    id: 15, date: "2026-04-15", category: "Science",
+    criterion: "Rank these elements by atomic number, lowest to highest.",
+    unit: "", source: "IUPAC",
+    items: [
+      { name: "Hydrogen", value: "1" },
+      { name: "Carbon", value: "6" },
+      { name: "Iron", value: "26" },
+      { name: "Silver", value: "47" },
+      { name: "Gold", value: "79" }
+    ]
+  },
+  {
+    id: 16, date: "2026-04-16", category: "Sports",
+    criterion: "Rank these countries by all-time Summer Olympic gold medals, most to fewest.",
+    unit: "golds", source: "Olympics.com",
+    items: [
+      { name: "United States", value: "1,061" },
+      { name: "Soviet Union", value: "395" },
+      { name: "Great Britain", value: "296" },
+      { name: "China", value: "280" },
+      { name: "France", value: "258" }
+    ]
+  },
+  {
+    id: 17, date: "2026-04-17", category: "Food & Drink",
+    criterion: "Rank these foods by calories per serving, highest to lowest.",
+    unit: "cal", source: "USDA",
+    items: [
+      { name: "Peanut Butter (2 tbsp)", value: "190" },
+      { name: "Avocado (1 whole)", value: "322" },
+      { name: "Slice of Pizza", value: "285" },
+      { name: "Banana", value: "105" },
+      { name: "Egg (1 large)", value: "72" }
+    ]
+  },
+  {
+    id: 18, date: "2026-04-18", category: "History",
+    criterion: "Rank these US Presidents by year they took office, earliest to most recent.",
+    unit: "", source: "White House Historical Association",
+    items: [
+      { name: "George Washington", value: "1789" },
+      { name: "Abraham Lincoln", value: "1861" },
+      { name: "Theodore Roosevelt", value: "1901" },
+      { name: "John F. Kennedy", value: "1961" },
+      { name: "Barack Obama", value: "2009" }
+    ]
+  },
+  {
+    id: 19, date: "2026-04-19", category: "Science",
+    criterion: "Rank these bodies of water by depth, deepest to shallowest.",
+    unit: "ft", source: "NOAA",
+    items: [
+      { name: "Mariana Trench", value: "36,037" },
+      { name: "Lake Baikal", value: "5,387" },
+      { name: "Caribbean Sea", value: "25,216" },
+      { name: "Lake Superior", value: "1,332" },
+      { name: "Persian Gulf", value: "295" }
+    ]
+  },
+  {
+    id: 20, date: "2026-04-20", category: "Pop Culture",
+    criterion: "Rank these video games by units sold, most to fewest.",
+    unit: "million", source: "VGChartz / Nintendo",
+    items: [
+      { name: "Minecraft", value: "300+" },
+      { name: "Grand Theft Auto V", value: "200+" },
+      { name: "Tetris (EA Mobile)", value: "100+" },
+      { name: "Wii Sports", value: "82.9" },
+      { name: "The Legend of Zelda: TotK", value: "20.8" }
+    ]
+  },
+  {
+    id: 21, date: "2026-04-21", category: "Geography",
+    criterion: "Rank these US states by population, largest to smallest.",
+    unit: "million", source: "US Census Bureau",
+    items: [
+      { name: "California", value: "39.0" },
+      { name: "Texas", value: "30.5" },
+      { name: "Florida", value: "22.6" },
+      { name: "New York", value: "19.6" },
+      { name: "Pennsylvania", value: "12.9" }
+    ]
+  },
+  {
+    id: 22, date: "2026-04-22", category: "Sports",
+    criterion: "Rank these marathons by year first held, earliest to most recent.",
+    unit: "", source: "World Athletics",
+    items: [
+      { name: "Boston Marathon", value: "1897" },
+      { name: "London Marathon", value: "1981" },
+      { name: "New York City Marathon", value: "1970" },
+      { name: "Berlin Marathon", value: "1974" },
+      { name: "Tokyo Marathon", value: "2007" }
+    ]
+  },
+  {
+    id: 23, date: "2026-04-23", category: "Science",
+    criterion: "Rank these planets by number of known moons, most to fewest.",
+    unit: "moons", source: "NASA",
+    items: [
+      { name: "Saturn", value: "146" },
+      { name: "Jupiter", value: "95" },
+      { name: "Uranus", value: "28" },
+      { name: "Neptune", value: "16" },
+      { name: "Mars", value: "2" }
+    ]
+  },
+  {
+    id: 24, date: "2026-04-24", category: "Food & Drink",
+    criterion: "Rank these cheeses by age when typically sold, longest to shortest.",
+    unit: "months", source: "Cheese.com",
+    items: [
+      { name: "Parmigiano-Reggiano", value: "24" },
+      { name: "Aged Cheddar", value: "12" },
+      { name: "Gouda", value: "6" },
+      { name: "Brie", value: "2" },
+      { name: "Mozzarella", value: "0.25" }
+    ]
+  },
+  {
+    id: 25, date: "2026-04-25", category: "History",
+    criterion: "Rank these wars by duration, longest to shortest.",
+    unit: "years", source: "Encyclopedia Britannica",
+    items: [
+      { name: "Hundred Years' War", value: "116" },
+      { name: "Vietnam War (US)", value: "20" },
+      { name: "World War II", value: "6" },
+      { name: "Korean War", value: "3" },
+      { name: "Six-Day War", value: "0.016" }
+    ]
+  },
+  {
+    id: 26, date: "2026-04-26", category: "Pop Culture",
+    criterion: "Rank these social media platforms by monthly active users, most to fewest.",
+    unit: "billion", source: "Statista",
+    items: [
+      { name: "Facebook", value: "3.07" },
+      { name: "YouTube", value: "2.50" },
+      { name: "Instagram", value: "2.00" },
+      { name: "TikTok", value: "1.60" },
+      { name: "X (Twitter)", value: "0.60" }
+    ]
+  },
+  {
+    id: 27, date: "2026-04-27", category: "Geography",
+    criterion: "Rank these deserts by area, largest to smallest.",
+    unit: "million km²", source: "World Atlas",
+    items: [
+      { name: "Antarctic Desert", value: "14.2" },
+      { name: "Sahara", value: "9.2" },
+      { name: "Arabian Desert", value: "2.3" },
+      { name: "Gobi Desert", value: "1.3" },
+      { name: "Kalahari Desert", value: "0.9" }
+    ]
+  },
+  {
+    id: 28, date: "2026-04-28", category: "Sports",
+    criterion: "Rank these athletes by career Grand Slam tennis titles, most to fewest.",
+    unit: "titles", source: "ATP / WTA",
+    items: [
+      { name: "Novak Djokovic", value: "24" },
+      { name: "Rafael Nadal", value: "22" },
+      { name: "Roger Federer", value: "20" },
+      { name: "Serena Williams", value: "23" },
+      { name: "Pete Sampras", value: "14" }
+    ]
+  },
+  {
+    id: 29, date: "2026-04-29", category: "Science",
+    criterion: "Rank these materials by melting point, highest to lowest.",
+    unit: "°F", source: "CRC Handbook",
+    items: [
+      { name: "Tungsten", value: "6,192" },
+      { name: "Iron", value: "2,800" },
+      { name: "Gold", value: "1,948" },
+      { name: "Aluminum", value: "1,221" },
+      { name: "Tin", value: "449" }
+    ]
+  },
+  {
+    id: 30, date: "2026-04-30", category: "Pop Culture",
+    criterion: "Rank these book series by total copies sold, most to fewest.",
+    unit: "million", source: "Publishers Weekly",
+    items: [
+      { name: "Harry Potter", value: "600" },
+      { name: "Goosebumps", value: "400" },
+      { name: "Lord of the Rings", value: "150" },
+      { name: "The Hunger Games", value: "100" },
+      { name: "Diary of a Wimpy Kid", value: "75" }
+    ]
+  }
+];
+
+// ==================== GAME ENGINE ====================
+(function() {
+  'use strict';
+
+  const STORAGE_KEY = 'rankit_state';
+  const STATS_KEY = 'rankit_stats';
+
+  // DOM refs
+  const $itemList = document.getElementById('itemList');
+  const $submitBtn = document.getElementById('submitBtn');
+  const $attemptCounter = document.getElementById('attemptCounter');
+  const $criterion = document.getElementById('criterion');
+  const $puzzleNumber = document.getElementById('puzzleNumber');
+  const $puzzleDate = document.getElementById('puzzleDate');
+  const $categoryBadge = document.getElementById('categoryBadge');
+  const $results = document.getElementById('results');
+  const $resultsScore = document.getElementById('resultsScore');
+  const $resultsLabel = document.getElementById('resultsLabel');
+  const $shareBtn = document.getElementById('shareBtn');
+  const $copiedToast = document.getElementById('copiedToast');
+  const $sourceAttr = document.getElementById('sourceAttr');
+  const $swapHint = document.getElementById('swapHint');
+  const $howToPlay = document.getElementById('howToPlay');
+  const $helpBtn = document.getElementById('helpBtn');
+  const $modalClose = document.getElementById('modalClose');
+
+  let puzzle = null;
+  let currentOrder = [];     // array of item indices (into puzzle.items)
+  let lockedPositions = [];  // set of positions (0-4) that are locked
+  let attempts = 0;
+  let attemptHistory = [];   // array of arrays, each is [true/false x 5]
+  let state = 'IDLE';        // IDLE, ARRANGING, CHECKING, PARTIAL, SOLVED, COMPLETED
+  let selectedSwapIndex = null;
+
+  // ---- Puzzle selection ----
+  function getTodayStr() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+
+  function selectPuzzle() {
+    const today = getTodayStr();
+    // Exact match first
+    let p = PUZZLES.find(pz => pz.date === today);
+    if (p) return p;
+    // Most recent past puzzle
+    const past = PUZZLES.filter(pz => pz.date <= today).sort((a,b) => b.date.localeCompare(a.date));
+    if (past.length > 0) return past[0];
+    // Fallback to first puzzle
+    return PUZZLES[0];
+  }
+
+  // ---- Shuffle ----
+  function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    // Ensure shuffled order is not already correct
+    if (a.every((v, i) => v === i)) {
+      // swap last two
+      [a[a.length-1], a[a.length-2]] = [a[a.length-2], a[a.length-1]];
+    }
+    return a;
+  }
+
+  // ---- localStorage ----
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch { return null; }
+  }
+
+  function saveState() {
+    const data = {
+      puzzleId: puzzle.id,
+      puzzleDate: puzzle.date,
+      currentOrder,
+      lockedPositions,
+      attempts,
+      attemptHistory,
+      state,
+      savedAt: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadStats() {
+    try {
+      const raw = localStorage.getItem(STATS_KEY);
+      if (!raw) return { played: 0, scores: [], streak: 0, bestStreak: 0, lastDate: null };
+      return JSON.parse(raw);
+    } catch { return { played: 0, scores: [], streak: 0, bestStreak: 0, lastDate: null }; }
+  }
+
+  function saveStats(score) {
+    const stats = loadStats();
+    const today = getTodayStr();
+
+    // Check if already recorded today
+    if (stats.lastDate === today) return;
+
+    stats.played++;
+    stats.scores.push(score);
+
+    // Streak logic
+    if (stats.lastDate) {
+      const last = new Date(stats.lastDate);
+      const now = new Date(today);
+      const diffDays = Math.round((now - last) / (1000 * 60 * 60 * 24));
+      if (diffDays === 1) {
+        stats.streak++;
+      } else if (diffDays > 1) {
+        stats.streak = 1;
+      }
+    } else {
+      stats.streak = 1;
+    }
+
+    stats.bestStreak = Math.max(stats.bestStreak, stats.streak);
+    stats.lastDate = today;
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  }
+
+  function displayStats() {
+    const stats = loadStats();
+    document.getElementById('statPlayed').textContent = stats.played;
+    document.getElementById('statStreak').textContent = stats.streak;
+    document.getElementById('statBest').textContent = stats.bestStreak;
+    const avg = stats.scores.length > 0
+      ? (stats.scores.reduce((a,b)=>a+b,0) / stats.scores.length).toFixed(1)
+      : '–';
+    document.getElementById('statAvg').textContent = avg;
+  }
+
+  // ---- Rendering ----
+  function renderItems() {
+    $itemList.innerHTML = '';
+    currentOrder.forEach((itemIdx, pos) => {
+      const item = puzzle.items[itemIdx];
+      const el = document.createElement('div');
+      el.className = 'item';
+      el.setAttribute('role', 'option');
+      el.setAttribute('aria-label', `Position ${pos+1}: ${item.name}`);
+      el.setAttribute('tabindex', '0');
+      el.dataset.pos = pos;
+
+      const isLocked = lockedPositions.includes(pos);
+      if (isLocked) el.classList.add('locked');
+
+      el.innerHTML = `
+        <div class="drag-handle">
+          <svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor">
+            <circle cx="3" cy="3" r="1.5"/><circle cx="9" cy="3" r="1.5"/>
+            <circle cx="3" cy="8" r="1.5"/><circle cx="9" cy="8" r="1.5"/>
+            <circle cx="3" cy="13" r="1.5"/><circle cx="9" cy="13" r="1.5"/>
+          </svg>
+        </div>
+        <div class="item-rank">${pos + 1}</div>
+        <div class="item-name">${item.name}</div>
+        <div class="item-value"></div>
+        <div class="item-status"></div>
+      `;
+
+      if (!isLocked) {
+        setupDragListeners(el);
+        el.addEventListener('keydown', (e) => handleKeyboard(e, pos));
+      }
+
+      $itemList.appendChild(el);
+    });
+    $submitBtn.disabled = false;
+  }
+
+  function updateAttemptCounter() {
+    if (attempts === 0) {
+      $attemptCounter.textContent = 'Attempt 1';
+    } else if (state === 'SOLVED' || state === 'COMPLETED') {
+      $attemptCounter.textContent = '';
+    } else {
+      $attemptCounter.textContent = `Attempt ${attempts + 1}`;
+    }
+  }
+
+  // ---- Tap-to-swap ----
+  function handleTapSwap(pos) {
+    if (state === 'CHECKING' || state === 'SOLVED' || state === 'COMPLETED') return;
+    if (lockedPositions.includes(pos)) return;
+
+    const items = $itemList.children;
+
+    if (selectedSwapIndex === null) {
+      selectedSwapIndex = pos;
+      items[pos].classList.add('selected');
+      $swapHint.textContent = 'Tap another item to swap';
+      $swapHint.classList.add('visible');
+    } else if (selectedSwapIndex === pos) {
+      items[pos].classList.remove('selected');
+      selectedSwapIndex = null;
+      $swapHint.textContent = 'Tap two items to swap, or drag to reorder';
+      $swapHint.classList.remove('visible');
+    } else {
+      // Perform swap
+      const oldPos = selectedSwapIndex;
+      items[oldPos].classList.remove('selected');
+
+      [currentOrder[oldPos], currentOrder[pos]] = [currentOrder[pos], currentOrder[oldPos]];
+      selectedSwapIndex = null;
+      $swapHint.classList.remove('visible');
+
+      renderItems();
+      saveState();
+    }
+  }
+
+  // ---- Keyboard ----
+  function handleKeyboard(e, pos) {
+    if (state === 'CHECKING' || state === 'SOLVED' || state === 'COMPLETED') return;
+
+    if (e.key === 'ArrowUp' && pos > 0) {
+      e.preventDefault();
+      // Find nearest unlocked position above
+      let target = pos - 1;
+      while (target >= 0 && lockedPositions.includes(target)) target--;
+      if (target >= 0 && !lockedPositions.includes(pos)) {
+        [currentOrder[pos], currentOrder[target]] = [currentOrder[target], currentOrder[pos]];
+        renderItems();
+        $itemList.children[target].focus();
+        saveState();
+      }
+    } else if (e.key === 'ArrowDown' && pos < 4) {
+      e.preventDefault();
+      let target = pos + 1;
+      while (target <= 4 && lockedPositions.includes(target)) target++;
+      if (target <= 4 && !lockedPositions.includes(pos)) {
+        [currentOrder[pos], currentOrder[target]] = [currentOrder[target], currentOrder[pos]];
+        renderItems();
+        $itemList.children[target].focus();
+        saveState();
+      }
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleTapSwap(pos);
+    }
+  }
+
+  // ---- Drag and Drop ----
+  let dragState = null;
+
+  function setupDragListeners(el) {
+    // Pointer events for unified touch/mouse
+    el.addEventListener('pointerdown', onPointerDown);
+  }
+
+  function onPointerDown(e) {
+    if (state === 'CHECKING' || state === 'SOLVED' || state === 'COMPLETED') return;
+    const pos = parseInt(e.currentTarget.dataset.pos);
+    if (lockedPositions.includes(pos)) return;
+
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const listRect = $itemList.getBoundingClientRect();
+
+    dragState = {
+      el,
+      pos,
+      startY: e.clientY,
+      offsetY: e.clientY - rect.top,
+      listTop: listRect.top,
+      itemHeight: 64, // 56px + 8px margin
+      moved: false
+    };
+
+    el.setPointerCapture(e.pointerId);
+    el.addEventListener('pointermove', onPointerMove);
+    el.addEventListener('pointerup', onPointerUp);
+    el.addEventListener('pointercancel', onPointerUp);
+  }
+
+  function onPointerMove(e) {
+    if (!dragState) return;
+
+    const dy = Math.abs(e.clientY - dragState.startY);
+    if (!dragState.moved && dy < 5) return;
+
+    if (!dragState.moved) {
+      dragState.moved = true;
+      dragState.el.classList.add('dragging');
+      state = 'ARRANGING';
+    }
+
+    const y = e.clientY - dragState.listTop - dragState.offsetY;
+    const newPos = Math.min(4, Math.max(0, Math.round(y / dragState.itemHeight)));
+
+    if (newPos !== dragState.pos && !lockedPositions.includes(newPos)) {
+      // Swap in data
+      [currentOrder[dragState.pos], currentOrder[newPos]] = [currentOrder[newPos], currentOrder[dragState.pos]];
+      dragState.pos = newPos;
+      renderItemsDuringDrag(newPos);
+    }
+
+    // Visual offset
+    const expectedY = dragState.pos * dragState.itemHeight;
+    const currentY = y;
+    dragState.el.style.transform = `translateY(${currentY - expectedY}px) scale(1.03)`;
+  }
+
+  function onPointerUp(e) {
+    if (!dragState) return;
+
+    const el = dragState.el;
+    const pos = dragState.pos;
+    const wasDrag = dragState.moved;
+
+    el.removeEventListener('pointermove', onPointerMove);
+    el.removeEventListener('pointerup', onPointerUp);
+    el.removeEventListener('pointercancel', onPointerUp);
+
+    if (wasDrag) {
+      el.classList.remove('dragging');
+      el.style.transform = '';
+      renderItems();
+      saveState();
+    } else {
+      // No drag movement — treat as a tap for swap
+      handleTapSwap(pos);
+    }
+
+    dragState = null;
+  }
+
+  function renderItemsDuringDrag(activePos) {
+    // Re-render but keep the active item as dragging
+    const items = $itemList.children;
+    // Quick re-render
+    currentOrder.forEach((itemIdx, pos) => {
+      const item = puzzle.items[itemIdx];
+      const el = items[pos];
+      if (el) {
+        el.querySelector('.item-rank').textContent = pos + 1;
+        el.querySelector('.item-name').textContent = item.name;
+        el.dataset.pos = pos;
+      }
+    });
+    // Re-assign drag state element
+    dragState.el = items[activePos];
+    dragState.el.classList.add('dragging');
+  }
+
+  // ---- Submission ----
+  async function handleSubmit() {
+    if (state === 'CHECKING' || state === 'SOLVED' || state === 'COMPLETED') return;
+
+    state = 'CHECKING';
+    $submitBtn.disabled = true;
+    attempts++;
+
+    // Check each position
+    const results = currentOrder.map((itemIdx, pos) => itemIdx === pos);
+    attemptHistory.push(results);
+
+    const items = $itemList.children;
+
+    // Reveal one by one with stagger
+    for (let i = 0; i < 5; i++) {
+      await sleep(300);
+      const el = items[i];
+      const statusEl = el.querySelector('.item-status');
+
+      if (results[i]) {
+        el.classList.add('correct-flash');
+        statusEl.textContent = '✓';
+        if (!lockedPositions.includes(i)) {
+          lockedPositions.push(i);
+        }
+      } else {
+        el.classList.add('incorrect-flash');
+        statusEl.textContent = '–';
+      }
+    }
+
+    await sleep(400);
+
+    // Check if all correct
+    if (results.every(r => r)) {
+      state = 'SOLVED';
+      saveState();
+      saveStats(attempts);
+      await showSolvedState();
+    } else {
+      state = 'PARTIAL';
+      saveState();
+      renderItems();
+      updateAttemptCounter();
+      $attemptCounter.classList.add('bounce');
+      setTimeout(() => $attemptCounter.classList.remove('bounce'), 200);
+      $swapHint.textContent = 'Tap two items to swap, or drag to reorder';
+    }
+  }
+
+  async function showSolvedState() {
+    const items = $itemList.children;
+
+    // Celebration animation
+    for (let i = 0; i < 5; i++) {
+      items[i].classList.add('locked', 'celebrate');
+    }
+
+    await sleep(400);
+
+    // Reveal values
+    for (let i = 0; i < 5; i++) {
+      const item = puzzle.items[currentOrder[i]];
+      const valueEl = items[i].querySelector('.item-value');
+      const unit = puzzle.unit ? ` ${puzzle.unit}` : '';
+      valueEl.textContent = `${item.value}${unit}`;
+      valueEl.classList.add('visible');
+      const statusEl = items[i].querySelector('.item-status');
+      statusEl.textContent = '✓';
+      statusEl.style.opacity = '1';
+      items[i].classList.add('locked');
+    }
+
+    // Show results
+    const rating = getRating(attempts);
+    $resultsScore.textContent = `Solved in ${attempts}!`;
+    $resultsLabel.textContent = rating;
+    if (puzzle.source) {
+      $sourceAttr.textContent = `Source: ${puzzle.source}`;
+    }
+    $submitBtn.style.display = 'none';
+    $attemptCounter.textContent = '';
+    $swapHint.classList.remove('visible');
+
+    displayStats();
+
+    await sleep(200);
+    $results.classList.add('visible');
+
+    startCountdownTimer();
+  }
+
+  function getRating(att) {
+    if (att === 1) return 'Perfect — solved on first try';
+    if (att === 2) return 'Excellent';
+    if (att === 3) return 'Great';
+    if (att === 4) return 'Good';
+    return 'Solved';
+  }
+
+  // ---- Share ----
+  function generateShareText() {
+    const lines = [`Rank It #${puzzle.id} — Solved in ${attempts}!`];
+    attemptHistory.forEach((result, i) => {
+      const row = result.map(r => r ? '🟩' : '⬜').join('');
+      lines.push(`Attempt ${i+1}: ${row}`);
+    });
+    lines.push('rankit.game');
+    return lines.join('\n');
+  }
+
+  async function handleShare() {
+    const text = generateShareText();
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    $copiedToast.classList.add('visible');
+    setTimeout(() => $copiedToast.classList.remove('visible'), 2000);
+  }
+
+  // ---- Countdown timer ----
+  function startCountdownTimer() {
+    const $timer = document.getElementById('timerValue');
+    function update() {
+      const now = new Date();
+      const tomorrow = new Date(now);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(0, 0, 0, 0);
+      const diff = tomorrow - now;
+
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      $timer.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+    update();
+    setInterval(update, 1000);
+  }
+
+  // ---- Helpers ----
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  // ---- Show completed state (already solved today) ----
+  function showCompletedState(savedState) {
+    state = 'COMPLETED';
+    currentOrder = savedState.currentOrder;
+    lockedPositions = savedState.lockedPositions;
+    attempts = savedState.attempts;
+    attemptHistory = savedState.attemptHistory;
+
+    renderItems();
+
+    // Show values on all items
+    const items = $itemList.children;
+    for (let i = 0; i < 5; i++) {
+      const item = puzzle.items[currentOrder[i]];
+      const valueEl = items[i].querySelector('.item-value');
+      const unit = puzzle.unit ? ` ${puzzle.unit}` : '';
+      valueEl.textContent = `${item.value}${unit}`;
+      valueEl.classList.add('visible');
+      const statusEl = items[i].querySelector('.item-status');
+      statusEl.textContent = '✓';
+      statusEl.style.opacity = '1';
+      items[i].classList.add('locked');
+    }
+
+    const rating = getRating(attempts);
+    $resultsScore.textContent = `Solved in ${attempts}!`;
+    $resultsLabel.textContent = rating;
+    if (puzzle.source) {
+      $sourceAttr.textContent = `Source: ${puzzle.source}`;
+    }
+    $submitBtn.style.display = 'none';
+    $attemptCounter.textContent = '';
+    $swapHint.classList.remove('visible');
+
+    displayStats();
+    $results.classList.add('visible');
+    startCountdownTimer();
+  }
+
+  // ---- Init ----
+  function init() {
+    puzzle = selectPuzzle();
+
+    // Set header
+    $puzzleNumber.textContent = `No. ${puzzle.id}`;
+    const dateObj = new Date(puzzle.date + 'T00:00:00');
+    $puzzleDate.textContent = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    $categoryBadge.textContent = puzzle.category;
+    $criterion.textContent = puzzle.criterion;
+
+    // Check saved state
+    const saved = loadState();
+    if (saved && saved.puzzleId === puzzle.id) {
+      if (saved.state === 'SOLVED' || saved.state === 'COMPLETED') {
+        showCompletedState(saved);
+        return;
+      }
+      // Restore in-progress
+      currentOrder = saved.currentOrder;
+      lockedPositions = saved.lockedPositions;
+      attempts = saved.attempts;
+      attemptHistory = saved.attemptHistory;
+      state = saved.state || 'IDLE';
+    } else {
+      // New puzzle
+      currentOrder = shuffleArray([0, 1, 2, 3, 4]);
+      lockedPositions = [];
+      attempts = 0;
+      attemptHistory = [];
+      state = 'IDLE';
+    }
+
+    renderItems();
+    updateAttemptCounter();
+
+    // Show how-to-play on first visit
+    const stats = loadStats();
+    if (stats.played === 0 && !saved) {
+      $howToPlay.classList.add('visible');
+    }
+  }
+
+  // ---- Event listeners ----
+  $submitBtn.addEventListener('click', handleSubmit);
+  $shareBtn.addEventListener('click', handleShare);
+  $helpBtn.addEventListener('click', () => $howToPlay.classList.add('visible'));
+  $modalClose.addEventListener('click', () => $howToPlay.classList.remove('visible'));
+  $howToPlay.addEventListener('click', (e) => {
+    if (e.target === $howToPlay) $howToPlay.classList.remove('visible');
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>
