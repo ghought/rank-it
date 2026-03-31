@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Rank It</title>
+
+<!-- Firebase SDK (optional — leave FIREBASE_CONFIG empty to use localStorage only) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -42,13 +48,13 @@
     align-items: center;
   }
 
-  /* Header */
+  /* ===== HEADER ===== */
   header {
     width: 100%;
     text-align: center;
-    padding: 20px 0 16px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
+    padding: 20px 0 0;
+    margin-bottom: 0;
+    position: relative;
   }
 
   .wordmark {
@@ -75,11 +81,110 @@
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 2px 8px;
-    margin-left: 8px;
-    vertical-align: middle;
   }
 
-  /* Criterion */
+  .help-btn {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .help-btn:hover { border-color: var(--text-secondary); }
+
+  /* ===== NAV TABS ===== */
+  .nav-tabs {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+    margin-top: 12px;
+  }
+
+  .nav-tab {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 150ms, border-color 150ms;
+  }
+
+  .nav-tab:hover { color: var(--text-primary); }
+  .nav-tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+  }
+
+  /* ===== AUTH BAR ===== */
+  .auth-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 0;
+    min-height: 36px;
+  }
+
+  .auth-btn {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 5px 14px;
+    cursor: pointer;
+    transition: border-color 150ms;
+  }
+  .auth-btn:hover { border-color: var(--text-secondary); }
+
+  .auth-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .auth-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .auth-signout {
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+
+  /* ===== VIEWS ===== */
+  .view { display: none; width: 100%; }
+  .view.active { display: flex; flex-direction: column; align-items: center; }
+
+  /* ===== GAME VIEW ===== */
   .criterion {
     font-family: var(--font-serif);
     font-size: 20px;
@@ -91,7 +196,6 @@
     color: var(--text-primary);
   }
 
-  /* Item List */
   .item-list {
     width: 100%;
     position: relative;
@@ -113,7 +217,6 @@
     touch-action: none;
     z-index: 1;
   }
-
   .item:last-child { margin-bottom: 0; }
 
   .item.dragging {
@@ -124,9 +227,6 @@
     background: var(--bg);
     opacity: 0.95;
   }
-
-  .item.drag-over-above { transform: translateY(8px); }
-  .item.drag-over-below { transform: translateY(-8px); }
 
   .item.locked {
     background: #F0F8F0;
@@ -175,10 +275,7 @@
     color: var(--text-secondary);
     flex-shrink: 0;
   }
-
-  .item.locked .item-rank {
-    color: var(--correct);
-  }
+  .item.locked .item-rank { color: var(--correct); }
 
   .item-name {
     flex: 1;
@@ -201,17 +298,9 @@
     opacity: 0;
     transition: opacity 300ms ease;
   }
-
   .item.locked .item-status,
-  .item.correct-flash .item-status {
-    opacity: 1;
-    color: var(--correct);
-  }
-
-  .item.incorrect-flash .item-status {
-    opacity: 1;
-    color: var(--incorrect);
-  }
+  .item.correct-flash .item-status { opacity: 1; color: var(--correct); }
+  .item.incorrect-flash .item-status { opacity: 1; color: var(--incorrect); }
 
   .item-value {
     font-size: 13px;
@@ -222,7 +311,6 @@
     transition: opacity 500ms ease;
     white-space: nowrap;
   }
-
   .item-value.visible { opacity: 1; }
 
   .drag-handle {
@@ -235,22 +323,16 @@
     color: #CCC;
     margin-right: 4px;
   }
-
   .item.locked .drag-handle { opacity: 0.3; }
 
-  /* Attempt counter */
   .attempt-counter {
     font-size: 14px;
     color: var(--text-secondary);
     margin-bottom: 12px;
     text-align: center;
-    transition: transform 200ms ease;
     min-height: 20px;
   }
-
-  .attempt-counter.bounce {
-    animation: counterBounce 200ms ease;
-  }
+  .attempt-counter.bounce { animation: counterBounce 200ms ease; }
 
   @keyframes counterBounce {
     0% { transform: scale(1); }
@@ -258,7 +340,6 @@
     100% { transform: scale(1); }
   }
 
-  /* Submit button */
   .submit-btn {
     display: inline-flex;
     align-items: center;
@@ -273,16 +354,23 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     cursor: pointer;
-    transition: background 150ms ease, transform 100ms ease, opacity 200ms ease;
+    transition: background 150ms ease, transform 100ms ease;
   }
-
   .submit-btn:hover { background: #333; }
   .submit-btn:active { transform: scale(0.97); }
-  .submit-btn:disabled {
-    background: #D4D4D4;
-    cursor: not-allowed;
-  }
+  .submit-btn:disabled { background: #D4D4D4; cursor: not-allowed; }
   .submit-btn:disabled:hover { background: #D4D4D4; }
+
+  .swap-hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 8px;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    min-height: 18px;
+  }
+  .swap-hint.visible { opacity: 1; }
 
   /* Results */
   .results {
@@ -293,11 +381,7 @@
     transform: translateY(10px);
     transition: opacity 300ms ease-out, transform 300ms ease-out;
   }
-
-  .results.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .results.visible { opacity: 1; transform: translateY(0); }
 
   .results-score {
     font-family: var(--font-serif);
@@ -328,9 +412,38 @@
     cursor: pointer;
     transition: background 150ms ease, transform 100ms ease;
   }
-
   .share-btn:hover { background: #5B9B55; }
   .share-btn:active { transform: scale(0.97); }
+
+  .source-attr {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  .next-puzzle-timer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .next-puzzle-timer .timer-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .next-puzzle-timer .timer-value {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    margin-top: 4px;
+  }
+
+  @keyframes solveGlow {
+    0% { box-shadow: 0 0 0 0 rgba(106, 170, 100, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(106, 170, 100, 0.1); }
+    100% { box-shadow: 0 0 0 0 rgba(106, 170, 100, 0); }
+  }
+  .item.celebrate { animation: solveGlow 600ms ease-out; }
 
   .copied-toast {
     position: fixed;
@@ -348,91 +461,233 @@
     pointer-events: none;
     z-index: 1000;
   }
+  .copied-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .copied-toast.visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+  /* ===== STATS VIEW ===== */
+  .stats-view { padding-bottom: 40px; }
 
-  /* Streak */
-  .streak-bar {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+  .stats-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
     width: 100%;
+    margin-bottom: 32px;
   }
 
-  .streak-stat {
+  .stats-card {
     text-align: center;
+    padding: 12px 4px;
   }
 
-  .streak-stat .stat-value {
+  .stats-card .card-value {
     font-family: var(--font-serif);
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
   }
 
-  .streak-stat .stat-label {
+  .stats-card .card-label {
     font-size: 11px;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
+    margin-top: 2px;
   }
 
-  /* Solve celebration */
-  @keyframes solveGlow {
-    0% { box-shadow: 0 0 0 0 rgba(106, 170, 100, 0.4); }
-    50% { box-shadow: 0 0 0 6px rgba(106, 170, 100, 0.1); }
-    100% { box-shadow: 0 0 0 0 rgba(106, 170, 100, 0); }
-  }
-
-  .item.celebrate {
-    animation: solveGlow 600ms ease-out;
-  }
-
-  /* Tap-to-swap hint */
-  .swap-hint {
-    font-size: 12px;
-    color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: 8px;
-    opacity: 0;
-    transition: opacity 200ms ease;
-    min-height: 18px;
-  }
-  .swap-hint.visible { opacity: 1; }
-
-  /* Countdown timer */
-  .next-puzzle-timer {
-    margin-top: 20px;
-    text-align: center;
-  }
-
-  .next-puzzle-timer .timer-label {
-    font-size: 12px;
-    color: var(--text-secondary);
+  .stats-section-title {
+    font-size: 14px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    width: 100%;
   }
 
-  .next-puzzle-timer .timer-value {
+  .histogram {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .histo-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+
+  .histo-label {
+    width: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .histo-bar-bg {
+    flex: 1;
+    height: 28px;
+    background: #F5F5F5;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .histo-bar {
+    height: 100%;
+    background: #787C7F;
+    border-radius: 4px;
+    min-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    transition: width 600ms ease;
+  }
+
+  .histo-bar.highlight { background: var(--correct); }
+
+  .histo-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .streak-section {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .streak-card {
+    flex: 1;
+    text-align: center;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .streak-card .streak-val {
     font-family: var(--font-serif);
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .streak-card .streak-lbl {
+    font-size: 12px;
+    color: var(--text-secondary);
     margin-top: 4px;
   }
 
-  /* Source attribution */
-  .source-attr {
-    font-size: 12px;
+  .stats-empty {
+    text-align: center;
     color: var(--text-secondary);
-    margin-top: 12px;
-    font-style: italic;
+    font-size: 14px;
+    padding: 40px 0;
+    line-height: 1.6;
   }
 
-  /* How to play modal */
+  /* ===== ARCHIVE VIEW ===== */
+  .archive-view { padding-bottom: 40px; }
+
+  .archive-list {
+    width: 100%;
+  }
+
+  .archive-month {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .archive-month:first-child { margin-top: 0; }
+
+  .archive-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: background 150ms, border-color 150ms;
+  }
+  .archive-item:hover { background: #FAFAFA; border-color: #DDD; }
+  .archive-item.disabled {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .archive-num {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    width: 36px;
+    flex-shrink: 0;
+  }
+
+  .archive-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .archive-category {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .archive-criterion {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .archive-status {
+    flex-shrink: 0;
+    margin-left: 12px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .archive-status.completed {
+    color: var(--correct);
+  }
+
+  .archive-status.available {
+    color: var(--text-secondary);
+  }
+
+  .archive-status.upcoming {
+    color: #CCC;
+  }
+
+  .archive-back-btn {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+  .archive-back-btn:hover { color: var(--text-primary); }
+  .archive-back-btn.visible { display: flex; }
+
+  /* ===== MODAL ===== */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -446,11 +701,7 @@
     transition: opacity 200ms ease;
     padding: 20px;
   }
-
-  .modal-overlay.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .modal-overlay.visible { opacity: 1; pointer-events: auto; }
 
   .modal {
     background: white;
@@ -463,10 +714,7 @@
     transform: scale(0.95);
     transition: transform 200ms ease;
   }
-
-  .modal-overlay.visible .modal {
-    transform: scale(1);
-  }
+  .modal-overlay.visible .modal { transform: scale(1); }
 
   .modal h2 {
     font-size: 18px;
@@ -493,10 +741,6 @@
     width: 28px;
     height: 28px;
     border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
   }
 
   .modal .sq-green { background: var(--correct); }
@@ -515,41 +759,19 @@
     cursor: pointer;
   }
 
-  /* Help button */
-  .help-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border);
-    background: none;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .help-btn:hover { border-color: var(--text-secondary); }
-
-  /* Completed view */
-  .completed-banner {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
+  /* Sync indicator */
+  .sync-badge {
+    font-size: 10px;
+    color: var(--correct);
+    margin-left: 6px;
+    font-weight: 500;
   }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <header style="position:relative;">
+  <header>
     <div class="wordmark">RANK IT</div>
     <div class="puzzle-meta">
       <span id="puzzleNumber"></span> · <span id="puzzleDate"></span>
@@ -558,34 +780,58 @@
     <button class="help-btn" id="helpBtn" aria-label="How to play">?</button>
   </header>
 
-  <div class="criterion" id="criterion" role="heading" aria-level="2"></div>
+  <!-- Auth bar -->
+  <div class="auth-bar" id="authBar">
+    <button class="auth-btn" id="signInBtn" style="display:none;">Sign in</button>
+    <div class="auth-user" id="authUser" style="display:none;">
+      <img class="auth-avatar" id="authAvatar" alt="" />
+      <span id="authName"></span>
+      <span class="sync-badge">synced</span>
+      <button class="auth-signout" id="signOutBtn">Sign out</button>
+    </div>
+  </div>
 
-  <div class="swap-hint" id="swapHint">Tap two items to swap, or drag to reorder</div>
+  <!-- Nav tabs -->
+  <nav class="nav-tabs">
+    <button class="nav-tab active" data-view="game">Play</button>
+    <button class="nav-tab" data-view="archive">Archive</button>
+    <button class="nav-tab" data-view="stats">Stats</button>
+  </nav>
 
-  <div class="item-list" id="itemList" role="listbox" aria-label="Ranking items"></div>
-
-  <div class="attempt-counter" id="attemptCounter"></div>
-
-  <button class="submit-btn" id="submitBtn" disabled>Submit</button>
-
-  <div class="results" id="results">
-    <div class="results-score" id="resultsScore"></div>
-    <div class="results-label" id="resultsLabel"></div>
-    <button class="share-btn" id="shareBtn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-      Share
+  <!-- GAME VIEW -->
+  <div class="view active" id="gameView">
+    <div class="criterion" id="criterion" role="heading" aria-level="2"></div>
+    <div class="swap-hint" id="swapHint">Tap two items to swap, or drag to reorder</div>
+    <div class="item-list" id="itemList" role="listbox" aria-label="Ranking items"></div>
+    <div class="attempt-counter" id="attemptCounter"></div>
+    <button class="submit-btn" id="submitBtn" disabled>Submit</button>
+    <button class="archive-back-btn" id="archiveBackBtn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Archive
     </button>
-    <div class="source-attr" id="sourceAttr"></div>
-    <div class="streak-bar" id="streakBar">
-      <div class="streak-stat"><div class="stat-value" id="statPlayed">0</div><div class="stat-label">Played</div></div>
-      <div class="streak-stat"><div class="stat-value" id="statAvg">0</div><div class="stat-label">Avg Score</div></div>
-      <div class="streak-stat"><div class="stat-value" id="statStreak">0</div><div class="stat-label">Streak</div></div>
-      <div class="streak-stat"><div class="stat-value" id="statBest">0</div><div class="stat-label">Best</div></div>
+    <div class="results" id="results">
+      <div class="results-score" id="resultsScore"></div>
+      <div class="results-label" id="resultsLabel"></div>
+      <button class="share-btn" id="shareBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Share
+      </button>
+      <div class="source-attr" id="sourceAttr"></div>
+      <div class="next-puzzle-timer" id="nextPuzzleTimer">
+        <div class="timer-label">Next puzzle</div>
+        <div class="timer-value" id="timerValue">--:--:--</div>
+      </div>
     </div>
-    <div class="next-puzzle-timer" id="nextPuzzleTimer">
-      <div class="timer-label">Next puzzle</div>
-      <div class="timer-value" id="timerValue">--:--:--</div>
-    </div>
+  </div>
+
+  <!-- STATS VIEW -->
+  <div class="view stats-view" id="statsView">
+    <div id="statsContent"></div>
+  </div>
+
+  <!-- ARCHIVE VIEW -->
+  <div class="view archive-view" id="archiveView">
+    <div class="archive-list" id="archiveList"></div>
   </div>
 </div>
 
@@ -619,7 +865,23 @@
 </div>
 
 <script>
-// ==================== PUZZLE DATA ====================
+// ============================================================
+//  FIREBASE CONFIG — fill in to enable cloud sync (optional)
+// ============================================================
+const FIREBASE_CONFIG = {
+  // apiKey: "YOUR_API_KEY",
+  // authDomain: "YOUR_PROJECT.firebaseapp.com",
+  // projectId: "YOUR_PROJECT",
+  // storageBucket: "YOUR_PROJECT.appspot.com",
+  // messagingSenderId: "123456789",
+  // appId: "YOUR_APP_ID"
+};
+
+const FIREBASE_ENABLED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId);
+
+// ============================================================
+//  PUZZLE DATA
+// ============================================================
 const PUZZLES = [
   {
     id: 1, date: "2026-04-01", category: "Geography",
@@ -818,9 +1080,9 @@ const PUZZLES = [
     criterion: "Rank these foods by calories per serving, highest to lowest.",
     unit: "cal", source: "USDA",
     items: [
-      { name: "Peanut Butter (2 tbsp)", value: "190" },
       { name: "Avocado (1 whole)", value: "322" },
       { name: "Slice of Pizza", value: "285" },
+      { name: "Peanut Butter (2 tbsp)", value: "190" },
       { name: "Banana", value: "105" },
       { name: "Egg (1 large)", value: "72" }
     ]
@@ -843,8 +1105,8 @@ const PUZZLES = [
     unit: "ft", source: "NOAA",
     items: [
       { name: "Mariana Trench", value: "36,037" },
-      { name: "Lake Baikal", value: "5,387" },
       { name: "Caribbean Sea", value: "25,216" },
+      { name: "Lake Baikal", value: "5,387" },
       { name: "Lake Superior", value: "1,332" },
       { name: "Persian Gulf", value: "295" }
     ]
@@ -879,9 +1141,9 @@ const PUZZLES = [
     unit: "", source: "World Athletics",
     items: [
       { name: "Boston Marathon", value: "1897" },
-      { name: "London Marathon", value: "1981" },
       { name: "New York City Marathon", value: "1970" },
       { name: "Berlin Marathon", value: "1974" },
+      { name: "London Marathon", value: "1981" },
       { name: "Tokyo Marathon", value: "2007" }
     ]
   },
@@ -951,9 +1213,9 @@ const PUZZLES = [
     unit: "titles", source: "ATP / WTA",
     items: [
       { name: "Novak Djokovic", value: "24" },
+      { name: "Serena Williams", value: "23" },
       { name: "Rafael Nadal", value: "22" },
       { name: "Roger Federer", value: "20" },
-      { name: "Serena Williams", value: "23" },
       { name: "Pete Sampras", value: "14" }
     ]
   },
@@ -983,56 +1245,203 @@ const PUZZLES = [
   }
 ];
 
-// ==================== GAME ENGINE ====================
+// ============================================================
+//  GAME ENGINE
+// ============================================================
 (function() {
   'use strict';
 
-  const STORAGE_KEY = 'rankit_state';
+  const STATE_KEY = 'rankit_state';
   const STATS_KEY = 'rankit_stats';
 
-  // DOM refs
-  const $itemList = document.getElementById('itemList');
-  const $submitBtn = document.getElementById('submitBtn');
-  const $attemptCounter = document.getElementById('attemptCounter');
-  const $criterion = document.getElementById('criterion');
-  const $puzzleNumber = document.getElementById('puzzleNumber');
-  const $puzzleDate = document.getElementById('puzzleDate');
-  const $categoryBadge = document.getElementById('categoryBadge');
-  const $results = document.getElementById('results');
-  const $resultsScore = document.getElementById('resultsScore');
-  const $resultsLabel = document.getElementById('resultsLabel');
-  const $shareBtn = document.getElementById('shareBtn');
-  const $copiedToast = document.getElementById('copiedToast');
-  const $sourceAttr = document.getElementById('sourceAttr');
-  const $swapHint = document.getElementById('swapHint');
-  const $howToPlay = document.getElementById('howToPlay');
-  const $helpBtn = document.getElementById('helpBtn');
-  const $modalClose = document.getElementById('modalClose');
+  // DOM
+  const $ = id => document.getElementById(id);
+  const $itemList = $('itemList');
+  const $submitBtn = $('submitBtn');
+  const $attemptCounter = $('attemptCounter');
+  const $criterion = $('criterion');
+  const $puzzleNumber = $('puzzleNumber');
+  const $puzzleDate = $('puzzleDate');
+  const $categoryBadge = $('categoryBadge');
+  const $results = $('results');
+  const $resultsScore = $('resultsScore');
+  const $resultsLabel = $('resultsLabel');
+  const $shareBtn = $('shareBtn');
+  const $copiedToast = $('copiedToast');
+  const $sourceAttr = $('sourceAttr');
+  const $swapHint = $('swapHint');
+  const $howToPlay = $('howToPlay');
+  const $helpBtn = $('helpBtn');
+  const $modalClose = $('modalClose');
+  const $archiveBackBtn = $('archiveBackBtn');
 
   let puzzle = null;
-  let currentOrder = [];     // array of item indices (into puzzle.items)
-  let lockedPositions = [];  // set of positions (0-4) that are locked
+  let currentOrder = [];
+  let lockedPositions = [];
   let attempts = 0;
-  let attemptHistory = [];   // array of arrays, each is [true/false x 5]
-  let state = 'IDLE';        // IDLE, ARRANGING, CHECKING, PARTIAL, SOLVED, COMPLETED
+  let attemptHistory = [];
+  let state = 'IDLE';
   let selectedSwapIndex = null;
+  let isArchivePuzzle = false;
 
-  // ---- Puzzle selection ----
-  function getTodayStr() {
-    const d = new Date();
-    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  // Firebase
+  let db = null;
+  let auth = null;
+  let currentUser = null;
+
+  // ---- Firebase ----
+  function initFirebase() {
+    if (!FIREBASE_ENABLED) return;
+    try {
+      firebase.initializeApp(FIREBASE_CONFIG);
+      auth = firebase.auth();
+      db = firebase.firestore();
+
+      $('signInBtn').style.display = '';
+
+      auth.onAuthStateChanged(async (user) => {
+        currentUser = user;
+        if (user) {
+          $('signInBtn').style.display = 'none';
+          $('authUser').style.display = '';
+          $('authAvatar').src = user.photoURL || '';
+          $('authName').textContent = user.displayName || user.email;
+          await syncFromCloud();
+        } else {
+          $('signInBtn').style.display = '';
+          $('authUser').style.display = 'none';
+        }
+        // Re-render current view
+        renderCurrentView();
+      });
+
+      $('signInBtn').addEventListener('click', () => {
+        auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      });
+
+      $('signOutBtn').addEventListener('click', () => {
+        auth.signOut();
+      });
+    } catch (e) {
+      console.warn('Firebase init failed:', e);
+    }
   }
 
+  async function syncFromCloud() {
+    if (!db || !currentUser) return;
+    try {
+      const doc = await db.collection('users').doc(currentUser.uid).get();
+      if (doc.exists) {
+        const cloud = doc.data();
+        const local = loadStats();
+        // Merge: keep whichever has more data
+        const merged = mergeStats(local, cloud);
+        saveStatsLocal(merged);
+      } else {
+        // First time: push local to cloud
+        await pushToCloud();
+      }
+    } catch (e) {
+      console.warn('Cloud sync failed:', e);
+    }
+  }
+
+  async function pushToCloud() {
+    if (!db || !currentUser) return;
+    try {
+      const stats = loadStats();
+      await db.collection('users').doc(currentUser.uid).set(stats);
+    } catch (e) {
+      console.warn('Cloud push failed:', e);
+    }
+  }
+
+  function mergeStats(local, cloud) {
+    const merged = { ...local };
+    // Merge completedPuzzles
+    const lc = local.completedPuzzles || {};
+    const cc = cloud.completedPuzzles || {};
+    merged.completedPuzzles = { ...lc, ...cc };
+
+    // Recalculate aggregate stats from completedPuzzles
+    const ids = Object.keys(merged.completedPuzzles);
+    merged.played = ids.length;
+    merged.scores = ids.map(id => merged.completedPuzzles[id].score);
+    merged.distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    merged.scores.forEach(s => {
+      const key = Math.min(s, 5);
+      merged.distribution[key] = (merged.distribution[key] || 0) + 1;
+    });
+
+    // Streak: recalculate from dates
+    const dates = ids.map(id => merged.completedPuzzles[id].date).filter(Boolean).sort();
+    const { streak, bestStreak } = calcStreaks(dates);
+    merged.streak = streak;
+    merged.bestStreak = Math.max(streak, bestStreak, cloud.bestStreak || 0, local.bestStreak || 0);
+    merged.lastDate = dates[dates.length - 1] || null;
+
+    return merged;
+  }
+
+  function calcStreaks(sortedDates) {
+    if (sortedDates.length === 0) return { streak: 0, bestStreak: 0 };
+    let streak = 1;
+    let best = 1;
+    let current = 1;
+    const today = getTodayStr();
+
+    for (let i = 1; i < sortedDates.length; i++) {
+      const prev = new Date(sortedDates[i - 1]);
+      const curr = new Date(sortedDates[i]);
+      const diff = Math.round((curr - prev) / 86400000);
+      if (diff === 1) {
+        current++;
+        best = Math.max(best, current);
+      } else if (diff > 1) {
+        current = 1;
+      }
+    }
+
+    // Check if streak extends to today
+    const last = sortedDates[sortedDates.length - 1];
+    const diffToday = Math.round((new Date(today) - new Date(last)) / 86400000);
+    if (diffToday > 1) {
+      streak = 0;
+    } else {
+      streak = current;
+    }
+
+    return { streak, bestStreak: best };
+  }
+
+  // ---- Date helpers ----
+  function getTodayStr() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  function formatDateShort(dateStr) {
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  // ---- Puzzle selection ----
   function selectPuzzle() {
     const today = getTodayStr();
-    // Exact match first
     let p = PUZZLES.find(pz => pz.date === today);
     if (p) return p;
-    // Most recent past puzzle
-    const past = PUZZLES.filter(pz => pz.date <= today).sort((a,b) => b.date.localeCompare(a.date));
+    const past = PUZZLES.filter(pz => pz.date <= today).sort((a, b) => b.date.localeCompare(a.date));
     if (past.length > 0) return past[0];
-    // Fallback to first puzzle
     return PUZZLES[0];
+  }
+
+  function getTodayPuzzle() {
+    return selectPuzzle();
   }
 
   // ---- Shuffle ----
@@ -1042,24 +1451,22 @@ const PUZZLES = [
       const j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
     }
-    // Ensure shuffled order is not already correct
     if (a.every((v, i) => v === i)) {
-      // swap last two
-      [a[a.length-1], a[a.length-2]] = [a[a.length-2], a[a.length-1]];
+      [a[a.length - 1], a[a.length - 2]] = [a[a.length - 2], a[a.length - 1]];
     }
     return a;
   }
 
   // ---- localStorage ----
-  function loadState() {
+  function loadPuzzleState(puzzleId) {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(STATE_KEY + '_' + puzzleId);
       if (!raw) return null;
       return JSON.parse(raw);
     } catch { return null; }
   }
 
-  function saveState() {
+  function savePuzzleState() {
     const data = {
       puzzleId: puzzle.id,
       puzzleDate: puzzle.date,
@@ -1070,58 +1477,115 @@ const PUZZLES = [
       state,
       savedAt: Date.now()
     };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(STATE_KEY + '_' + puzzle.id, JSON.stringify(data));
+  }
+
+  function defaultStats() {
+    return {
+      played: 0,
+      scores: [],
+      distribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+      streak: 0,
+      bestStreak: 0,
+      lastDate: null,
+      completedPuzzles: {}
+    };
   }
 
   function loadStats() {
     try {
       const raw = localStorage.getItem(STATS_KEY);
-      if (!raw) return { played: 0, scores: [], streak: 0, bestStreak: 0, lastDate: null };
-      return JSON.parse(raw);
-    } catch { return { played: 0, scores: [], streak: 0, bestStreak: 0, lastDate: null }; }
+      if (!raw) return defaultStats();
+      const s = JSON.parse(raw);
+      if (!s.distribution) s.distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+      if (!s.completedPuzzles) s.completedPuzzles = {};
+      return s;
+    } catch { return defaultStats(); }
   }
 
-  function saveStats(score) {
-    const stats = loadStats();
-    const today = getTodayStr();
+  function saveStatsLocal(stats) {
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  }
 
-    // Check if already recorded today
-    if (stats.lastDate === today) return;
+  function recordCompletion(puzzleObj, score, history) {
+    const stats = loadStats();
+    const pid = String(puzzleObj.id);
+
+    if (stats.completedPuzzles[pid]) return; // already recorded
+
+    stats.completedPuzzles[pid] = {
+      score,
+      date: puzzleObj.date,
+      attemptHistory: history
+    };
 
     stats.played++;
     stats.scores.push(score);
 
-    // Streak logic
+    const distKey = Math.min(score, 5);
+    stats.distribution[distKey] = (stats.distribution[distKey] || 0) + 1;
+
+    // Streak
+    const today = getTodayStr();
     if (stats.lastDate) {
-      const last = new Date(stats.lastDate);
-      const now = new Date(today);
-      const diffDays = Math.round((now - last) / (1000 * 60 * 60 * 24));
-      if (diffDays === 1) {
+      const diff = Math.round((new Date(today) - new Date(stats.lastDate)) / 86400000);
+      if (diff === 1) {
         stats.streak++;
-      } else if (diffDays > 1) {
+      } else if (diff > 1) {
         stats.streak = 1;
       }
+      // same day: no change
     } else {
       stats.streak = 1;
     }
-
     stats.bestStreak = Math.max(stats.bestStreak, stats.streak);
     stats.lastDate = today;
-    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+
+    saveStatsLocal(stats);
+    pushToCloud();
   }
 
-  function displayStats() {
-    const stats = loadStats();
-    document.getElementById('statPlayed').textContent = stats.played;
-    document.getElementById('statStreak').textContent = stats.streak;
-    document.getElementById('statBest').textContent = stats.bestStreak;
-    const avg = stats.scores.length > 0
-      ? (stats.scores.reduce((a,b)=>a+b,0) / stats.scores.length).toFixed(1)
-      : '–';
-    document.getElementById('statAvg').textContent = avg;
+  // ---- Navigation ----
+  let currentView = 'game';
+
+  function switchView(view) {
+    currentView = view;
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+
+    if (view === 'game') {
+      $('gameView').classList.add('active');
+      if (isArchivePuzzle) {
+        $archiveBackBtn.classList.add('visible');
+      }
+    } else if (view === 'stats') {
+      $('statsView').classList.add('active');
+      renderStats();
+    } else if (view === 'archive') {
+      $('archiveView').classList.add('active');
+      renderArchive();
+      isArchivePuzzle = false;
+      $archiveBackBtn.classList.remove('visible');
+    }
   }
+
+  function renderCurrentView() {
+    if (currentView === 'stats') renderStats();
+    else if (currentView === 'archive') renderArchive();
+  }
+
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchView(tab.dataset.view));
+  });
 
   // ---- Rendering ----
+  function renderHeader() {
+    $puzzleNumber.textContent = `No. ${puzzle.id}`;
+    $puzzleDate.textContent = formatDate(puzzle.date);
+    $categoryBadge.textContent = puzzle.category;
+    $criterion.textContent = puzzle.criterion;
+  }
+
   function renderItems() {
     $itemList.innerHTML = '';
     currentOrder.forEach((itemIdx, pos) => {
@@ -1129,7 +1593,7 @@ const PUZZLES = [
       const el = document.createElement('div');
       el.className = 'item';
       el.setAttribute('role', 'option');
-      el.setAttribute('aria-label', `Position ${pos+1}: ${item.name}`);
+      el.setAttribute('aria-label', `Position ${pos + 1}: ${item.name}`);
       el.setAttribute('tabindex', '0');
       el.dataset.pos = pos;
 
@@ -1188,33 +1652,28 @@ const PUZZLES = [
       $swapHint.textContent = 'Tap two items to swap, or drag to reorder';
       $swapHint.classList.remove('visible');
     } else {
-      // Perform swap
       const oldPos = selectedSwapIndex;
       items[oldPos].classList.remove('selected');
-
       [currentOrder[oldPos], currentOrder[pos]] = [currentOrder[pos], currentOrder[oldPos]];
       selectedSwapIndex = null;
       $swapHint.classList.remove('visible');
-
       renderItems();
-      saveState();
+      savePuzzleState();
     }
   }
 
   // ---- Keyboard ----
   function handleKeyboard(e, pos) {
     if (state === 'CHECKING' || state === 'SOLVED' || state === 'COMPLETED') return;
-
     if (e.key === 'ArrowUp' && pos > 0) {
       e.preventDefault();
-      // Find nearest unlocked position above
       let target = pos - 1;
       while (target >= 0 && lockedPositions.includes(target)) target--;
       if (target >= 0 && !lockedPositions.includes(pos)) {
         [currentOrder[pos], currentOrder[target]] = [currentOrder[target], currentOrder[pos]];
         renderItems();
         $itemList.children[target].focus();
-        saveState();
+        savePuzzleState();
       }
     } else if (e.key === 'ArrowDown' && pos < 4) {
       e.preventDefault();
@@ -1224,7 +1683,7 @@ const PUZZLES = [
         [currentOrder[pos], currentOrder[target]] = [currentOrder[target], currentOrder[pos]];
         renderItems();
         $itemList.children[target].focus();
-        saveState();
+        savePuzzleState();
       }
     } else if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -1236,7 +1695,6 @@ const PUZZLES = [
   let dragState = null;
 
   function setupDragListeners(el) {
-    // Pointer events for unified touch/mouse
     el.addEventListener('pointerdown', onPointerDown);
   }
 
@@ -1255,7 +1713,7 @@ const PUZZLES = [
       startY: e.clientY,
       offsetY: e.clientY - rect.top,
       listTop: listRect.top,
-      itemHeight: 64, // 56px + 8px margin
+      itemHeight: 64,
       moved: false
     };
 
@@ -1267,7 +1725,6 @@ const PUZZLES = [
 
   function onPointerMove(e) {
     if (!dragState) return;
-
     const dy = Math.abs(e.clientY - dragState.startY);
     if (!dragState.moved && dy < 5) return;
 
@@ -1281,13 +1738,11 @@ const PUZZLES = [
     const newPos = Math.min(4, Math.max(0, Math.round(y / dragState.itemHeight)));
 
     if (newPos !== dragState.pos && !lockedPositions.includes(newPos)) {
-      // Swap in data
       [currentOrder[dragState.pos], currentOrder[newPos]] = [currentOrder[newPos], currentOrder[dragState.pos]];
       dragState.pos = newPos;
       renderItemsDuringDrag(newPos);
     }
 
-    // Visual offset
     const expectedY = dragState.pos * dragState.itemHeight;
     const currentY = y;
     dragState.el.style.transform = `translateY(${currentY - expectedY}px) scale(1.03)`;
@@ -1295,7 +1750,6 @@ const PUZZLES = [
 
   function onPointerUp(e) {
     if (!dragState) return;
-
     const el = dragState.el;
     const pos = dragState.pos;
     const wasDrag = dragState.moved;
@@ -1308,9 +1762,8 @@ const PUZZLES = [
       el.classList.remove('dragging');
       el.style.transform = '';
       renderItems();
-      saveState();
+      savePuzzleState();
     } else {
-      // No drag movement — treat as a tap for swap
       handleTapSwap(pos);
     }
 
@@ -1318,9 +1771,7 @@ const PUZZLES = [
   }
 
   function renderItemsDuringDrag(activePos) {
-    // Re-render but keep the active item as dragging
     const items = $itemList.children;
-    // Quick re-render
     currentOrder.forEach((itemIdx, pos) => {
       const item = puzzle.items[itemIdx];
       const el = items[pos];
@@ -1330,7 +1781,6 @@ const PUZZLES = [
         el.dataset.pos = pos;
       }
     });
-    // Re-assign drag state element
     dragState.el = items[activePos];
     dragState.el.classList.add('dragging');
   }
@@ -1343,24 +1793,19 @@ const PUZZLES = [
     $submitBtn.disabled = true;
     attempts++;
 
-    // Check each position
     const results = currentOrder.map((itemIdx, pos) => itemIdx === pos);
     attemptHistory.push(results);
 
     const items = $itemList.children;
 
-    // Reveal one by one with stagger
     for (let i = 0; i < 5; i++) {
       await sleep(300);
       const el = items[i];
       const statusEl = el.querySelector('.item-status');
-
       if (results[i]) {
         el.classList.add('correct-flash');
         statusEl.textContent = '✓';
-        if (!lockedPositions.includes(i)) {
-          lockedPositions.push(i);
-        }
+        if (!lockedPositions.includes(i)) lockedPositions.push(i);
       } else {
         el.classList.add('incorrect-flash');
         statusEl.textContent = '–';
@@ -1369,63 +1814,59 @@ const PUZZLES = [
 
     await sleep(400);
 
-    // Check if all correct
     if (results.every(r => r)) {
       state = 'SOLVED';
-      saveState();
-      saveStats(attempts);
+      savePuzzleState();
+      recordCompletion(puzzle, attempts, attemptHistory);
       await showSolvedState();
     } else {
       state = 'PARTIAL';
-      saveState();
+      savePuzzleState();
       renderItems();
       updateAttemptCounter();
       $attemptCounter.classList.add('bounce');
       setTimeout(() => $attemptCounter.classList.remove('bounce'), 200);
-      $swapHint.textContent = 'Tap two items to swap, or drag to reorder';
     }
   }
 
   async function showSolvedState() {
     const items = $itemList.children;
-
-    // Celebration animation
     for (let i = 0; i < 5; i++) {
       items[i].classList.add('locked', 'celebrate');
     }
 
     await sleep(400);
 
-    // Reveal values
     for (let i = 0; i < 5; i++) {
       const item = puzzle.items[currentOrder[i]];
       const valueEl = items[i].querySelector('.item-value');
       const unit = puzzle.unit ? ` ${puzzle.unit}` : '';
       valueEl.textContent = `${item.value}${unit}`;
       valueEl.classList.add('visible');
-      const statusEl = items[i].querySelector('.item-status');
-      statusEl.textContent = '✓';
-      statusEl.style.opacity = '1';
+      items[i].querySelector('.item-status').textContent = '✓';
+      items[i].querySelector('.item-status').style.opacity = '1';
       items[i].classList.add('locked');
     }
 
-    // Show results
     const rating = getRating(attempts);
     $resultsScore.textContent = `Solved in ${attempts}!`;
     $resultsLabel.textContent = rating;
-    if (puzzle.source) {
-      $sourceAttr.textContent = `Source: ${puzzle.source}`;
-    }
+    if (puzzle.source) $sourceAttr.textContent = `Source: ${puzzle.source}`;
     $submitBtn.style.display = 'none';
     $attemptCounter.textContent = '';
     $swapHint.classList.remove('visible');
 
-    displayStats();
+    // Show timer only for today's puzzle
+    const todayPuzzle = getTodayPuzzle();
+    if (puzzle.id === todayPuzzle.id) {
+      $('nextPuzzleTimer').style.display = '';
+      startCountdownTimer();
+    } else {
+      $('nextPuzzleTimer').style.display = 'none';
+    }
 
     await sleep(200);
     $results.classList.add('visible');
-
-    startCountdownTimer();
   }
 
   function getRating(att) {
@@ -1441,7 +1882,7 @@ const PUZZLES = [
     const lines = [`Rank It #${puzzle.id} — Solved in ${attempts}!`];
     attemptHistory.forEach((result, i) => {
       const row = result.map(r => r ? '🟩' : '⬜').join('');
-      lines.push(`Attempt ${i+1}: ${row}`);
+      lines.push(`Attempt ${i + 1}: ${row}`);
     });
     lines.push('rankit.game');
     return lines.join('\n');
@@ -1452,7 +1893,6 @@ const PUZZLES = [
     try {
       await navigator.clipboard.writeText(text);
     } catch {
-      // Fallback
       const ta = document.createElement('textarea');
       ta.value = text;
       ta.style.position = 'fixed';
@@ -1467,28 +1907,28 @@ const PUZZLES = [
   }
 
   // ---- Countdown timer ----
+  let timerInterval = null;
   function startCountdownTimer() {
-    const $timer = document.getElementById('timerValue');
+    if (timerInterval) clearInterval(timerInterval);
+    const $timer = $('timerValue');
     function update() {
       const now = new Date();
       const tomorrow = new Date(now);
       tomorrow.setDate(tomorrow.getDate() + 1);
       tomorrow.setHours(0, 0, 0, 0);
       const diff = tomorrow - now;
-
       const h = Math.floor(diff / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
-      $timer.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      $timer.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
     }
     update();
-    setInterval(update, 1000);
+    timerInterval = setInterval(update, 1000);
   }
 
-  // ---- Helpers ----
   function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-  // ---- Show completed state (already solved today) ----
+  // ---- Show completed state ----
   function showCompletedState(savedState) {
     state = 'COMPLETED';
     currentOrder = savedState.currentOrder;
@@ -1498,7 +1938,6 @@ const PUZZLES = [
 
     renderItems();
 
-    // Show values on all items
     const items = $itemList.children;
     for (let i = 0; i < 5; i++) {
       const item = puzzle.items[currentOrder[i]];
@@ -1506,53 +1945,63 @@ const PUZZLES = [
       const unit = puzzle.unit ? ` ${puzzle.unit}` : '';
       valueEl.textContent = `${item.value}${unit}`;
       valueEl.classList.add('visible');
-      const statusEl = items[i].querySelector('.item-status');
-      statusEl.textContent = '✓';
-      statusEl.style.opacity = '1';
+      items[i].querySelector('.item-status').textContent = '✓';
+      items[i].querySelector('.item-status').style.opacity = '1';
       items[i].classList.add('locked');
     }
 
-    const rating = getRating(attempts);
     $resultsScore.textContent = `Solved in ${attempts}!`;
-    $resultsLabel.textContent = rating;
-    if (puzzle.source) {
-      $sourceAttr.textContent = `Source: ${puzzle.source}`;
-    }
+    $resultsLabel.textContent = getRating(attempts);
+    if (puzzle.source) $sourceAttr.textContent = `Source: ${puzzle.source}`;
     $submitBtn.style.display = 'none';
     $attemptCounter.textContent = '';
     $swapHint.classList.remove('visible');
 
-    displayStats();
+    const todayPuzzle = getTodayPuzzle();
+    if (puzzle.id === todayPuzzle.id) {
+      $('nextPuzzleTimer').style.display = '';
+      startCountdownTimer();
+    } else {
+      $('nextPuzzleTimer').style.display = 'none';
+    }
+
     $results.classList.add('visible');
-    startCountdownTimer();
   }
 
-  // ---- Init ----
-  function init() {
-    puzzle = selectPuzzle();
+  // ---- Load puzzle (today or archive) ----
+  function loadPuzzle(puzzleObj, fromArchive) {
+    puzzle = puzzleObj;
+    isArchivePuzzle = !!fromArchive;
 
-    // Set header
-    $puzzleNumber.textContent = `No. ${puzzle.id}`;
-    const dateObj = new Date(puzzle.date + 'T00:00:00');
-    $puzzleDate.textContent = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    $categoryBadge.textContent = puzzle.category;
-    $criterion.textContent = puzzle.criterion;
+    renderHeader();
 
-    // Check saved state
-    const saved = loadState();
+    // Reset game UI
+    $results.classList.remove('visible');
+    $submitBtn.style.display = '';
+    $submitBtn.disabled = false;
+    $sourceAttr.textContent = '';
+    $swapHint.classList.remove('visible');
+    selectedSwapIndex = null;
+
+    if (isArchivePuzzle) {
+      $archiveBackBtn.classList.add('visible');
+    } else {
+      $archiveBackBtn.classList.remove('visible');
+    }
+
+    const saved = loadPuzzleState(puzzle.id);
+    if (saved && (saved.state === 'SOLVED' || saved.state === 'COMPLETED')) {
+      showCompletedState(saved);
+      return;
+    }
+
     if (saved && saved.puzzleId === puzzle.id) {
-      if (saved.state === 'SOLVED' || saved.state === 'COMPLETED') {
-        showCompletedState(saved);
-        return;
-      }
-      // Restore in-progress
       currentOrder = saved.currentOrder;
       lockedPositions = saved.lockedPositions;
       attempts = saved.attempts;
       attemptHistory = saved.attemptHistory;
       state = saved.state || 'IDLE';
     } else {
-      // New puzzle
       currentOrder = shuffleArray([0, 1, 2, 3, 4]);
       lockedPositions = [];
       attempts = 0;
@@ -1562,10 +2011,161 @@ const PUZZLES = [
 
     renderItems();
     updateAttemptCounter();
+  }
+
+  // ---- Stats View ----
+  function renderStats() {
+    const stats = loadStats();
+    const container = $('statsContent');
+
+    if (stats.played === 0) {
+      container.innerHTML = `
+        <div class="stats-empty">
+          No puzzles completed yet.<br>
+          Play today's puzzle to see your stats!
+        </div>
+      `;
+      return;
+    }
+
+    const avg = stats.scores.length > 0
+      ? (stats.scores.reduce((a, b) => a + b, 0) / stats.scores.length).toFixed(1)
+      : '–';
+
+    const dist = stats.distribution || { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    const maxDist = Math.max(...Object.values(dist), 1);
+
+    // Find last score for highlighting
+    const lastScore = stats.scores.length > 0 ? Math.min(stats.scores[stats.scores.length - 1], 5) : null;
+
+    let histoHTML = '';
+    for (let i = 1; i <= 5; i++) {
+      const count = dist[i] || 0;
+      const pct = Math.max((count / maxDist) * 100, 8);
+      const label = i === 5 ? '5+' : i;
+      const hl = (lastScore === i) ? ' highlight' : '';
+      histoHTML += `
+        <div class="histo-row">
+          <div class="histo-label">${label}</div>
+          <div class="histo-bar-bg">
+            <div class="histo-bar${hl}" style="width:${pct}%">
+              <span class="histo-count">${count}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = `
+      <div class="stats-summary">
+        <div class="stats-card">
+          <div class="card-value">${stats.played}</div>
+          <div class="card-label">Played</div>
+        </div>
+        <div class="stats-card">
+          <div class="card-value">${avg}</div>
+          <div class="card-label">Avg Score</div>
+        </div>
+        <div class="stats-card">
+          <div class="card-value">${stats.streak}</div>
+          <div class="card-label">Streak</div>
+        </div>
+        <div class="stats-card">
+          <div class="card-value">${stats.bestStreak}</div>
+          <div class="card-label">Best</div>
+        </div>
+      </div>
+
+      <div class="stats-section-title">Solve Distribution</div>
+      <div class="histogram">${histoHTML}</div>
+
+      <div class="stats-section-title">Streaks</div>
+      <div class="streak-section">
+        <div class="streak-card">
+          <div class="streak-val">${stats.streak}</div>
+          <div class="streak-lbl">Current Streak</div>
+        </div>
+        <div class="streak-card">
+          <div class="streak-val">${stats.bestStreak}</div>
+          <div class="streak-lbl">Longest Streak</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ---- Archive View ----
+  function renderArchive() {
+    const stats = loadStats();
+    const today = getTodayStr();
+    const container = $('archiveList');
+
+    let html = '';
+    let currentMonth = '';
+
+    // Show puzzles newest first
+    const sorted = [...PUZZLES].sort((a, b) => b.date.localeCompare(a.date));
+
+    for (const pz of sorted) {
+      const d = new Date(pz.date + 'T00:00:00');
+      const monthKey = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+      if (monthKey !== currentMonth) {
+        currentMonth = monthKey;
+        html += `<div class="archive-month">${monthKey}</div>`;
+      }
+
+      const completed = stats.completedPuzzles[String(pz.id)];
+      const isFuture = pz.date > today;
+
+      let statusHTML = '';
+      let disabledClass = '';
+
+      if (completed) {
+        statusHTML = `<div class="archive-status completed">✓ ${completed.score}</div>`;
+      } else if (isFuture) {
+        statusHTML = `<div class="archive-status upcoming">Upcoming</div>`;
+        disabledClass = ' disabled';
+      } else {
+        statusHTML = `<div class="archive-status available">Play →</div>`;
+      }
+
+      html += `
+        <div class="archive-item${disabledClass}" data-puzzle-id="${pz.id}">
+          <div class="archive-num">#${pz.id}</div>
+          <div class="archive-info">
+            <div class="archive-category">${pz.category} · ${formatDateShort(pz.date)}</div>
+            <div class="archive-criterion">${pz.criterion}</div>
+          </div>
+          ${statusHTML}
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
+
+    // Click handlers
+    container.querySelectorAll('.archive-item:not(.disabled)').forEach(el => {
+      el.addEventListener('click', () => {
+        const id = parseInt(el.dataset.puzzleId);
+        const pz = PUZZLES.find(p => p.id === id);
+        if (pz) {
+          loadPuzzle(pz, true);
+          switchView('game');
+        }
+      });
+    });
+  }
+
+  // ---- Init ----
+  function init() {
+    initFirebase();
+
+    const todayPuzzle = getTodayPuzzle();
+    loadPuzzle(todayPuzzle, false);
 
     // Show how-to-play on first visit
     const stats = loadStats();
-    if (stats.played === 0 && !saved) {
+    if (stats.played === 0 && !loadPuzzleState(todayPuzzle.id)) {
       $howToPlay.classList.add('visible');
     }
   }
@@ -1577,6 +2177,9 @@ const PUZZLES = [
   $modalClose.addEventListener('click', () => $howToPlay.classList.remove('visible'));
   $howToPlay.addEventListener('click', (e) => {
     if (e.target === $howToPlay) $howToPlay.classList.remove('visible');
+  });
+  $archiveBackBtn.addEventListener('click', () => {
+    switchView('archive');
   });
 
   init();
