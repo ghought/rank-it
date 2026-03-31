@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1, "date": "2026-04-01", "category": "Geography",
+    "criterion": "Rank these mountains by height, tallest to shortest.",
+    "unit": "ft", "source": "National Geographic",
+    "items": [
+      { "name": "Mount Everest", "value": "29,032" },
+      { "name": "K2", "value": "28,251" },
+      { "name": "Kangchenjunga", "value": "28,169" },
+      { "name": "Mount Kilimanjaro", "value": "19,341" },
+      { "name": "Mont Blanc", "value": "15,774" }
+    ]
+  },
+  {
+    "id": 2, "date": "2026-04-02", "category": "Pop Culture",
+    "criterion": "Rank these films by worldwide box office gross, highest to lowest.",
+    "unit": "billion $", "source": "Box Office Mojo",
+    "items": [
+      { "name": "Avatar", "value": "2.92" },
+      { "name": "Avengers: Endgame", "value": "2.80" },
+      { "name": "Titanic", "value": "2.26" },
+      { "name": "Star Wars: The Force Awakens", "value": "2.07" },
+      { "name": "Barbie", "value": "1.44" }
+    ]
+  },
+  {
+    "id": 3, "date": "2026-04-03", "category": "Science",
+    "criterion": "Rank these planets by distance from the Sun, closest to farthest.",
+    "unit": "million mi", "source": "NASA",
+    "items": [
+      { "name": "Mercury", "value": "36" },
+      { "name": "Earth", "value": "93" },
+      { "name": "Mars", "value": "142" },
+      { "name": "Jupiter", "value": "484" },
+      { "name": "Neptune", "value": "2,793" }
+    ]
+  },
+  {
+    "id": 4, "date": "2026-04-04", "category": "History",
+    "criterion": "Rank these inventions by year of invention, earliest to most recent.",
+    "unit": "", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Wheel", "value": "~3500 BC" },
+      { "name": "Printing Press", "value": "1440" },
+      { "name": "Telephone", "value": "1876" },
+      { "name": "Light Bulb", "value": "1879" },
+      { "name": "Internet", "value": "1983" }
+    ]
+  },
+  {
+    "id": 5, "date": "2026-04-05", "category": "Sports",
+    "criterion": "Rank these NBA players by career points scored, most to fewest.",
+    "unit": "pts", "source": "Basketball Reference",
+    "items": [
+      { "name": "LeBron James", "value": "42,000+" },
+      { "name": "Kareem Abdul-Jabbar", "value": "38,387" },
+      { "name": "Karl Malone", "value": "36,928" },
+      { "name": "Kobe Bryant", "value": "33,643" },
+      { "name": "Michael Jordan", "value": "32,292" }
+    ]
+  },
+  {
+    "id": 6, "date": "2026-04-06", "category": "Geography",
+    "criterion": "Rank these countries by total land area, largest to smallest.",
+    "unit": "million km²", "source": "World Bank",
+    "items": [
+      { "name": "Russia", "value": "17.1" },
+      { "name": "Canada", "value": "10.0" },
+      { "name": "United States", "value": "9.8" },
+      { "name": "Brazil", "value": "8.5" },
+      { "name": "Australia", "value": "7.7" }
+    ]
+  },
+  {
+    "id": 7, "date": "2026-04-07", "category": "Food & Drink",
+    "criterion": "Rank these drinks by caffeine content per 8 oz serving, highest to lowest.",
+    "unit": "mg", "source": "USDA",
+    "items": [
+      { "name": "Cold Brew Coffee", "value": "200" },
+      { "name": "Drip Coffee", "value": "95" },
+      { "name": "Espresso (8 oz)", "value": "63" },
+      { "name": "Black Tea", "value": "47" },
+      { "name": "Green Tea", "value": "28" }
+    ]
+  },
+  {
+    "id": 8, "date": "2026-04-08", "category": "Pop Culture",
+    "criterion": "Rank these TV shows by total number of episodes, most to fewest.",
+    "unit": "episodes", "source": "IMDb",
+    "items": [
+      { "name": "The Simpsons", "value": "770+" },
+      { "name": "Law & Order: SVU", "value": "580+" },
+      { "name": "Grey's Anatomy", "value": "440+" },
+      { "name": "The Office (US)", "value": "201" },
+      { "name": "Breaking Bad", "value": "62" }
+    ]
+  },
+  {
+    "id": 9, "date": "2026-04-09", "category": "Geography",
+    "criterion": "Rank these cities by population, largest to smallest.",
+    "unit": "million", "source": "United Nations",
+    "items": [
+      { "name": "Tokyo", "value": "37.4" },
+      { "name": "Delhi", "value": "32.9" },
+      { "name": "Shanghai", "value": "29.2" },
+      { "name": "São Paulo", "value": "22.6" },
+      { "name": "Mexico City", "value": "22.1" }
+    ]
+  },
+  {
+    "id": 10, "date": "2026-04-10", "category": "Science",
+    "criterion": "Rank these animals by average lifespan, longest to shortest.",
+    "unit": "years", "source": "National Geographic",
+    "items": [
+      { "name": "Greenland Shark", "value": "400" },
+      { "name": "Galápagos Tortoise", "value": "175" },
+      { "name": "African Elephant", "value": "70" },
+      { "name": "Bottlenose Dolphin", "value": "45" },
+      { "name": "Domestic Dog", "value": "13" }
+    ]
+  },
+  {
+    "id": 11, "date": "2026-04-11", "category": "History",
+    "criterion": "Rank these structures by year of completion, oldest to newest.",
+    "unit": "", "source": "World History Encyclopedia",
+    "items": [
+      { "name": "Great Pyramid of Giza", "value": "~2560 BC" },
+      { "name": "Colosseum", "value": "80 AD" },
+      { "name": "Machu Picchu", "value": "~1450" },
+      { "name": "Taj Mahal", "value": "1653" },
+      { "name": "Empire State Building", "value": "1931" }
+    ]
+  },
+  {
+    "id": 12, "date": "2026-04-12", "category": "Food & Drink",
+    "criterion": "Rank these fruits by sugar content per 100g, highest to lowest.",
+    "unit": "g sugar", "source": "USDA",
+    "items": [
+      { "name": "Dates", "value": "63.4" },
+      { "name": "Grapes", "value": "16.3" },
+      { "name": "Banana", "value": "12.2" },
+      { "name": "Apple", "value": "10.4" },
+      { "name": "Strawberry", "value": "4.9" }
+    ]
+  },
+  {
+    "id": 13, "date": "2026-04-13", "category": "Pop Culture",
+    "criterion": "Rank these albums by worldwide sales, most to fewest.",
+    "unit": "million copies", "source": "IFPI / Guinness Records",
+    "items": [
+      { "name": "Thriller (Michael Jackson)", "value": "70" },
+      { "name": "Back in Black (AC/DC)", "value": "50" },
+      { "name": "The Dark Side of the Moon", "value": "45" },
+      { "name": "The Bodyguard (Soundtrack)", "value": "45" },
+      { "name": "Rumours (Fleetwood Mac)", "value": "40" }
+    ]
+  },
+  {
+    "id": 14, "date": "2026-04-14", "category": "Geography",
+    "criterion": "Rank these rivers by length, longest to shortest.",
+    "unit": "mi", "source": "National Geographic",
+    "items": [
+      { "name": "Nile", "value": "4,132" },
+      { "name": "Amazon", "value": "3,976" },
+      { "name": "Yangtze", "value": "3,917" },
+      { "name": "Mississippi", "value": "2,340" },
+      { "name": "Danube", "value": "1,770" }
+    ]
+  },
+  {
+    "id": 15, "date": "2026-04-15", "category": "Science",
+    "criterion": "Rank these elements by atomic number, lowest to highest.",
+    "unit": "", "source": "IUPAC",
+    "items": [
+      { "name": "Hydrogen", "value": "1" },
+      { "name": "Carbon", "value": "6" },
+      { "name": "Iron", "value": "26" },
+      { "name": "Silver", "value": "47" },
+      { "name": "Gold", "value": "79" }
+    ]
+  },
+  {
+    "id": 16, "date": "2026-04-16", "category": "Sports",
+    "criterion": "Rank these countries by all-time Summer Olympic gold medals, most to fewest.",
+    "unit": "golds", "source": "Olympics.com",
+    "items": [
+      { "name": "United States", "value": "1,061" },
+      { "name": "Soviet Union", "value": "395" },
+      { "name": "Great Britain", "value": "296" },
+      { "name": "China", "value": "280" },
+      { "name": "France", "value": "258" }
+    ]
+  },
+  {
+    "id": 17, "date": "2026-04-17", "category": "Food & Drink",
+    "criterion": "Rank these foods by calories per serving, highest to lowest.",
+    "unit": "cal", "source": "USDA",
+    "items": [
+      { "name": "Avocado (1 whole)", "value": "322" },
+      { "name": "Slice of Pizza", "value": "285" },
+      { "name": "Peanut Butter (2 tbsp)", "value": "190" },
+      { "name": "Banana", "value": "105" },
+      { "name": "Egg (1 large)", "value": "72" }
+    ]
+  },
+  {
+    "id": 18, "date": "2026-04-18", "category": "History",
+    "criterion": "Rank these US Presidents by year they took office, earliest to most recent.",
+    "unit": "", "source": "White House Historical Association",
+    "items": [
+      { "name": "George Washington", "value": "1789" },
+      { "name": "Abraham Lincoln", "value": "1861" },
+      { "name": "Theodore Roosevelt", "value": "1901" },
+      { "name": "John F. Kennedy", "value": "1961" },
+      { "name": "Barack Obama", "value": "2009" }
+    ]
+  },
+  {
+    "id": 19, "date": "2026-04-19", "category": "Science",
+    "criterion": "Rank these bodies of water by depth, deepest to shallowest.",
+    "unit": "ft", "source": "NOAA",
+    "items": [
+      { "name": "Mariana Trench", "value": "36,037" },
+      { "name": "Caribbean Sea", "value": "25,216" },
+      { "name": "Lake Baikal", "value": "5,387" },
+      { "name": "Lake Superior", "value": "1,332" },
+      { "name": "Persian Gulf", "value": "295" }
+    ]
+  },
+  {
+    "id": 20, "date": "2026-04-20", "category": "Pop Culture",
+    "criterion": "Rank these video games by units sold, most to fewest.",
+    "unit": "million", "source": "VGChartz / Nintendo",
+    "items": [
+      { "name": "Minecraft", "value": "300+" },
+      { "name": "Grand Theft Auto V", "value": "200+" },
+      { "name": "Tetris (EA Mobile)", "value": "100+" },
+      { "name": "Wii Sports", "value": "82.9" },
+      { "name": "The Legend of Zelda: TotK", "value": "20.8" }
+    ]
+  },
+  {
+    "id": 21, "date": "2026-04-21", "category": "Geography",
+    "criterion": "Rank these US states by population, largest to smallest.",
+    "unit": "million", "source": "US Census Bureau",
+    "items": [
+      { "name": "California", "value": "39.0" },
+      { "name": "Texas", "value": "30.5" },
+      { "name": "Florida", "value": "22.6" },
+      { "name": "New York", "value": "19.6" },
+      { "name": "Pennsylvania", "value": "12.9" }
+    ]
+  },
+  {
+    "id": 22, "date": "2026-04-22", "category": "Sports",
+    "criterion": "Rank these marathons by year first held, earliest to most recent.",
+    "unit": "", "source": "World Athletics",
+    "items": [
+      { "name": "Boston Marathon", "value": "1897" },
+      { "name": "New York City Marathon", "value": "1970" },
+      { "name": "Berlin Marathon", "value": "1974" },
+      { "name": "London Marathon", "value": "1981" },
+      { "name": "Tokyo Marathon", "value": "2007" }
+    ]
+  },
+  {
+    "id": 23, "date": "2026-04-23", "category": "Science",
+    "criterion": "Rank these planets by number of known moons, most to fewest.",
+    "unit": "moons", "source": "NASA",
+    "items": [
+      { "name": "Saturn", "value": "146" },
+      { "name": "Jupiter", "value": "95" },
+      { "name": "Uranus", "value": "28" },
+      { "name": "Neptune", "value": "16" },
+      { "name": "Mars", "value": "2" }
+    ]
+  },
+  {
+    "id": 24, "date": "2026-04-24", "category": "Food & Drink",
+    "criterion": "Rank these cheeses by age when typically sold, longest to shortest.",
+    "unit": "months", "source": "Cheese.com",
+    "items": [
+      { "name": "Parmigiano-Reggiano", "value": "24" },
+      { "name": "Aged Cheddar", "value": "12" },
+      { "name": "Gouda", "value": "6" },
+      { "name": "Brie", "value": "2" },
+      { "name": "Mozzarella", "value": "0.25" }
+    ]
+  },
+  {
+    "id": 25, "date": "2026-04-25", "category": "History",
+    "criterion": "Rank these wars by duration, longest to shortest.",
+    "unit": "years", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Hundred Years' War", "value": "116" },
+      { "name": "Vietnam War (US)", "value": "20" },
+      { "name": "World War II", "value": "6" },
+      { "name": "Korean War", "value": "3" },
+      { "name": "Six-Day War", "value": "0.016" }
+    ]
+  },
+  {
+    "id": 26, "date": "2026-04-26", "category": "Pop Culture",
+    "criterion": "Rank these social media platforms by monthly active users, most to fewest.",
+    "unit": "billion", "source": "Statista",
+    "items": [
+      { "name": "Facebook", "value": "3.07" },
+      { "name": "YouTube", "value": "2.50" },
+      { "name": "Instagram", "value": "2.00" },
+      { "name": "TikTok", "value": "1.60" },
+      { "name": "X (Twitter)", "value": "0.60" }
+    ]
+  },
+  {
+    "id": 27, "date": "2026-04-27", "category": "Geography",
+    "criterion": "Rank these deserts by area, largest to smallest.",
+    "unit": "million km²", "source": "World Atlas",
+    "items": [
+      { "name": "Antarctic Desert", "value": "14.2" },
+      { "name": "Sahara", "value": "9.2" },
+      { "name": "Arabian Desert", "value": "2.3" },
+      { "name": "Gobi Desert", "value": "1.3" },
+      { "name": "Kalahari Desert", "value": "0.9" }
+    ]
+  },
+  {
+    "id": 28, "date": "2026-04-28", "category": "Sports",
+    "criterion": "Rank these athletes by career Grand Slam tennis titles, most to fewest.",
+    "unit": "titles", "source": "ATP / WTA",
+    "items": [
+      { "name": "Novak Djokovic", "value": "24" },
+      { "name": "Serena Williams", "value": "23" },
+      { "name": "Rafael Nadal", "value": "22" },
+      { "name": "Roger Federer", "value": "20" },
+      { "name": "Pete Sampras", "value": "14" }
+    ]
+  },
+  {
+    "id": 29, "date": "2026-04-29", "category": "Science",
+    "criterion": "Rank these materials by melting point, highest to lowest.",
+    "unit": "°F", "source": "CRC Handbook",
+    "items": [
+      { "name": "Tungsten", "value": "6,192" },
+      { "name": "Iron", "value": "2,800" },
+      { "name": "Gold", "value": "1,948" },
+      { "name": "Aluminum", "value": "1,221" },
+      { "name": "Tin", "value": "449" }
+    ]
+  },
+  {
+    "id": 30, "date": "2026-04-30", "category": "Pop Culture",
+    "criterion": "Rank these book series by total copies sold, most to fewest.",
+    "unit": "million", "source": "Publishers Weekly",
+    "items": [
+      { "name": "Harry Potter", "value": "600" },
+      { "name": "Goosebumps", "value": "400" },
+      { "name": "Lord of the Rings", "value": "150" },
+      { "name": "The Hunger Games", "value": "100" },
+      { "name": "Diary of a Wimpy Kid", "value": "75" }
+    ]
+  }
+]
