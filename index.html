@@ -132,24 +132,24 @@
     border-bottom-color: var(--text-primary);
   }
 
-  /* ===== AUTH BAR ===== */
-  .auth-bar {
-    width: 100%;
+  /* ===== AUTH (inside header) ===== */
+  .auth-area {
+    position: absolute;
+    top: 20px;
+    left: 0;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    padding: 8px 0;
-    min-height: 36px;
+    gap: 6px;
   }
 
   .auth-btn {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--text-secondary);
     background: none;
     border: 1px solid var(--border);
     border-radius: 999px;
-    padding: 5px 14px;
+    padding: 4px 10px;
     cursor: pointer;
     transition: border-color 150ms;
   }
@@ -158,27 +158,25 @@
   .auth-user {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--text-secondary);
+    gap: 5px;
   }
 
   .auth-avatar {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     object-fit: cover;
   }
 
   .auth-signout {
-    font-size: 11px;
-    color: var(--text-secondary);
+    font-size: 10px;
+    color: #AAA;
     background: none;
     border: none;
     cursor: pointer;
-    text-decoration: underline;
     padding: 0;
   }
+  .auth-signout:hover { color: var(--text-secondary); }
 
   /* ===== VIEWS ===== */
   .view { display: none; width: 100%; }
@@ -759,19 +757,19 @@
     cursor: pointer;
   }
 
-  /* Sync indicator */
-  .sync-badge {
-    font-size: 10px;
-    color: var(--correct);
-    margin-left: 6px;
-    font-weight: 500;
-  }
 </style>
 </head>
 <body>
 
 <div class="container">
   <header>
+    <div class="auth-area" id="authArea">
+      <button class="auth-btn" id="signInBtn" style="display:none;">Sign in</button>
+      <div class="auth-user" id="authUser" style="display:none;">
+        <img class="auth-avatar" id="authAvatar" alt="" title="" />
+        <button class="auth-signout" id="signOutBtn">Sign out</button>
+      </div>
+    </div>
     <div class="wordmark">RANK IT</div>
     <div class="puzzle-meta">
       <span id="puzzleNumber"></span> · <span id="puzzleDate"></span>
@@ -779,17 +777,6 @@
     <div style="margin-top:6px;"><span id="categoryBadge" class="category-badge"></span></div>
     <button class="help-btn" id="helpBtn" aria-label="How to play">?</button>
   </header>
-
-  <!-- Auth bar -->
-  <div class="auth-bar" id="authBar">
-    <button class="auth-btn" id="signInBtn" style="display:none;">Sign in</button>
-    <div class="auth-user" id="authUser" style="display:none;">
-      <img class="auth-avatar" id="authAvatar" alt="" />
-      <span id="authName"></span>
-      <span class="sync-badge">synced</span>
-      <button class="auth-signout" id="signOutBtn">Sign out</button>
-    </div>
-  </div>
 
   <!-- Nav tabs -->
   <nav class="nav-tabs">
@@ -1305,7 +1292,7 @@ const PUZZLES = [
           $('signInBtn').style.display = 'none';
           $('authUser').style.display = '';
           $('authAvatar').src = user.photoURL || '';
-          $('authName').textContent = user.displayName || user.email;
+          $('authAvatar').title = user.displayName || user.email;
           await syncFromCloud();
         } else {
           $('signInBtn').style.display = '';
