@@ -1729,7 +1729,10 @@ let PUZZLES = [];
     // Show puzzles newest first
     const sorted = [...PUZZLES].sort((a, b) => b.date.localeCompare(a.date));
 
-    for (const pz of sorted) {
+    // Only show puzzles with dates today or earlier
+    const available = sorted.filter(pz => pz.date <= today);
+
+    for (const pz of available) {
       const d = new Date(pz.date + 'T00:00:00');
       const monthKey = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
@@ -1739,22 +1742,17 @@ let PUZZLES = [];
       }
 
       const completed = stats.completedPuzzles[String(pz.id)];
-      const isFuture = pz.date > today;
 
       let statusHTML = '';
-      let disabledClass = '';
 
       if (completed) {
         statusHTML = `<div class="archive-status completed">✓ ${completed.score}</div>`;
-      } else if (isFuture) {
-        statusHTML = `<div class="archive-status upcoming">Upcoming</div>`;
-        disabledClass = ' disabled';
       } else {
         statusHTML = `<div class="archive-status available">Play →</div>`;
       }
 
       html += `
-        <div class="archive-item${disabledClass}" data-puzzle-id="${pz.id}">
+        <div class="archive-item" data-puzzle-id="${pz.id}">
           <div class="archive-num">#${pz.id}</div>
           <div class="archive-info">
             <div class="archive-category">${pz.category} · ${formatDateShort(pz.date)}</div>
@@ -1765,10 +1763,14 @@ let PUZZLES = [];
       `;
     }
 
+    if (available.length === 0) {
+      html = '<div class="stats-empty">No past puzzles yet.<br>Come back after today\'s puzzle!</div>';
+    }
+
     container.innerHTML = html;
 
     // Click handlers
-    container.querySelectorAll('.archive-item:not(.disabled)').forEach(el => {
+    container.querySelectorAll('.archive-item').forEach(el => {
       el.addEventListener('click', () => {
         const id = parseInt(el.dataset.puzzleId);
         const pz = PUZZLES.find(p => p.id === id);
