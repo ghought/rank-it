@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Rank It</title>
+<title>Rank It — A Daily Ranking Puzzle</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Rank 5 items in the correct order. A new puzzle every day.">
+<meta name="theme-color" content="#1A1A1A">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rank It — A Daily Ranking Puzzle">
+<meta property="og:description" content="Rank 5 items in the correct order. A new puzzle every day.">
+<meta property="og:url" content="https://rankitgame.com/">
+<meta property="og:image" content="https://rankitgame.com/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rank It — A Daily Ranking Puzzle">
+<meta name="twitter:description" content="Rank 5 items in the correct order. A new puzzle every day.">
+<meta name="twitter:image" content="https://rankitgame.com/og-image.png">
 
 <!-- Firebase SDK (optional — leave FIREBASE_CONFIG empty to use localStorage only) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -1530,7 +1545,7 @@ let PUZZLES = [];
       const row = result.map(r => r ? '🟩' : '⬜').join('');
       lines.push(`Attempt ${i + 1}: ${row}`);
     });
-    lines.push('rankit.game');
+    lines.push('rankitgame.com');
     return lines.join('\n');
   }
 
