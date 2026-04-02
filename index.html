@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Rank It</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <!-- Firebase SDK (optional — leave FIREBASE_CONFIG empty to use localStorage only) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -757,6 +758,23 @@
     cursor: pointer;
   }
 
+  .site-footer {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  .site-footer a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .site-footer a:hover {
+    color: var(--text-primary);
+  }
+
 </style>
 </head>
 <body>
@@ -821,6 +839,10 @@
     <div class="archive-list" id="archiveList"></div>
   </div>
 </div>
+
+<footer class="site-footer">
+  Made by <a href="https://garretthoughton.com/" target="_blank" rel="noopener">Garrett</a> | Inspired by <a href="https://www.nytco.com/games/" target="_blank" rel="noopener">The New York Times Games</a>
+</footer>
 
 <div class="copied-toast" id="copiedToast">Copied to clipboard!</div>
 
