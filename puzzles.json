@@ -24,7 +24,7 @@
     ]
   },
   {
-    "id": 3, "date": "2026-04-03", "category": "Science",
+    "id": 3, "date": "2026-04-05", "category": "Science",
     "criterion": "Rank these planets by distance from the Sun, closest to farthest.",
     "unit": "million mi", "source": "NASA",
     "items": [
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "id": 5, "date": "2026-04-05", "category": "Sports",
+    "id": 5, "date": "2026-04-03", "category": "Sports",
     "criterion": "Rank these NBA players by career points scored, most to fewest.",
     "unit": "pts", "source": "Basketball Reference",
     "items": [
