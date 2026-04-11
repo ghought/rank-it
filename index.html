@@ -1314,6 +1314,17 @@ let PUZZLES = [];
       $swapHint.classList.remove('visible');
     } else {
       const oldPos = selectedSwapIndex;
+      // Defensive: if the stored selection is now locked (e.g. became locked
+      // by a submit between taps), drop it and treat this tap as a fresh start.
+      if (lockedPositions.includes(oldPos)) {
+        const stale = items[oldPos];
+        if (stale) stale.classList.remove('selected');
+        selectedSwapIndex = pos;
+        items[pos].classList.add('selected');
+        $swapHint.textContent = 'Tap another item to swap';
+        $swapHint.classList.add('visible');
+        return;
+      }
       items[oldPos].classList.remove('selected');
       [currentOrder[oldPos], currentOrder[pos]] = [currentOrder[pos], currentOrder[oldPos]];
       selectedSwapIndex = null;
@@ -1453,6 +1464,14 @@ let PUZZLES = [];
     state = 'CHECKING';
     $submitBtn.disabled = true;
     attempts++;
+
+    // Clear any in-progress tap-swap selection so it can't apply post-submit
+    if (selectedSwapIndex !== null) {
+      const prevSel = $itemList.children[selectedSwapIndex];
+      if (prevSel) prevSel.classList.remove('selected');
+      selectedSwapIndex = null;
+      $swapHint.classList.remove('visible');
+    }
 
     const results = currentOrder.map((itemIdx, pos) => itemIdx === pos);
     attemptHistory.push(results);
