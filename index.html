@@ -773,6 +773,151 @@
     cursor: pointer;
   }
 
+  /* ===== HARD MODE ===== */
+  .hard-mode-pill {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  .hard-feedback {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    z-index: 100;
+  }
+  .hard-feedback.visible { opacity: 1; }
+  .hard-feedback-inner {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    background: rgba(255, 255, 255, 0.96);
+    padding: 18px 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    color: var(--text-primary);
+  }
+
+  /* ===== SETTINGS ===== */
+  .settings-view { padding-bottom: 40px; }
+  .settings-content { width: 100%; }
+
+  .setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    gap: 16px;
+  }
+  .setting-info { flex: 1; min-width: 0; }
+  .setting-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .setting-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .toggle {
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    background: #DDD;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition: background 200ms ease;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .toggle.on { background: var(--text-primary); }
+  .toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 200ms ease;
+  }
+  .toggle.on .toggle-slider { transform: translateX(20px); }
+
+  /* ===== STATS MODE TOGGLE ===== */
+  .stats-mode-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px;
+    margin-bottom: 24px;
+    background: #FAFAFA;
+  }
+  .stats-mode-btn {
+    border: none;
+    background: none;
+    padding: 6px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 150ms, color 150ms;
+  }
+  .stats-mode-btn.active {
+    background: var(--text-primary);
+    color: white;
+  }
+
+  /* ===== MODAL ACTIONS ===== */
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .modal-cancel,
+  .modal-confirm {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--text-primary);
+  }
+  .modal-cancel {
+    background: white;
+    color: var(--text-primary);
+  }
+  .modal-confirm {
+    background: var(--text-primary);
+    color: white;
+  }
+
+  /* Archive hard-mode marker */
+  .archive-mode-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #666;
+    margin-left: 6px;
+  }
+
   .site-footer {
     text-align: center;
     padding: 24px 16px;
@@ -808,6 +953,7 @@
       <span id="puzzleNumber"></span> · <span id="puzzleDate"></span>
     </div>
     <div style="margin-top:6px;"><span id="categoryBadge" class="category-badge"></span></div>
+    <div id="hardModePill" class="hard-mode-pill" style="display:none;">HARD MODE</div>
     <button class="help-btn" id="helpBtn" aria-label="How to play">?</button>
   </header>
 
@@ -816,6 +962,7 @@
     <button class="nav-tab active" data-view="game">Play</button>
     <button class="nav-tab" data-view="archive">Archive</button>
     <button class="nav-tab" data-view="stats">Stats</button>
+    <button class="nav-tab" data-view="settings">Settings</button>
   </nav>
 
   <!-- GAME VIEW -->
@@ -853,7 +1000,25 @@
   <div class="view archive-view" id="archiveView">
     <div class="archive-list" id="archiveList"></div>
   </div>
+
+  <!-- SETTINGS VIEW -->
+  <div class="view settings-view" id="settingsView">
+    <div class="settings-content">
+      <div class="setting-row">
+        <div class="setting-info">
+          <div class="setting-label">Hard Mode</div>
+          <div class="setting-desc">Hides which items are correct — only the total count is shown after each submission.</div>
+        </div>
+        <button class="toggle" id="hardModeToggle" role="switch" aria-checked="false" aria-label="Hard Mode">
+          <span class="toggle-slider"></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Hard Mode submission feedback -->
+<div class="hard-feedback" id="hardFeedback"><div class="hard-feedback-inner" id="hardFeedbackInner">0 / 5</div></div>
 
 <footer class="site-footer">
   Made by <a href="https://garretthoughton.com/" target="_blank" rel="noopener">Garrett</a> | Inspired by <a href="https://www.nytco.com/games/" target="_blank" rel="noopener">The New York Times Games</a>
@@ -885,6 +1050,18 @@
     </div>
     <p style="text-align:center;font-size:12px;color:var(--text-secondary);">All correct — solved in 2!</p>
     <button class="modal-close" id="modalClose">Got it</button>
+  </div>
+</div>
+
+<!-- Hard Mode confirmation modal -->
+<div class="modal-overlay" id="hardModeConfirmModal">
+  <div class="modal">
+    <h2>Enable Hard Mode?</h2>
+    <p>Hard Mode hides which items are correct — only the total count is shown. Ready for a challenge?</p>
+    <div class="modal-actions">
+      <button class="modal-cancel" id="hardModeCancelBtn">Cancel</button>
+      <button class="modal-confirm" id="hardModeConfirmBtn">Enable Hard Mode</button>
+    </div>
   </div>
 </div>
 
@@ -944,6 +1121,8 @@ let PUZZLES = [];
   let state = 'IDLE';
   let selectedSwapIndex = null;
   let isArchivePuzzle = false;
+  let puzzleMode = 'normal'; // 'normal' or 'hard' — locked at puzzle load time
+  let statsMode = 'normal';  // which bucket the stats view shows
 
   // Firebase
   let db = null;
@@ -1017,14 +1196,12 @@ let PUZZLES = [];
     }
   }
 
-  function mergeStats(local, cloud) {
-    const merged = { ...local };
-    // Merge completedPuzzles
-    const lc = local.completedPuzzles || {};
-    const cc = cloud.completedPuzzles || {};
-    merged.completedPuzzles = { ...lc, ...cc };
+  function mergeBucket(localB, cloudB) {
+    const lb = localB || defaultBucket();
+    const cb = cloudB || defaultBucket();
+    const merged = defaultBucket();
+    merged.completedPuzzles = { ...(lb.completedPuzzles || {}), ...(cb.completedPuzzles || {}) };
 
-    // Recalculate aggregate stats from completedPuzzles
     const ids = Object.keys(merged.completedPuzzles);
     merged.played = ids.length;
     merged.scores = ids.map(id => merged.completedPuzzles[id].score);
@@ -1034,14 +1211,36 @@ let PUZZLES = [];
       merged.distribution[key] = (merged.distribution[key] || 0) + 1;
     });
 
-    // Streak: recalculate from dates
     const dates = ids.map(id => merged.completedPuzzles[id].date).filter(Boolean).sort();
     const { streak, bestStreak } = calcStreaks(dates);
     merged.streak = streak;
-    merged.bestStreak = Math.max(streak, bestStreak, cloud.bestStreak || 0, local.bestStreak || 0);
+    merged.bestStreak = Math.max(streak, bestStreak, cb.bestStreak || 0, lb.bestStreak || 0);
     merged.lastDate = dates[dates.length - 1] || null;
-
     return merged;
+  }
+
+  function mergeStats(local, cloud) {
+    // Handle migration: cloud may still be old flat schema
+    const localFull = local.normal ? local : defaultStats();
+    if (local.completedPuzzles !== undefined && !local.normal) {
+      localFull.normal = mergeBucket(local, defaultBucket());
+    }
+    const cloudFull = cloud.normal ? cloud : (function() {
+      const f = defaultStats();
+      if (cloud.completedPuzzles !== undefined) {
+        f.normal = mergeBucket(cloud, defaultBucket());
+      }
+      return f;
+    })();
+
+    return {
+      preferences: {
+        hardMode: (cloudFull.preferences && cloudFull.preferences.hardMode) ?? localFull.preferences.hardMode ?? false,
+        hardModeConfirmed: (cloudFull.preferences && cloudFull.preferences.hardModeConfirmed) || localFull.preferences.hardModeConfirmed || false
+      },
+      normal: mergeBucket(localFull.normal, cloudFull.normal),
+      hard: mergeBucket(localFull.hard, cloudFull.hard)
+    };
   }
 
   function calcStreaks(sortedDates) {
@@ -1136,12 +1335,13 @@ let PUZZLES = [];
       attempts,
       attemptHistory,
       state,
+      mode: puzzleMode,
       savedAt: Date.now()
     };
     localStorage.setItem(STATE_KEY + '_' + puzzle.id, JSON.stringify(data));
   }
 
-  function defaultStats() {
+  function defaultBucket() {
     return {
       played: 0,
       scores: [],
@@ -1153,13 +1353,49 @@ let PUZZLES = [];
     };
   }
 
+  function defaultStats() {
+    return {
+      preferences: {
+        hardMode: false,
+        hardModeConfirmed: false
+      },
+      normal: defaultBucket(),
+      hard: defaultBucket()
+    };
+  }
+
   function loadStats() {
     try {
       const raw = localStorage.getItem(STATS_KEY);
       if (!raw) return defaultStats();
       const s = JSON.parse(raw);
-      if (!s.distribution) s.distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-      if (!s.completedPuzzles) s.completedPuzzles = {};
+
+      // Migration: old flat schema → wrap in normal bucket
+      if (s.completedPuzzles !== undefined && !s.normal) {
+        const migrated = defaultStats();
+        migrated.normal = {
+          played: s.played || 0,
+          scores: s.scores || [],
+          distribution: s.distribution || { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+          streak: s.streak || 0,
+          bestStreak: s.bestStreak || 0,
+          lastDate: s.lastDate || null,
+          completedPuzzles: s.completedPuzzles || {}
+        };
+        return migrated;
+      }
+
+      // Ensure all expected fields exist
+      if (!s.preferences) s.preferences = { hardMode: false, hardModeConfirmed: false };
+      if (s.preferences.hardMode === undefined) s.preferences.hardMode = false;
+      if (s.preferences.hardModeConfirmed === undefined) s.preferences.hardModeConfirmed = false;
+      if (!s.normal) s.normal = defaultBucket();
+      if (!s.hard) s.hard = defaultBucket();
+      ['normal', 'hard'].forEach(m => {
+        if (!s[m].distribution) s[m].distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        if (!s[m].completedPuzzles) s[m].completedPuzzles = {};
+        if (!s[m].scores) s[m].scores = [];
+      });
       return s;
     } catch { return defaultStats(); }
   }
@@ -1168,42 +1404,71 @@ let PUZZLES = [];
     localStorage.setItem(STATS_KEY, JSON.stringify(stats));
   }
 
-  function recordCompletion(puzzleObj, score, history) {
+  function recordCompletion(puzzleObj, score, history, mode) {
     const stats = loadStats();
+    const bucketKey = mode === 'hard' ? 'hard' : 'normal';
+    const bucket = stats[bucketKey];
     const pid = String(puzzleObj.id);
 
-    if (stats.completedPuzzles[pid]) return; // already recorded
+    if (bucket.completedPuzzles[pid]) return; // already recorded in this mode
 
-    stats.completedPuzzles[pid] = {
+    bucket.completedPuzzles[pid] = {
       score,
       date: puzzleObj.date,
-      attemptHistory: history
+      attemptHistory: history,
+      mode: bucketKey
     };
 
-    stats.played++;
-    stats.scores.push(score);
+    bucket.played++;
+    bucket.scores.push(score);
 
     const distKey = Math.min(score, 5);
-    stats.distribution[distKey] = (stats.distribution[distKey] || 0) + 1;
+    bucket.distribution[distKey] = (bucket.distribution[distKey] || 0) + 1;
 
-    // Streak
+    // Streak (per mode)
     const today = getTodayStr();
-    if (stats.lastDate) {
-      const diff = Math.round((new Date(today) - new Date(stats.lastDate)) / 86400000);
+    if (bucket.lastDate) {
+      const diff = Math.round((new Date(today) - new Date(bucket.lastDate)) / 86400000);
       if (diff === 1) {
-        stats.streak++;
+        bucket.streak++;
       } else if (diff > 1) {
-        stats.streak = 1;
+        bucket.streak = 1;
       }
       // same day: no change
     } else {
-      stats.streak = 1;
+      bucket.streak = 1;
     }
-    stats.bestStreak = Math.max(stats.bestStreak, stats.streak);
-    stats.lastDate = today;
+    bucket.bestStreak = Math.max(bucket.bestStreak, bucket.streak);
+    bucket.lastDate = today;
 
     saveStatsLocal(stats);
     pushToCloud();
+  }
+
+  // ---- Preferences ----
+  function getHardModePref() {
+    return loadStats().preferences.hardMode === true;
+  }
+
+  function setHardModePref(val) {
+    const s = loadStats();
+    s.preferences.hardMode = !!val;
+    if (val) s.preferences.hardModeConfirmed = true;
+    saveStatsLocal(s);
+    pushToCloud();
+  }
+
+  // If the current puzzle hasn't been started yet, apply the new mode to it
+  // so the user doesn't have to refresh to see Hard Mode take effect.
+  function applyModeToUnstartedPuzzle() {
+    if (!puzzle) return;
+    if (attempts > 0) return;
+    if (state === 'SOLVED' || state === 'COMPLETED') return;
+    const newMode = getHardModePref() ? 'hard' : 'normal';
+    if (newMode === puzzleMode) return;
+    puzzleMode = newMode;
+    savePuzzleState();
+    renderHeader();
   }
 
   // ---- Navigation ----
@@ -1221,18 +1486,24 @@ let PUZZLES = [];
       }
     } else if (view === 'stats') {
       $('statsView').classList.add('active');
+      // Default the stats view to whichever mode the user is currently in
+      statsMode = getHardModePref() ? 'hard' : 'normal';
       renderStats();
     } else if (view === 'archive') {
       $('archiveView').classList.add('active');
       renderArchive();
       isArchivePuzzle = false;
       $archiveBackBtn.classList.remove('visible');
+    } else if (view === 'settings') {
+      $('settingsView').classList.add('active');
+      renderSettings();
     }
   }
 
   function renderCurrentView() {
     if (currentView === 'stats') renderStats();
     else if (currentView === 'archive') renderArchive();
+    else if (currentView === 'settings') renderSettings();
   }
 
   document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -1245,6 +1516,7 @@ let PUZZLES = [];
     $puzzleDate.textContent = formatDate(puzzle.date);
     $categoryBadge.textContent = puzzle.category;
     $criterion.textContent = puzzle.criterion;
+    $('hardModePill').style.display = puzzleMode === 'hard' ? '' : 'none';
   }
 
   function renderItems() {
@@ -1478,26 +1750,31 @@ let PUZZLES = [];
 
     const items = $itemList.children;
 
-    for (let i = 0; i < 5; i++) {
-      await sleep(300);
-      const el = items[i];
-      const statusEl = el.querySelector('.item-status');
-      if (results[i]) {
-        el.classList.add('correct-flash');
-        statusEl.textContent = '✓';
-        if (!lockedPositions.includes(i)) lockedPositions.push(i);
-      } else {
-        el.classList.add('incorrect-flash');
-        statusEl.textContent = '–';
+    if (puzzleMode === 'hard') {
+      // Hard Mode: show only the total count, no per-item lock-in
+      const correctCount = results.filter(Boolean).length;
+      await showHardModeFeedback(correctCount);
+    } else {
+      for (let i = 0; i < 5; i++) {
+        await sleep(300);
+        const el = items[i];
+        const statusEl = el.querySelector('.item-status');
+        if (results[i]) {
+          el.classList.add('correct-flash');
+          statusEl.textContent = '✓';
+          if (!lockedPositions.includes(i)) lockedPositions.push(i);
+        } else {
+          el.classList.add('incorrect-flash');
+          statusEl.textContent = '–';
+        }
       }
+      await sleep(400);
     }
-
-    await sleep(400);
 
     if (results.every(r => r)) {
       state = 'SOLVED';
       savePuzzleState();
-      recordCompletion(puzzle, attempts, attemptHistory);
+      recordCompletion(puzzle, attempts, attemptHistory, puzzleMode);
       await showSolvedState();
     } else {
       state = 'PARTIAL';
@@ -1507,6 +1784,16 @@ let PUZZLES = [];
       $attemptCounter.classList.add('bounce');
       setTimeout(() => $attemptCounter.classList.remove('bounce'), 200);
     }
+  }
+
+  async function showHardModeFeedback(count) {
+    const overlay = $('hardFeedback');
+    const inner = $('hardFeedbackInner');
+    inner.textContent = `${count} / 5`;
+    overlay.classList.add('visible');
+    await sleep(800);
+    overlay.classList.remove('visible');
+    await sleep(200); // allow fade-out
   }
 
   async function showSolvedState() {
@@ -1559,6 +1846,15 @@ let PUZZLES = [];
 
   // ---- Share ----
   function generateShareText() {
+    if (puzzleMode === 'hard') {
+      const lines = [`Rank It #${puzzle.id} — Solved in ${attempts}! (Hard Mode)`];
+      attemptHistory.forEach((result, i) => {
+        const correct = result.filter(Boolean).length;
+        lines.push(`Attempt ${i + 1}: ${correct}/5`);
+      });
+      lines.push('rankitgame.com');
+      return lines.join('\n');
+    }
     const lines = [`Rank It #${puzzle.id} — Solved in ${attempts}!`];
     attemptHistory.forEach((result, i) => {
       const row = result.map(r => r ? '🟩' : '⬜').join('');
@@ -1611,8 +1907,9 @@ let PUZZLES = [];
   // ---- Show completed state ----
   function showCompletedState(savedState) {
     state = 'COMPLETED';
+    puzzleMode = savedState.mode || 'normal';
     currentOrder = savedState.currentOrder;
-    lockedPositions = savedState.lockedPositions;
+    lockedPositions = savedState.lockedPositions || [];
     attempts = savedState.attempts;
     attemptHistory = savedState.attemptHistory;
 
@@ -1653,8 +1950,6 @@ let PUZZLES = [];
     puzzle = puzzleObj;
     isArchivePuzzle = !!fromArchive;
 
-    renderHeader();
-
     // Reset game UI
     $results.classList.remove('visible');
     $submitBtn.style.display = '';
@@ -1671,17 +1966,21 @@ let PUZZLES = [];
 
     const saved = loadPuzzleState(puzzle.id);
     if (saved && (saved.state === 'SOLVED' || saved.state === 'COMPLETED')) {
+      puzzleMode = saved.mode || 'normal';
+      renderHeader();
       showCompletedState(saved);
       return;
     }
 
     if (saved && saved.puzzleId === puzzle.id) {
+      puzzleMode = saved.mode || 'normal';
       currentOrder = saved.currentOrder;
-      lockedPositions = saved.lockedPositions;
+      lockedPositions = saved.lockedPositions || [];
       attempts = saved.attempts;
       attemptHistory = saved.attemptHistory;
       state = saved.state || 'IDLE';
     } else {
+      puzzleMode = getHardModePref() ? 'hard' : 'normal';
       currentOrder = shuffleArray([0, 1, 2, 3, 4]);
       lockedPositions = [];
       attempts = 0;
@@ -1689,6 +1988,7 @@ let PUZZLES = [];
       state = 'IDLE';
     }
 
+    renderHeader();
     renderItems();
     updateAttemptCounter();
   }
@@ -1696,27 +1996,36 @@ let PUZZLES = [];
   // ---- Stats View ----
   function renderStats() {
     const stats = loadStats();
+    const bucket = stats[statsMode];
     const container = $('statsContent');
 
-    if (stats.played === 0) {
-      container.innerHTML = `
+    const modeToggleHTML = `
+      <div class="stats-mode-toggle" role="tablist">
+        <button class="stats-mode-btn ${statsMode === 'normal' ? 'active' : ''}" data-mode="normal">Normal</button>
+        <button class="stats-mode-btn ${statsMode === 'hard' ? 'active' : ''}" data-mode="hard">Hard</button>
+      </div>
+    `;
+
+    if (bucket.played === 0) {
+      container.innerHTML = modeToggleHTML + `
         <div class="stats-empty">
-          No puzzles completed yet.<br>
-          Play today's puzzle to see your stats!
+          No ${statsMode === 'hard' ? 'Hard Mode ' : ''}puzzles completed yet.<br>
+          ${statsMode === 'hard' ? 'Enable Hard Mode in Settings and play to see stats!' : 'Play today\'s puzzle to see your stats!'}
         </div>
       `;
+      attachStatsModeToggle();
       return;
     }
 
-    const avg = stats.scores.length > 0
-      ? (stats.scores.reduce((a, b) => a + b, 0) / stats.scores.length).toFixed(1)
+    const avg = bucket.scores.length > 0
+      ? (bucket.scores.reduce((a, b) => a + b, 0) / bucket.scores.length).toFixed(1)
       : '–';
 
-    const dist = stats.distribution || { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    const dist = bucket.distribution || { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     const maxDist = Math.max(...Object.values(dist), 1);
 
     // Find last score for highlighting
-    const lastScore = stats.scores.length > 0 ? Math.min(stats.scores[stats.scores.length - 1], 5) : null;
+    const lastScore = bucket.scores.length > 0 ? Math.min(bucket.scores[bucket.scores.length - 1], 5) : null;
 
     let histoHTML = '';
     for (let i = 1; i <= 5; i++) {
@@ -1736,10 +2045,10 @@ let PUZZLES = [];
       `;
     }
 
-    container.innerHTML = `
+    container.innerHTML = modeToggleHTML + `
       <div class="stats-summary">
         <div class="stats-card">
-          <div class="card-value">${stats.played}</div>
+          <div class="card-value">${bucket.played}</div>
           <div class="card-label">Played</div>
         </div>
         <div class="stats-card">
@@ -1747,11 +2056,11 @@ let PUZZLES = [];
           <div class="card-label">Avg Score</div>
         </div>
         <div class="stats-card">
-          <div class="card-value">${stats.streak}</div>
+          <div class="card-value">${bucket.streak}</div>
           <div class="card-label">Streak</div>
         </div>
         <div class="stats-card">
-          <div class="card-value">${stats.bestStreak}</div>
+          <div class="card-value">${bucket.bestStreak}</div>
           <div class="card-label">Best</div>
         </div>
       </div>
@@ -1762,15 +2071,35 @@ let PUZZLES = [];
       <div class="stats-section-title">Streaks</div>
       <div class="streak-section">
         <div class="streak-card">
-          <div class="streak-val">${stats.streak}</div>
+          <div class="streak-val">${bucket.streak}</div>
           <div class="streak-lbl">Current Streak</div>
         </div>
         <div class="streak-card">
-          <div class="streak-val">${stats.bestStreak}</div>
+          <div class="streak-val">${bucket.bestStreak}</div>
           <div class="streak-lbl">Longest Streak</div>
         </div>
       </div>
     `;
+
+    attachStatsModeToggle();
+  }
+
+  function attachStatsModeToggle() {
+    document.querySelectorAll('.stats-mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        statsMode = btn.dataset.mode;
+        renderStats();
+      });
+    });
+  }
+
+  // ---- Settings View ----
+  function renderSettings() {
+    const stats = loadStats();
+    const toggle = $('hardModeToggle');
+    const isOn = stats.preferences.hardMode === true;
+    toggle.classList.toggle('on', isOn);
+    toggle.setAttribute('aria-checked', isOn ? 'true' : 'false');
   }
 
   // ---- Archive View ----
@@ -1797,12 +2126,16 @@ let PUZZLES = [];
         html += `<div class="archive-month">${monthKey}</div>`;
       }
 
-      const completed = stats.completedPuzzles[String(pz.id)];
+      const pid = String(pz.id);
+      const normalDone = stats.normal.completedPuzzles[pid];
+      const hardDone = stats.hard.completedPuzzles[pid];
+      const completed = normalDone || hardDone;
 
       let statusHTML = '';
 
       if (completed) {
-        statusHTML = `<div class="archive-status completed">✓ ${completed.score}</div>`;
+        const tag = hardDone ? `<span class="archive-mode-tag">HARD</span>` : '';
+        statusHTML = `<div class="archive-status completed">✓ ${completed.score}${tag}</div>`;
       } else {
         statusHTML = `<div class="archive-status available">Play →</div>`;
       }
@@ -1857,7 +2190,8 @@ let PUZZLES = [];
 
     // Show how-to-play on first visit
     const stats = loadStats();
-    if (stats.played === 0 && !loadPuzzleState(todayPuzzle.id)) {
+    const totalPlayed = (stats.normal.played || 0) + (stats.hard.played || 0);
+    if (totalPlayed === 0 && !loadPuzzleState(todayPuzzle.id)) {
       $howToPlay.classList.add('visible');
     }
   }
@@ -1872,6 +2206,35 @@ let PUZZLES = [];
   });
   $archiveBackBtn.addEventListener('click', () => {
     switchView('archive');
+  });
+
+  // Hard Mode toggle
+  $('hardModeToggle').addEventListener('click', () => {
+    const stats = loadStats();
+    const wantsOn = !stats.preferences.hardMode;
+    if (wantsOn && !stats.preferences.hardModeConfirmed) {
+      // First time enabling — show confirmation
+      $('hardModeConfirmModal').classList.add('visible');
+    } else {
+      setHardModePref(wantsOn);
+      renderSettings();
+      applyModeToUnstartedPuzzle();
+    }
+  });
+
+  $('hardModeCancelBtn').addEventListener('click', () => {
+    $('hardModeConfirmModal').classList.remove('visible');
+  });
+  $('hardModeConfirmModal').addEventListener('click', (e) => {
+    if (e.target === $('hardModeConfirmModal')) {
+      $('hardModeConfirmModal').classList.remove('visible');
+    }
+  });
+  $('hardModeConfirmBtn').addEventListener('click', () => {
+    setHardModePref(true);
+    $('hardModeConfirmModal').classList.remove('visible');
+    renderSettings();
+    applyModeToUnstartedPuzzle();
   });
 
   init();
