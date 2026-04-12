@@ -1460,13 +1460,27 @@ let PUZZLES = [];
 
   // If the current puzzle hasn't been started yet, apply the new mode to it
   // so the user doesn't have to refresh to see Hard Mode take effect.
-  function applyModeToUnstartedPuzzle() {
+  function applyModeToCurrentPuzzle() {
     if (!puzzle) return;
-    if (attempts > 0) return;
     if (state === 'SOLVED' || state === 'COMPLETED') return;
     const newMode = getHardModePref() ? 'hard' : 'normal';
     if (newMode === puzzleMode) return;
     puzzleMode = newMode;
+
+    // When switching from hard → normal mid-puzzle, lock any already-correct items
+    // so the UI matches what normal mode would show
+    if (newMode === 'normal' && attempts > 0 && attemptHistory.length > 0) {
+      const lastResult = attemptHistory[attemptHistory.length - 1];
+      lockedPositions = [];
+      lastResult.forEach((correct, i) => { if (correct) lockedPositions.push(i); });
+      renderItems();
+    }
+    // When switching from normal → hard mid-puzzle, unlock everything
+    if (newMode === 'hard' && lockedPositions.length > 0) {
+      lockedPositions = [];
+      renderItems();
+    }
+
     savePuzzleState();
     renderHeader();
   }
@@ -2218,7 +2232,7 @@ let PUZZLES = [];
     } else {
       setHardModePref(wantsOn);
       renderSettings();
-      applyModeToUnstartedPuzzle();
+      applyModeToCurrentPuzzle();
     }
   });
 
@@ -2234,7 +2248,7 @@ let PUZZLES = [];
     setHardModePref(true);
     $('hardModeConfirmModal').classList.remove('visible');
     renderSettings();
-    applyModeToUnstartedPuzzle();
+    applyModeToCurrentPuzzle();
   });
 
   init();
