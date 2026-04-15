@@ -358,5 +358,377 @@
       { "name": "The Hunger Games", "value": "100" },
       { "name": "Diary of a Wimpy Kid", "value": "75" }
     ]
+  },
+  {
+    "id": 31, "date": "2026-05-01", "category": "Geography",
+    "criterion": "Rank these capital cities by elevation, highest to lowest.",
+    "unit": "ft", "source": "World Atlas",
+    "items": [
+      { "name": "La Paz, Bolivia", "value": "11,975" },
+      { "name": "Bogotá, Colombia", "value": "8,612" },
+      { "name": "Mexico City, Mexico", "value": "7,350" },
+      { "name": "Madrid, Spain", "value": "2,188" },
+      { "name": "London, UK", "value": "36" }
+    ]
+  },
+  {
+    "id": 32, "date": "2026-05-02", "category": "Sports",
+    "criterion": "Rank these tennis players by career singles titles, most to fewest.",
+    "unit": "titles", "source": "ATP",
+    "items": [
+      { "name": "Jimmy Connors", "value": "109" },
+      { "name": "Roger Federer", "value": "103" },
+      { "name": "Novak Djokovic", "value": "99" },
+      { "name": "Ivan Lendl", "value": "94" },
+      { "name": "Rafael Nadal", "value": "92" }
+    ]
+  },
+  {
+    "id": 33, "date": "2026-05-03", "category": "Pop Culture",
+    "criterion": "Rank these Pixar films by US box office gross, highest to lowest.",
+    "unit": "million $", "source": "Box Office Mojo",
+    "items": [
+      { "name": "Incredibles 2", "value": "608" },
+      { "name": "Finding Dory", "value": "486" },
+      { "name": "Toy Story 3", "value": "415" },
+      { "name": "Inside Out", "value": "356" },
+      { "name": "Up", "value": "293" }
+    ]
+  },
+  {
+    "id": 34, "date": "2026-05-04", "category": "Science",
+    "criterion": "Rank these planets by diameter, largest to smallest.",
+    "unit": "mi", "source": "NASA",
+    "items": [
+      { "name": "Jupiter", "value": "86,881" },
+      { "name": "Saturn", "value": "72,367" },
+      { "name": "Uranus", "value": "31,518" },
+      { "name": "Neptune", "value": "30,599" },
+      { "name": "Earth", "value": "7,918" }
+    ]
+  },
+  {
+    "id": 35, "date": "2026-05-05", "category": "History",
+    "criterion": "Rank these empires by year of founding, earliest to most recent.",
+    "unit": "", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Roman Republic", "value": "509 BC" },
+      { "name": "Mongol Empire", "value": "1206" },
+      { "name": "Ottoman Empire", "value": "1299" },
+      { "name": "British Empire", "value": "1583" },
+      { "name": "Russian Empire", "value": "1721" }
+    ]
+  },
+  {
+    "id": 36, "date": "2026-05-06", "category": "Food & Drink",
+    "criterion": "Rank these peppers by Scoville heat rating, hottest to mildest.",
+    "unit": "SHU", "source": "Guinness World Records",
+    "items": [
+      { "name": "Carolina Reaper", "value": "2,200,000" },
+      { "name": "Ghost Pepper", "value": "1,000,000" },
+      { "name": "Habanero", "value": "200,000" },
+      { "name": "Jalapeño", "value": "5,000" },
+      { "name": "Bell Pepper", "value": "0" }
+    ]
+  },
+  {
+    "id": 37, "date": "2026-05-07", "category": "Geography",
+    "criterion": "Rank these US national parks by area, largest to smallest.",
+    "unit": "sq mi", "source": "National Park Service",
+    "items": [
+      { "name": "Wrangell–St. Elias", "value": "13,200" },
+      { "name": "Gates of the Arctic", "value": "8,472" },
+      { "name": "Denali", "value": "7,408" },
+      { "name": "Death Valley", "value": "5,270" },
+      { "name": "Yellowstone", "value": "3,468" }
+    ]
+  },
+  {
+    "id": 38, "date": "2026-05-08", "category": "Pop Culture",
+    "criterion": "Rank these Marvel films by US opening weekend, highest to lowest.",
+    "unit": "million $", "source": "Box Office Mojo",
+    "items": [
+      { "name": "Avengers: Endgame", "value": "357" },
+      { "name": "Avengers: Infinity War", "value": "258" },
+      { "name": "Black Panther", "value": "202" },
+      { "name": "Iron Man 3", "value": "174" },
+      { "name": "Captain Marvel", "value": "153" }
+    ]
+  },
+  {
+    "id": 39, "date": "2026-05-09", "category": "Science",
+    "criterion": "Rank these dinosaurs by length, longest to shortest.",
+    "unit": "ft", "source": "Natural History Museum",
+    "items": [
+      { "name": "Argentinosaurus", "value": "115" },
+      { "name": "Diplodocus", "value": "90" },
+      { "name": "Brachiosaurus", "value": "85" },
+      { "name": "Tyrannosaurus rex", "value": "40" },
+      { "name": "Velociraptor", "value": "6" }
+    ]
+  },
+  {
+    "id": 40, "date": "2026-05-10", "category": "History",
+    "criterion": "Rank these famous battles by year, earliest to most recent.",
+    "unit": "", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Battle of Marathon", "value": "490 BC" },
+      { "name": "Battle of Hastings", "value": "1066" },
+      { "name": "Battle of Waterloo", "value": "1815" },
+      { "name": "Battle of Gettysburg", "value": "1863" },
+      { "name": "D-Day (Normandy)", "value": "1944" }
+    ]
+  },
+  {
+    "id": 41, "date": "2026-05-11", "category": "Sports",
+    "criterion": "Rank these NFL quarterbacks by career passing yards, most to fewest.",
+    "unit": "yards", "source": "Pro Football Reference",
+    "items": [
+      { "name": "Tom Brady", "value": "89,214" },
+      { "name": "Drew Brees", "value": "80,358" },
+      { "name": "Peyton Manning", "value": "71,940" },
+      { "name": "Brett Favre", "value": "71,838" },
+      { "name": "Aaron Rodgers", "value": "62,000+" }
+    ]
+  },
+  {
+    "id": 42, "date": "2026-05-12", "category": "Food & Drink",
+    "criterion": "Rank these foods by vitamin C content per 100g, highest to lowest.",
+    "unit": "mg", "source": "USDA",
+    "items": [
+      { "name": "Red Bell Pepper", "value": "128" },
+      { "name": "Broccoli", "value": "89" },
+      { "name": "Brussels Sprouts", "value": "85" },
+      { "name": "Cauliflower", "value": "48" },
+      { "name": "Spinach", "value": "28" }
+    ]
+  },
+  {
+    "id": 43, "date": "2026-05-13", "category": "Geography",
+    "criterion": "Rank these airports by annual passenger traffic, busiest to least busy.",
+    "unit": "million", "source": "ACI World",
+    "items": [
+      { "name": "Atlanta (ATL)", "value": "104.7" },
+      { "name": "Dubai (DXB)", "value": "86.9" },
+      { "name": "Dallas/Fort Worth (DFW)", "value": "81.8" },
+      { "name": "London Heathrow (LHR)", "value": "79.2" },
+      { "name": "Tokyo Haneda (HND)", "value": "78.7" }
+    ]
+  },
+  {
+    "id": 44, "date": "2026-05-14", "category": "Pop Culture",
+    "criterion": "Rank these Beatles albums by year of release, earliest to most recent.",
+    "unit": "", "source": "Apple Records",
+    "items": [
+      { "name": "Please Please Me", "value": "1963" },
+      { "name": "A Hard Day's Night", "value": "1964" },
+      { "name": "Sgt. Pepper's Lonely Hearts Club Band", "value": "1967" },
+      { "name": "Abbey Road", "value": "1969" },
+      { "name": "Let It Be", "value": "1970" }
+    ]
+  },
+  {
+    "id": 45, "date": "2026-05-15", "category": "Science",
+    "criterion": "Rank these stars by distance from Earth, closest to farthest.",
+    "unit": "light years", "source": "NASA",
+    "items": [
+      { "name": "Proxima Centauri", "value": "4.24" },
+      { "name": "Sirius", "value": "8.6" },
+      { "name": "Vega", "value": "25" },
+      { "name": "Arcturus", "value": "37" },
+      { "name": "Polaris", "value": "433" }
+    ]
+  },
+  {
+    "id": 46, "date": "2026-05-16", "category": "History",
+    "criterion": "Rank these documents by year signed, earliest to most recent.",
+    "unit": "", "source": "World History Encyclopedia",
+    "items": [
+      { "name": "Magna Carta", "value": "1215" },
+      { "name": "Declaration of Independence", "value": "1776" },
+      { "name": "Treaty of Versailles", "value": "1919" },
+      { "name": "UN Charter", "value": "1945" },
+      { "name": "Maastricht Treaty", "value": "1992" }
+    ]
+  },
+  {
+    "id": 47, "date": "2026-05-17", "category": "Sports",
+    "criterion": "Rank these golfers by career major championships, most to fewest.",
+    "unit": "majors", "source": "PGA Tour",
+    "items": [
+      { "name": "Jack Nicklaus", "value": "18" },
+      { "name": "Tiger Woods", "value": "15" },
+      { "name": "Walter Hagen", "value": "11" },
+      { "name": "Ben Hogan", "value": "9" },
+      { "name": "Sam Snead", "value": "7" }
+    ]
+  },
+  {
+    "id": 48, "date": "2026-05-18", "category": "Food & Drink",
+    "criterion": "Rank these countries by chocolate consumption per capita, highest to lowest.",
+    "unit": "lbs / person / yr", "source": "Statista",
+    "items": [
+      { "name": "Switzerland", "value": "19.4" },
+      { "name": "Austria", "value": "18.7" },
+      { "name": "Germany", "value": "17.8" },
+      { "name": "Norway", "value": "14.6" },
+      { "name": "United States", "value": "9.1" }
+    ]
+  },
+  {
+    "id": 49, "date": "2026-05-19", "category": "Geography",
+    "criterion": "Rank these languages by number of native speakers, most to fewest.",
+    "unit": "million", "source": "Ethnologue",
+    "items": [
+      { "name": "Mandarin Chinese", "value": "939" },
+      { "name": "Spanish", "value": "485" },
+      { "name": "English", "value": "380" },
+      { "name": "Hindi", "value": "345" },
+      { "name": "Bengali", "value": "234" }
+    ]
+  },
+  {
+    "id": 50, "date": "2026-05-20", "category": "Pop Culture",
+    "criterion": "Rank these Disney animated films by year of release, oldest to newest.",
+    "unit": "", "source": "Walt Disney Animation Studios",
+    "items": [
+      { "name": "Snow White and the Seven Dwarfs", "value": "1937" },
+      { "name": "Cinderella", "value": "1950" },
+      { "name": "The Lion King", "value": "1994" },
+      { "name": "Frozen", "value": "2013" },
+      { "name": "Moana", "value": "2016" }
+    ]
+  },
+  {
+    "id": 51, "date": "2026-05-21", "category": "Science",
+    "criterion": "Rank these animals by top running speed, fastest to slowest.",
+    "unit": "mph", "source": "National Geographic",
+    "items": [
+      { "name": "Cheetah", "value": "75" },
+      { "name": "Pronghorn Antelope", "value": "55" },
+      { "name": "Lion", "value": "50" },
+      { "name": "Greyhound", "value": "45" },
+      { "name": "Human (Usain Bolt)", "value": "27" }
+    ]
+  },
+  {
+    "id": 52, "date": "2026-05-22", "category": "History",
+    "criterion": "Rank these scientists by birth year, earliest to most recent.",
+    "unit": "", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Galileo Galilei", "value": "1564" },
+      { "name": "Isaac Newton", "value": "1643" },
+      { "name": "Charles Darwin", "value": "1809" },
+      { "name": "Marie Curie", "value": "1867" },
+      { "name": "Albert Einstein", "value": "1879" }
+    ]
+  },
+  {
+    "id": 53, "date": "2026-05-23", "category": "Sports",
+    "criterion": "Rank these Premier League clubs by all-time English top-flight titles, most to fewest.",
+    "unit": "titles", "source": "Premier League",
+    "items": [
+      { "name": "Manchester United", "value": "20" },
+      { "name": "Liverpool", "value": "19" },
+      { "name": "Arsenal", "value": "13" },
+      { "name": "Manchester City", "value": "8" },
+      { "name": "Chelsea", "value": "6" }
+    ]
+  },
+  {
+    "id": 54, "date": "2026-05-24", "category": "Food & Drink",
+    "criterion": "Rank these alcoholic beverages by typical alcohol content, highest to lowest.",
+    "unit": "% ABV", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Everclear", "value": "95" },
+      { "name": "Whiskey", "value": "40" },
+      { "name": "Sake", "value": "15" },
+      { "name": "Wine", "value": "12" },
+      { "name": "Beer (Lager)", "value": "5" }
+    ]
+  },
+  {
+    "id": 55, "date": "2026-05-25", "category": "Geography",
+    "criterion": "Rank these suspension bridges by main span length, longest to shortest.",
+    "unit": "ft", "source": "Engineering News-Record",
+    "items": [
+      { "name": "1915 Çanakkale Bridge", "value": "6,637" },
+      { "name": "Akashi Kaikyō Bridge", "value": "6,532" },
+      { "name": "Xihoumen Bridge", "value": "5,413" },
+      { "name": "Great Belt Bridge", "value": "5,328" },
+      { "name": "Golden Gate Bridge", "value": "4,200" }
+    ]
+  },
+  {
+    "id": 56, "date": "2026-05-26", "category": "Pop Culture",
+    "criterion": "Rank these Broadway musicals by total performances, most to fewest.",
+    "unit": "performances", "source": "Internet Broadway Database",
+    "items": [
+      { "name": "The Phantom of the Opera", "value": "13,981" },
+      { "name": "Chicago (Revival)", "value": "11,000+" },
+      { "name": "The Lion King", "value": "10,500+" },
+      { "name": "Wicked", "value": "8,000+" },
+      { "name": "Cats", "value": "7,485" }
+    ]
+  },
+  {
+    "id": 57, "date": "2026-05-27", "category": "Science",
+    "criterion": "Rank these animals by gestation period, longest to shortest.",
+    "unit": "months", "source": "San Diego Zoo",
+    "items": [
+      { "name": "African Elephant", "value": "22" },
+      { "name": "Sperm Whale", "value": "16" },
+      { "name": "Giraffe", "value": "15" },
+      { "name": "Cow", "value": "9" },
+      { "name": "Domestic Dog", "value": "2" }
+    ]
+  },
+  {
+    "id": 58, "date": "2026-05-28", "category": "History",
+    "criterion": "Rank these explorers by birth year, earliest to most recent.",
+    "unit": "", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Marco Polo", "value": "1254" },
+      { "name": "Christopher Columbus", "value": "1451" },
+      { "name": "Ferdinand Magellan", "value": "1480" },
+      { "name": "James Cook", "value": "1728" },
+      { "name": "Roald Amundsen", "value": "1872" }
+    ]
+  },
+  {
+    "id": 59, "date": "2026-05-29", "category": "Sports",
+    "criterion": "Rank these stadiums by seating capacity, largest to smallest.",
+    "unit": "seats", "source": "World Stadiums",
+    "items": [
+      { "name": "Rungrado May Day Stadium", "value": "114,000" },
+      { "name": "Michigan Stadium", "value": "107,601" },
+      { "name": "Beaver Stadium", "value": "106,572" },
+      { "name": "Ohio Stadium", "value": "102,780" },
+      { "name": "Wembley Stadium", "value": "90,000" }
+    ]
+  },
+  {
+    "id": 60, "date": "2026-05-30", "category": "Food & Drink",
+    "criterion": "Rank these countries by annual coffee production, most to fewest.",
+    "unit": "million tons", "source": "International Coffee Organization",
+    "items": [
+      { "name": "Brazil", "value": "3.7" },
+      { "name": "Vietnam", "value": "1.8" },
+      { "name": "Colombia", "value": "0.9" },
+      { "name": "Indonesia", "value": "0.8" },
+      { "name": "Ethiopia", "value": "0.5" }
+    ]
+  },
+  {
+    "id": 61, "date": "2026-05-31", "category": "Pop Culture",
+    "criterion": "Rank these artists by career Grammy wins, most to fewest.",
+    "unit": "Grammys", "source": "Recording Academy",
+    "items": [
+      { "name": "Beyoncé", "value": "32" },
+      { "name": "Quincy Jones", "value": "28" },
+      { "name": "Alison Krauss", "value": "27" },
+      { "name": "Stevie Wonder", "value": "25" },
+      { "name": "Jay-Z", "value": "24" }
+    ]
   }
 ]
