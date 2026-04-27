@@ -730,5 +730,89 @@
       { "name": "Stevie Wonder", "value": "25" },
       { "name": "Jay-Z", "value": "24" }
     ]
+  },
+  {
+    "id": 62, "date": "2026-06-01", "category": "Geography",
+    "criterion": "Rank these lakes by surface area, largest to smallest.",
+    "unit": "sq mi", "source": "National Geographic",
+    "items": [
+      { "name": "Caspian Sea", "value": "143,244" },
+      { "name": "Lake Superior", "value": "31,700" },
+      { "name": "Lake Victoria", "value": "26,590" },
+      { "name": "Lake Huron", "value": "23,010" },
+      { "name": "Lake Michigan", "value": "22,404" }
+    ]
+  },
+  {
+    "id": 63, "date": "2026-06-02", "category": "Science",
+    "criterion": "Rank these human organs by weight, heaviest to lightest.",
+    "unit": "g", "source": "Gray's Anatomy",
+    "items": [
+      { "name": "Skin", "value": "8,000" },
+      { "name": "Liver", "value": "1,500" },
+      { "name": "Brain", "value": "1,400" },
+      { "name": "Lungs (pair)", "value": "1,000" },
+      { "name": "Heart", "value": "300" }
+    ]
+  },
+  {
+    "id": 64, "date": "2026-06-03", "category": "History",
+    "criterion": "Rank these Seven Wonders of the Ancient World by year built, oldest to most recent.",
+    "unit": "", "source": "World History Encyclopedia",
+    "items": [
+      { "name": "Great Pyramid of Giza", "value": "~2560 BC" },
+      { "name": "Temple of Artemis", "value": "~550 BC" },
+      { "name": "Statue of Zeus", "value": "~435 BC" },
+      { "name": "Mausoleum at Halicarnassus", "value": "~350 BC" },
+      { "name": "Colossus of Rhodes", "value": "~280 BC" }
+    ]
+  },
+  {
+    "id": 65, "date": "2026-06-04", "category": "Sports",
+    "criterion": "Rank these NASCAR Cup Series drivers by career wins, most to fewest.",
+    "unit": "wins", "source": "NASCAR",
+    "items": [
+      { "name": "Richard Petty", "value": "200" },
+      { "name": "David Pearson", "value": "105" },
+      { "name": "Jeff Gordon", "value": "93" },
+      { "name": "Jimmie Johnson", "value": "83" },
+      { "name": "Dale Earnhardt Sr.", "value": "76" }
+    ]
+  },
+  {
+    "id": 66, "date": "2026-06-05", "category": "Food & Drink",
+    "criterion": "Rank these cooking oils by smoke point, highest to lowest.",
+    "unit": "°F", "source": "USDA",
+    "items": [
+      { "name": "Avocado oil", "value": "520" },
+      { "name": "Refined coconut oil", "value": "450" },
+      { "name": "Canola oil", "value": "400" },
+      { "name": "Extra virgin olive oil", "value": "375" },
+      { "name": "Flaxseed oil", "value": "225" }
+    ]
+  },
+  {
+    "id": 67, "date": "2026-06-06", "category": "Pop Culture",
+    "criterion": "Rank these classic novels by year of first publication, oldest to newest.",
+    "unit": "", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Don Quixote", "value": "1605" },
+      { "name": "Pride and Prejudice", "value": "1813" },
+      { "name": "Moby Dick", "value": "1851" },
+      { "name": "1984", "value": "1949" },
+      { "name": "To Kill a Mockingbird", "value": "1960" }
+    ]
+  },
+  {
+    "id": 68, "date": "2026-06-07", "category": "Science",
+    "criterion": "Rank these planets by rotation period (length of day), longest to shortest.",
+    "unit": "hrs", "source": "NASA",
+    "items": [
+      { "name": "Venus", "value": "5,832" },
+      { "name": "Mercury", "value": "1,407" },
+      { "name": "Earth", "value": "24" },
+      { "name": "Neptune", "value": "16" },
+      { "name": "Jupiter", "value": "9.9" }
+    ]
   }
 ]
