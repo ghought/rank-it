@@ -814,5 +814,89 @@
       { "name": "Neptune", "value": "16" },
       { "name": "Jupiter", "value": "9.9" }
     ]
+  },
+  {
+    "id": 69, "date": "2026-06-08", "category": "Geography",
+    "criterion": "Rank these U.S. states by population density, highest to lowest.",
+    "unit": "people/sq mi", "source": "U.S. Census Bureau (2020)",
+    "items": [
+      { "name": "New Jersey", "value": "1,263" },
+      { "name": "Rhode Island", "value": "1,061" },
+      { "name": "Massachusetts", "value": "902" },
+      { "name": "Connecticut", "value": "742" },
+      { "name": "Maryland", "value": "636" }
+    ]
+  },
+  {
+    "id": 70, "date": "2026-06-09", "category": "Sports",
+    "criterion": "Rank these NFL quarterbacks by career touchdown passes, most to fewest.",
+    "unit": "TDs", "source": "Pro Football Reference",
+    "items": [
+      { "name": "Tom Brady", "value": "649" },
+      { "name": "Drew Brees", "value": "571" },
+      { "name": "Peyton Manning", "value": "539" },
+      { "name": "Brett Favre", "value": "508" },
+      { "name": "Aaron Rodgers", "value": "475" }
+    ]
+  },
+  {
+    "id": 71, "date": "2026-06-10", "category": "History",
+    "criterion": "Rank these U.S. wars by American military deaths, most to fewest.",
+    "unit": "deaths", "source": "U.S. Dept. of Veterans Affairs",
+    "items": [
+      { "name": "Civil War", "value": "620,000" },
+      { "name": "World War II", "value": "405,399" },
+      { "name": "World War I", "value": "116,516" },
+      { "name": "Vietnam War", "value": "58,220" },
+      { "name": "Korean War", "value": "36,574" }
+    ]
+  },
+  {
+    "id": 72, "date": "2026-06-11", "category": "Food & Drink",
+    "criterion": "Rank these countries by annual coffee consumption per capita, highest to lowest.",
+    "unit": "lbs/person/yr", "source": "International Coffee Organization (2023)",
+    "items": [
+      { "name": "Finland", "value": "26.4" },
+      { "name": "Norway", "value": "21.8" },
+      { "name": "Iceland", "value": "19.8" },
+      { "name": "Denmark", "value": "19.2" },
+      { "name": "Netherlands", "value": "18.5" }
+    ]
+  },
+  {
+    "id": 73, "date": "2026-06-12", "category": "Pop Culture",
+    "criterion": "Rank these Disney animated films by worldwide box office gross, highest to lowest.",
+    "unit": "$M", "source": "Box Office Mojo",
+    "items": [
+      { "name": "Frozen II", "value": "1,450" },
+      { "name": "Frozen", "value": "1,280" },
+      { "name": "Incredibles 2", "value": "1,243" },
+      { "name": "Zootopia", "value": "1,024" },
+      { "name": "Moana", "value": "643" }
+    ]
+  },
+  {
+    "id": 74, "date": "2026-06-13", "category": "Science",
+    "criterion": "Rank these elements by melting point, highest to lowest.",
+    "unit": "°F", "source": "WebElements",
+    "items": [
+      { "name": "Tungsten", "value": "6,192" },
+      { "name": "Iron", "value": "2,800" },
+      { "name": "Gold", "value": "1,948" },
+      { "name": "Aluminum", "value": "1,220" },
+      { "name": "Mercury", "value": "-38" }
+    ]
+  },
+  {
+    "id": 75, "date": "2026-06-14", "category": "Geography",
+    "criterion": "Rank these countries by total land area, largest to smallest.",
+    "unit": "sq mi", "source": "CIA World Factbook",
+    "items": [
+      { "name": "Russia", "value": "6,601,668" },
+      { "name": "Canada", "value": "3,855,100" },
+      { "name": "United States", "value": "3,796,742" },
+      { "name": "China", "value": "3,705,407" },
+      { "name": "Brazil", "value": "3,287,956" }
+    ]
   }
 ]
