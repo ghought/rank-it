@@ -898,5 +898,89 @@
       { "name": "China", "value": "3,705,407" },
       { "name": "Brazil", "value": "3,287,956" }
     ]
+  },
+  {
+    "id": 76, "date": "2026-06-15", "category": "Sports",
+    "criterion": "Rank these Formula 1 drivers by career race wins, most to fewest.",
+    "unit": "wins", "source": "Formula 1 official records (2024)",
+    "items": [
+      { "name": "Lewis Hamilton", "value": "103" },
+      { "name": "Michael Schumacher", "value": "91" },
+      { "name": "Sebastian Vettel", "value": "53" },
+      { "name": "Alain Prost", "value": "51" },
+      { "name": "Ayrton Senna", "value": "41" }
+    ]
+  },
+  {
+    "id": 77, "date": "2026-06-16", "category": "History",
+    "criterion": "Rank these ancient structures by approximate year of completion, oldest to newest.",
+    "unit": "year", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Stonehenge", "value": "~3000 BC" },
+      { "name": "Great Pyramid of Giza", "value": "~2560 BC" },
+      { "name": "Parthenon", "value": "~438 BC" },
+      { "name": "Colosseum", "value": "80 AD" },
+      { "name": "Angkor Wat", "value": "~1150 AD" }
+    ]
+  },
+  {
+    "id": 78, "date": "2026-06-17", "category": "Food & Drink",
+    "criterion": "Rank these countries by annual wine production, most to least.",
+    "unit": "billion liters/yr", "source": "OIV World Wine Report (2023)",
+    "items": [
+      { "name": "Italy", "value": "4.9" },
+      { "name": "France", "value": "4.5" },
+      { "name": "Spain", "value": "3.4" },
+      { "name": "United States", "value": "2.4" },
+      { "name": "Argentina", "value": "1.5" }
+    ]
+  },
+  {
+    "id": 79, "date": "2026-06-18", "category": "Science",
+    "criterion": "Rank these elements by atomic weight, lightest to heaviest.",
+    "unit": "atomic mass units", "source": "IUPAC periodic table",
+    "items": [
+      { "name": "Hydrogen", "value": "1" },
+      { "name": "Carbon", "value": "12" },
+      { "name": "Oxygen", "value": "16" },
+      { "name": "Iron", "value": "56" },
+      { "name": "Gold", "value": "197" }
+    ]
+  },
+  {
+    "id": 80, "date": "2026-06-19", "category": "Pop Culture",
+    "criterion": "Rank these streaming services by global subscribers, most to fewest.",
+    "unit": "million subscribers", "source": "company earnings reports (Q3 2024)",
+    "items": [
+      { "name": "Netflix", "value": "269" },
+      { "name": "Disney+", "value": "122" },
+      { "name": "Max", "value": "103" },
+      { "name": "Peacock", "value": "33" },
+      { "name": "Apple TV+", "value": "~25" }
+    ]
+  },
+  {
+    "id": 81, "date": "2026-06-20", "category": "Geography",
+    "criterion": "Rank these waterfalls by height, tallest to shortest.",
+    "unit": "ft", "source": "UNESCO / National Geographic",
+    "items": [
+      { "name": "Angel Falls", "value": "3,212" },
+      { "name": "Tugela Falls", "value": "3,110" },
+      { "name": "Yosemite Falls", "value": "2,425" },
+      { "name": "Iguazu Falls", "value": "269" },
+      { "name": "Niagara Falls", "value": "167" }
+    ]
+  },
+  {
+    "id": 82, "date": "2026-06-21", "category": "History",
+    "criterion": "Rank these U.S. Presidents by age at inauguration, youngest to oldest.",
+    "unit": "years old", "source": "White House Historical Association",
+    "items": [
+      { "name": "Theodore Roosevelt", "value": "42" },
+      { "name": "John F. Kennedy", "value": "43" },
+      { "name": "Bill Clinton", "value": "46" },
+      { "name": "Barack Obama", "value": "47" },
+      { "name": "Ronald Reagan", "value": "69" }
+    ]
   }
 ]
