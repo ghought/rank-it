@@ -982,5 +982,89 @@
       { "name": "Barack Obama", "value": "47" },
       { "name": "Ronald Reagan", "value": "69" }
     ]
+  },
+  {
+    "id": 83, "date": "2026-06-22", "category": "Science",
+    "criterion": "Rank these materials by the speed of sound through them, slowest to fastest.",
+    "unit": "m/s", "source": "Physics textbooks / Engineering reference",
+    "items": [
+      { "name": "Air (20°C)", "value": "343" },
+      { "name": "Water", "value": "1,480" },
+      { "name": "Wood (oak)", "value": "3,850" },
+      { "name": "Aluminum", "value": "6,320" },
+      { "name": "Diamond", "value": "12,000" }
+    ]
+  },
+  {
+    "id": 84, "date": "2026-06-23", "category": "Pop Culture",
+    "criterion": "Rank these music albums by estimated worldwide sales, best-selling to fewest.",
+    "unit": "million copies", "source": "RIAA / Recording Industry estimates",
+    "items": [
+      { "name": "Thriller (Michael Jackson)", "value": "70" },
+      { "name": "Back in Black (AC/DC)", "value": "50" },
+      { "name": "The Dark Side of the Moon (Pink Floyd)", "value": "45" },
+      { "name": "Led Zeppelin IV", "value": "37" },
+      { "name": "Hotel California (Eagles)", "value": "32" }
+    ]
+  },
+  {
+    "id": 85, "date": "2026-06-24", "category": "Sports",
+    "criterion": "Rank these NBA players by career points scored, most to fewest.",
+    "unit": "career points", "source": "NBA.com",
+    "items": [
+      { "name": "LeBron James", "value": "40,022" },
+      { "name": "Kareem Abdul-Jabbar", "value": "38,387" },
+      { "name": "Karl Malone", "value": "36,928" },
+      { "name": "Kobe Bryant", "value": "33,643" },
+      { "name": "Michael Jordan", "value": "32,292" }
+    ]
+  },
+  {
+    "id": 86, "date": "2026-06-25", "category": "Geography",
+    "criterion": "Rank these deserts by area, largest to smallest.",
+    "unit": "sq km", "source": "National Geographic",
+    "items": [
+      { "name": "Sahara", "value": "9,200,000" },
+      { "name": "Arabian Desert", "value": "2,330,000" },
+      { "name": "Gobi Desert", "value": "1,295,000" },
+      { "name": "Patagonian Desert", "value": "670,000" },
+      { "name": "Great Victoria Desert", "value": "647,000" }
+    ]
+  },
+  {
+    "id": 87, "date": "2026-06-26", "category": "Food & Drink",
+    "criterion": "Rank these foods by calories per 100g, lowest to highest.",
+    "unit": "calories per 100g", "source": "USDA FoodData Central",
+    "items": [
+      { "name": "Cucumber", "value": "15" },
+      { "name": "Strawberry", "value": "33" },
+      { "name": "Apple", "value": "52" },
+      { "name": "Banana", "value": "89" },
+      { "name": "Peanut butter", "value": "588" }
+    ]
+  },
+  {
+    "id": 88, "date": "2026-06-27", "category": "Science",
+    "criterion": "Rank these planets by number of known moons, fewest to most.",
+    "unit": "known moons", "source": "NASA (2024)",
+    "items": [
+      { "name": "Venus", "value": "0" },
+      { "name": "Earth", "value": "1" },
+      { "name": "Mars", "value": "2" },
+      { "name": "Neptune", "value": "16" },
+      { "name": "Saturn", "value": "146" }
+    ]
+  },
+  {
+    "id": 89, "date": "2026-06-28", "category": "History",
+    "criterion": "Rank these U.S. states by year admitted to the Union, earliest to latest.",
+    "unit": "year admitted", "source": "U.S. National Archives",
+    "items": [
+      { "name": "Delaware", "value": "1787" },
+      { "name": "Ohio", "value": "1803" },
+      { "name": "Texas", "value": "1845" },
+      { "name": "California", "value": "1850" },
+      { "name": "Hawaii", "value": "1959" }
+    ]
   }
 ]
