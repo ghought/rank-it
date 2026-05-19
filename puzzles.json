@@ -877,26 +877,26 @@
   },
   {
     "id": 74, "date": "2026-06-13", "category": "Science",
-    "criterion": "Rank these elements by melting point, highest to lowest.",
-    "unit": "°F", "source": "WebElements",
+    "criterion": "Rank these metals by density, heaviest to lightest.",
+    "unit": "g/cm³", "source": "CRC Handbook of Chemistry and Physics",
     "items": [
-      { "name": "Tungsten", "value": "6,192" },
-      { "name": "Iron", "value": "2,800" },
-      { "name": "Gold", "value": "1,948" },
-      { "name": "Aluminum", "value": "1,220" },
-      { "name": "Mercury", "value": "-38" }
+      { "name": "Osmium", "value": "22.59" },
+      { "name": "Platinum", "value": "21.45" },
+      { "name": "Gold", "value": "19.32" },
+      { "name": "Iron", "value": "7.87" },
+      { "name": "Aluminum", "value": "2.70" }
     ]
   },
   {
     "id": 75, "date": "2026-06-14", "category": "Geography",
-    "criterion": "Rank these countries by total land area, largest to smallest.",
-    "unit": "sq mi", "source": "CIA World Factbook",
+    "criterion": "Rank these countries by number of islands, most to fewest.",
+    "unit": "islands", "source": "national geographic surveys",
     "items": [
-      { "name": "Russia", "value": "6,601,668" },
-      { "name": "Canada", "value": "3,855,100" },
-      { "name": "United States", "value": "3,796,742" },
-      { "name": "China", "value": "3,705,407" },
-      { "name": "Brazil", "value": "3,287,956" }
+      { "name": "Sweden", "value": "220,000" },
+      { "name": "Finland", "value": "188,000" },
+      { "name": "Norway", "value": "50,000" },
+      { "name": "Indonesia", "value": "17,508" },
+      { "name": "Philippines", "value": "7,641" }
     ]
   },
   {
@@ -913,14 +913,14 @@
   },
   {
     "id": 77, "date": "2026-06-16", "category": "History",
-    "criterion": "Rank these ancient structures by approximate year of completion, oldest to newest.",
-    "unit": "year", "source": "Encyclopedia Britannica",
+    "criterion": "Rank these Nobel Peace Prize winners by year awarded, earliest to most recent.",
+    "unit": "year", "source": "Nobel Prize organization",
     "items": [
-      { "name": "Stonehenge", "value": "~3000 BC" },
-      { "name": "Great Pyramid of Giza", "value": "~2560 BC" },
-      { "name": "Parthenon", "value": "~438 BC" },
-      { "name": "Colosseum", "value": "80 AD" },
-      { "name": "Angkor Wat", "value": "~1150 AD" }
+      { "name": "Henri Dunant", "value": "1901" },
+      { "name": "Albert Schweitzer", "value": "1952" },
+      { "name": "Mother Teresa", "value": "1979" },
+      { "name": "Nelson Mandela", "value": "1993" },
+      { "name": "Malala Yousafzai", "value": "2014" }
     ]
   },
   {
@@ -997,38 +997,38 @@
   },
   {
     "id": 84, "date": "2026-06-23", "category": "Pop Culture",
-    "criterion": "Rank these music albums by estimated worldwide sales, best-selling to fewest.",
-    "unit": "million copies", "source": "RIAA / Recording Industry estimates",
+    "criterion": "Rank these films by runtime, longest to shortest.",
+    "unit": "minutes", "source": "IMDb",
     "items": [
-      { "name": "Thriller (Michael Jackson)", "value": "70" },
-      { "name": "Back in Black (AC/DC)", "value": "50" },
-      { "name": "The Dark Side of the Moon (Pink Floyd)", "value": "45" },
-      { "name": "Led Zeppelin IV", "value": "37" },
-      { "name": "Hotel California (Eagles)", "value": "32" }
+      { "name": "Gone with the Wind", "value": "238" },
+      { "name": "The Godfather Part II", "value": "202" },
+      { "name": "Avengers: Endgame", "value": "181" },
+      { "name": "Pulp Fiction", "value": "154" },
+      { "name": "The Dark Knight", "value": "152" }
     ]
   },
   {
     "id": 85, "date": "2026-06-24", "category": "Sports",
-    "criterion": "Rank these NBA players by career points scored, most to fewest.",
-    "unit": "career points", "source": "NBA.com",
+    "criterion": "Rank these NHL players by career goals scored, most to fewest.",
+    "unit": "career goals", "source": "NHL.com",
     "items": [
-      { "name": "LeBron James", "value": "40,022" },
-      { "name": "Kareem Abdul-Jabbar", "value": "38,387" },
-      { "name": "Karl Malone", "value": "36,928" },
-      { "name": "Kobe Bryant", "value": "33,643" },
-      { "name": "Michael Jordan", "value": "32,292" }
+      { "name": "Wayne Gretzky", "value": "894" },
+      { "name": "Gordie Howe", "value": "801" },
+      { "name": "Jaromir Jagr", "value": "766" },
+      { "name": "Brett Hull", "value": "741" },
+      { "name": "Marcel Dionne", "value": "731" }
     ]
   },
   {
     "id": 86, "date": "2026-06-25", "category": "Geography",
-    "criterion": "Rank these deserts by area, largest to smallest.",
-    "unit": "sq km", "source": "National Geographic",
+    "criterion": "Rank these oceans by average depth, deepest to shallowest.",
+    "unit": "m", "source": "NOAA",
     "items": [
-      { "name": "Sahara", "value": "9,200,000" },
-      { "name": "Arabian Desert", "value": "2,330,000" },
-      { "name": "Gobi Desert", "value": "1,295,000" },
-      { "name": "Patagonian Desert", "value": "670,000" },
-      { "name": "Great Victoria Desert", "value": "647,000" }
+      { "name": "Pacific Ocean", "value": "4,280" },
+      { "name": "Indian Ocean", "value": "3,963" },
+      { "name": "Atlantic Ocean", "value": "3,332" },
+      { "name": "Southern Ocean", "value": "3,270" },
+      { "name": "Arctic Ocean", "value": "1,205" }
     ]
   },
   {
@@ -1045,14 +1045,14 @@
   },
   {
     "id": 88, "date": "2026-06-27", "category": "Science",
-    "criterion": "Rank these planets by number of known moons, fewest to most.",
-    "unit": "known moons", "source": "NASA (2024)",
+    "criterion": "Rank these elements by boiling point, lowest to highest.",
+    "unit": "°C", "source": "CRC Handbook of Chemistry and Physics",
     "items": [
-      { "name": "Venus", "value": "0" },
-      { "name": "Earth", "value": "1" },
-      { "name": "Mars", "value": "2" },
-      { "name": "Neptune", "value": "16" },
-      { "name": "Saturn", "value": "146" }
+      { "name": "Hydrogen", "value": "-253" },
+      { "name": "Nitrogen", "value": "-196" },
+      { "name": "Oxygen", "value": "-183" },
+      { "name": "Mercury", "value": "357" },
+      { "name": "Iron", "value": "2,862" }
     ]
   },
   {
