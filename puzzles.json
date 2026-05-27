@@ -1066,5 +1066,89 @@
       { "name": "California", "value": "1850" },
       { "name": "Hawaii", "value": "1959" }
     ]
+  },
+  {
+    "id": 90, "date": "2026-06-29", "category": "Sports",
+    "criterion": "Rank these MLB players by career home runs, most to fewest.",
+    "unit": "career HR", "source": "Baseball Reference",
+    "items": [
+      { "name": "Barry Bonds", "value": "762" },
+      { "name": "Hank Aaron", "value": "755" },
+      { "name": "Babe Ruth", "value": "714" },
+      { "name": "Alex Rodriguez", "value": "696" },
+      { "name": "Willie Mays", "value": "660" }
+    ]
+  },
+  {
+    "id": 91, "date": "2026-06-30", "category": "Geography",
+    "criterion": "Rank these countries by total coastline length, longest to shortest.",
+    "unit": "km", "source": "CIA World Factbook",
+    "items": [
+      { "name": "Canada", "value": "202,080" },
+      { "name": "Indonesia", "value": "54,716" },
+      { "name": "Russia", "value": "37,653" },
+      { "name": "Philippines", "value": "36,289" },
+      { "name": "Japan", "value": "29,751" }
+    ]
+  },
+  {
+    "id": 92, "date": "2026-07-01", "category": "Science",
+    "criterion": "Rank these animals by maximum recorded diving depth, deepest to shallowest.",
+    "unit": "m", "source": "NOAA / peer-reviewed marine biology studies",
+    "items": [
+      { "name": "Cuvier's beaked whale", "value": "2,992" },
+      { "name": "Southern elephant seal", "value": "2,388" },
+      { "name": "Leatherback sea turtle", "value": "1,200" },
+      { "name": "Emperor penguin", "value": "564" },
+      { "name": "Bottlenose dolphin", "value": "300" }
+    ]
+  },
+  {
+    "id": 93, "date": "2026-07-02", "category": "Pop Culture",
+    "criterion": "Rank these video game consoles by lifetime units sold, most to fewest.",
+    "unit": "million units sold", "source": "Nintendo / Sony official sales figures",
+    "items": [
+      { "name": "PlayStation 2", "value": "155" },
+      { "name": "Nintendo DS", "value": "154" },
+      { "name": "Game Boy / Game Boy Color", "value": "119" },
+      { "name": "PlayStation", "value": "102" },
+      { "name": "Game Boy Advance", "value": "82" }
+    ]
+  },
+  {
+    "id": 94, "date": "2026-07-03", "category": "History",
+    "criterion": "Rank these classical composers by birth year, earliest to most recent.",
+    "unit": "birth year", "source": "Encyclopedia Britannica",
+    "items": [
+      { "name": "Johann Sebastian Bach", "value": "1685" },
+      { "name": "Wolfgang Amadeus Mozart", "value": "1756" },
+      { "name": "Ludwig van Beethoven", "value": "1770" },
+      { "name": "Frédéric Chopin", "value": "1810" },
+      { "name": "Johannes Brahms", "value": "1833" }
+    ]
+  },
+  {
+    "id": 95, "date": "2026-07-04", "category": "Food & Drink",
+    "criterion": "Rank these countries by annual beer consumption per capita, highest to lowest.",
+    "unit": "liters per person per year", "source": "Statista / Kirin Beer University Report",
+    "items": [
+      { "name": "Czech Republic", "value": "143" },
+      { "name": "Austria", "value": "108" },
+      { "name": "Germany", "value": "99" },
+      { "name": "Ireland", "value": "87" },
+      { "name": "Denmark", "value": "72" }
+    ]
+  },
+  {
+    "id": 96, "date": "2026-07-05", "category": "Science",
+    "criterion": "Rank these solar system moons by diameter, largest to smallest.",
+    "unit": "km", "source": "NASA Solar System Exploration",
+    "items": [
+      { "name": "Ganymede", "value": "5,268" },
+      { "name": "Titan", "value": "5,150" },
+      { "name": "Callisto", "value": "4,821" },
+      { "name": "Io", "value": "3,643" },
+      { "name": "Moon (Earth)", "value": "3,474" }
+    ]
   }
 ]
