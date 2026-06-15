@@ -1,1154 +1,3092 @@
 [
   {
-    "id": 1, "date": "2026-04-01", "category": "Geography",
+    "id": 1,
+    "date": "2026-04-01",
+    "category": "Geography",
     "criterion": "Rank these mountains by height, tallest to shortest.",
-    "unit": "ft", "source": "National Geographic",
+    "unit": "ft",
+    "source": "National Geographic",
     "items": [
-      { "name": "Mount Everest", "value": "29,032" },
-      { "name": "K2", "value": "28,251" },
-      { "name": "Kangchenjunga", "value": "28,169" },
-      { "name": "Mount Kilimanjaro", "value": "19,341" },
-      { "name": "Mont Blanc", "value": "15,774" }
+      {
+        "name": "Mount Everest",
+        "value": "29,032"
+      },
+      {
+        "name": "K2",
+        "value": "28,251"
+      },
+      {
+        "name": "Kangchenjunga",
+        "value": "28,169"
+      },
+      {
+        "name": "Mount Kilimanjaro",
+        "value": "19,341"
+      },
+      {
+        "name": "Mont Blanc",
+        "value": "15,774"
+      }
     ]
   },
   {
-    "id": 2, "date": "2026-04-02", "category": "Pop Culture",
+    "id": 2,
+    "date": "2026-04-02",
+    "category": "Pop Culture",
     "criterion": "Rank these films by worldwide box office gross, highest to lowest.",
-    "unit": "billion $", "source": "Box Office Mojo",
+    "unit": "billion $",
+    "source": "Box Office Mojo",
     "items": [
-      { "name": "Avatar", "value": "2.92" },
-      { "name": "Avengers: Endgame", "value": "2.80" },
-      { "name": "Titanic", "value": "2.26" },
-      { "name": "Star Wars: The Force Awakens", "value": "2.07" },
-      { "name": "Barbie", "value": "1.44" }
+      {
+        "name": "Avatar",
+        "value": "2.92"
+      },
+      {
+        "name": "Avengers: Endgame",
+        "value": "2.80"
+      },
+      {
+        "name": "Titanic",
+        "value": "2.26"
+      },
+      {
+        "name": "Star Wars: The Force Awakens",
+        "value": "2.07"
+      },
+      {
+        "name": "Barbie",
+        "value": "1.44"
+      }
     ]
   },
   {
-    "id": 5, "date": "2026-04-05", "category": "Science",
+    "id": 5,
+    "date": "2026-04-05",
+    "category": "Science",
     "criterion": "Rank these planets by distance from the Sun, closest to farthest.",
-    "unit": "million mi", "source": "NASA",
+    "unit": "million mi",
+    "source": "NASA",
     "items": [
-      { "name": "Mercury", "value": "36" },
-      { "name": "Earth", "value": "93" },
-      { "name": "Mars", "value": "142" },
-      { "name": "Jupiter", "value": "484" },
-      { "name": "Neptune", "value": "2,793" }
+      {
+        "name": "Mercury",
+        "value": "36"
+      },
+      {
+        "name": "Earth",
+        "value": "93"
+      },
+      {
+        "name": "Mars",
+        "value": "142"
+      },
+      {
+        "name": "Jupiter",
+        "value": "484"
+      },
+      {
+        "name": "Neptune",
+        "value": "2,793"
+      }
     ]
   },
   {
-    "id": 4, "date": "2026-04-04", "category": "History",
+    "id": 4,
+    "date": "2026-04-04",
+    "category": "History",
     "criterion": "Rank these inventions by year of invention, earliest to most recent.",
-    "unit": "", "source": "Encyclopedia Britannica",
+    "unit": "",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Wheel", "value": "~3500 BC" },
-      { "name": "Printing Press", "value": "1440" },
-      { "name": "Telephone", "value": "1876" },
-      { "name": "Light Bulb", "value": "1879" },
-      { "name": "Internet", "value": "1983" }
+      {
+        "name": "Wheel",
+        "value": "~3500 BC"
+      },
+      {
+        "name": "Printing Press",
+        "value": "1440"
+      },
+      {
+        "name": "Telephone",
+        "value": "1876"
+      },
+      {
+        "name": "Light Bulb",
+        "value": "1879"
+      },
+      {
+        "name": "Internet",
+        "value": "1983"
+      }
     ]
   },
   {
-    "id": 3, "date": "2026-04-03", "category": "Sports",
+    "id": 3,
+    "date": "2026-04-03",
+    "category": "Sports",
     "criterion": "Rank these NBA players by career points scored, most to fewest.",
-    "unit": "pts", "source": "Basketball Reference",
+    "unit": "pts",
+    "source": "Basketball Reference",
     "items": [
-      { "name": "LeBron James", "value": "42,000+" },
-      { "name": "Kareem Abdul-Jabbar", "value": "38,387" },
-      { "name": "Karl Malone", "value": "36,928" },
-      { "name": "Kobe Bryant", "value": "33,643" },
-      { "name": "Michael Jordan", "value": "32,292" }
+      {
+        "name": "LeBron James",
+        "value": "42,000+"
+      },
+      {
+        "name": "Kareem Abdul-Jabbar",
+        "value": "38,387"
+      },
+      {
+        "name": "Karl Malone",
+        "value": "36,928"
+      },
+      {
+        "name": "Kobe Bryant",
+        "value": "33,643"
+      },
+      {
+        "name": "Michael Jordan",
+        "value": "32,292"
+      }
     ]
   },
   {
-    "id": 6, "date": "2026-04-06", "category": "Geography",
+    "id": 6,
+    "date": "2026-04-06",
+    "category": "Geography",
     "criterion": "Rank these countries by total land area, largest to smallest.",
-    "unit": "million km²", "source": "World Bank",
+    "unit": "million km\u00b2",
+    "source": "World Bank",
     "items": [
-      { "name": "Russia", "value": "17.1" },
-      { "name": "Canada", "value": "10.0" },
-      { "name": "United States", "value": "9.8" },
-      { "name": "Brazil", "value": "8.5" },
-      { "name": "Australia", "value": "7.7" }
+      {
+        "name": "Russia",
+        "value": "17.1"
+      },
+      {
+        "name": "Canada",
+        "value": "10.0"
+      },
+      {
+        "name": "United States",
+        "value": "9.8"
+      },
+      {
+        "name": "Brazil",
+        "value": "8.5"
+      },
+      {
+        "name": "Australia",
+        "value": "7.7"
+      }
     ]
   },
   {
-    "id": 7, "date": "2026-04-07", "category": "Food & Drink",
+    "id": 7,
+    "date": "2026-04-07",
+    "category": "Food & Drink",
     "criterion": "Rank these drinks by caffeine content per 8 oz serving, highest to lowest.",
-    "unit": "mg", "source": "USDA",
+    "unit": "mg",
+    "source": "USDA",
     "items": [
-      { "name": "Cold Brew Coffee", "value": "200" },
-      { "name": "Drip Coffee", "value": "95" },
-      { "name": "Espresso (8 oz)", "value": "63" },
-      { "name": "Black Tea", "value": "47" },
-      { "name": "Green Tea", "value": "28" }
+      {
+        "name": "Cold Brew Coffee",
+        "value": "200"
+      },
+      {
+        "name": "Drip Coffee",
+        "value": "95"
+      },
+      {
+        "name": "Espresso (8 oz)",
+        "value": "63"
+      },
+      {
+        "name": "Black Tea",
+        "value": "47"
+      },
+      {
+        "name": "Green Tea",
+        "value": "28"
+      }
     ]
   },
   {
-    "id": 8, "date": "2026-04-08", "category": "Pop Culture",
+    "id": 8,
+    "date": "2026-04-08",
+    "category": "Pop Culture",
     "criterion": "Rank these TV shows by total number of episodes, most to fewest.",
-    "unit": "episodes", "source": "IMDb",
+    "unit": "episodes",
+    "source": "IMDb",
     "items": [
-      { "name": "The Simpsons", "value": "770+" },
-      { "name": "Law & Order: SVU", "value": "580+" },
-      { "name": "Grey's Anatomy", "value": "440+" },
-      { "name": "The Office (US)", "value": "201" },
-      { "name": "Breaking Bad", "value": "62" }
+      {
+        "name": "The Simpsons",
+        "value": "770+"
+      },
+      {
+        "name": "Law & Order: SVU",
+        "value": "580+"
+      },
+      {
+        "name": "Grey's Anatomy",
+        "value": "440+"
+      },
+      {
+        "name": "The Office (US)",
+        "value": "201"
+      },
+      {
+        "name": "Breaking Bad",
+        "value": "62"
+      }
     ]
   },
   {
-    "id": 9, "date": "2026-04-09", "category": "Geography",
+    "id": 9,
+    "date": "2026-04-09",
+    "category": "Geography",
     "criterion": "Rank these cities by population, largest to smallest.",
-    "unit": "million", "source": "United Nations",
+    "unit": "million",
+    "source": "United Nations",
     "items": [
-      { "name": "Tokyo", "value": "37.4" },
-      { "name": "Delhi", "value": "32.9" },
-      { "name": "Shanghai", "value": "29.2" },
-      { "name": "São Paulo", "value": "22.6" },
-      { "name": "Mexico City", "value": "22.1" }
+      {
+        "name": "Tokyo",
+        "value": "37.4"
+      },
+      {
+        "name": "Delhi",
+        "value": "32.9"
+      },
+      {
+        "name": "Shanghai",
+        "value": "29.2"
+      },
+      {
+        "name": "S\u00e3o Paulo",
+        "value": "22.6"
+      },
+      {
+        "name": "Mexico City",
+        "value": "22.1"
+      }
     ]
   },
   {
-    "id": 10, "date": "2026-04-10", "category": "Science",
+    "id": 10,
+    "date": "2026-04-10",
+    "category": "Science",
     "criterion": "Rank these animals by average lifespan, longest to shortest.",
-    "unit": "years", "source": "National Geographic",
+    "unit": "years",
+    "source": "National Geographic",
     "items": [
-      { "name": "Greenland Shark", "value": "400" },
-      { "name": "Galápagos Tortoise", "value": "175" },
-      { "name": "African Elephant", "value": "70" },
-      { "name": "Bottlenose Dolphin", "value": "45" },
-      { "name": "Domestic Dog", "value": "13" }
+      {
+        "name": "Greenland Shark",
+        "value": "400"
+      },
+      {
+        "name": "Gal\u00e1pagos Tortoise",
+        "value": "175"
+      },
+      {
+        "name": "African Elephant",
+        "value": "70"
+      },
+      {
+        "name": "Bottlenose Dolphin",
+        "value": "45"
+      },
+      {
+        "name": "Domestic Dog",
+        "value": "13"
+      }
     ]
   },
   {
-    "id": 11, "date": "2026-04-11", "category": "History",
+    "id": 11,
+    "date": "2026-04-11",
+    "category": "History",
     "criterion": "Rank these structures by year of completion, oldest to newest.",
-    "unit": "", "source": "World History Encyclopedia",
+    "unit": "",
+    "source": "World History Encyclopedia",
     "items": [
-      { "name": "Great Pyramid of Giza", "value": "~2560 BC" },
-      { "name": "Colosseum", "value": "80 AD" },
-      { "name": "Machu Picchu", "value": "~1450" },
-      { "name": "Taj Mahal", "value": "1653" },
-      { "name": "Empire State Building", "value": "1931" }
+      {
+        "name": "Great Pyramid of Giza",
+        "value": "~2560 BC"
+      },
+      {
+        "name": "Colosseum",
+        "value": "80 AD"
+      },
+      {
+        "name": "Machu Picchu",
+        "value": "~1450"
+      },
+      {
+        "name": "Taj Mahal",
+        "value": "1653"
+      },
+      {
+        "name": "Empire State Building",
+        "value": "1931"
+      }
     ]
   },
   {
-    "id": 12, "date": "2026-04-12", "category": "Food & Drink",
+    "id": 12,
+    "date": "2026-04-12",
+    "category": "Food & Drink",
     "criterion": "Rank these fruits by sugar content per 100g, highest to lowest.",
-    "unit": "g sugar", "source": "USDA",
+    "unit": "g sugar",
+    "source": "USDA",
     "items": [
-      { "name": "Dates", "value": "63.4" },
-      { "name": "Grapes", "value": "16.3" },
-      { "name": "Banana", "value": "12.2" },
-      { "name": "Apple", "value": "10.4" },
-      { "name": "Strawberry", "value": "4.9" }
+      {
+        "name": "Dates",
+        "value": "63.4"
+      },
+      {
+        "name": "Grapes",
+        "value": "16.3"
+      },
+      {
+        "name": "Banana",
+        "value": "12.2"
+      },
+      {
+        "name": "Apple",
+        "value": "10.4"
+      },
+      {
+        "name": "Strawberry",
+        "value": "4.9"
+      }
     ]
   },
   {
-    "id": 13, "date": "2026-04-13", "category": "Pop Culture",
+    "id": 13,
+    "date": "2026-04-13",
+    "category": "Pop Culture",
     "criterion": "Rank these albums by worldwide sales, most to fewest.",
-    "unit": "million copies", "source": "IFPI / Guinness Records",
+    "unit": "million copies",
+    "source": "IFPI / Guinness Records",
     "items": [
-      { "name": "Thriller (Michael Jackson)", "value": "70" },
-      { "name": "Back in Black (AC/DC)", "value": "50" },
-      { "name": "The Dark Side of the Moon", "value": "45" },
-      { "name": "The Bodyguard (Soundtrack)", "value": "45" },
-      { "name": "Rumours (Fleetwood Mac)", "value": "40" }
+      {
+        "name": "Thriller (Michael Jackson)",
+        "value": "70"
+      },
+      {
+        "name": "Back in Black (AC/DC)",
+        "value": "50"
+      },
+      {
+        "name": "The Dark Side of the Moon",
+        "value": "45"
+      },
+      {
+        "name": "The Bodyguard (Soundtrack)",
+        "value": "45"
+      },
+      {
+        "name": "Rumours (Fleetwood Mac)",
+        "value": "40"
+      }
     ]
   },
   {
-    "id": 14, "date": "2026-04-14", "category": "Geography",
+    "id": 14,
+    "date": "2026-04-14",
+    "category": "Geography",
     "criterion": "Rank these rivers by length, longest to shortest.",
-    "unit": "mi", "source": "National Geographic",
+    "unit": "mi",
+    "source": "National Geographic",
     "items": [
-      { "name": "Nile", "value": "4,132" },
-      { "name": "Amazon", "value": "3,976" },
-      { "name": "Yangtze", "value": "3,917" },
-      { "name": "Mississippi", "value": "2,340" },
-      { "name": "Danube", "value": "1,770" }
+      {
+        "name": "Nile",
+        "value": "4,132"
+      },
+      {
+        "name": "Amazon",
+        "value": "3,976"
+      },
+      {
+        "name": "Yangtze",
+        "value": "3,917"
+      },
+      {
+        "name": "Mississippi",
+        "value": "2,340"
+      },
+      {
+        "name": "Danube",
+        "value": "1,770"
+      }
     ]
   },
   {
-    "id": 15, "date": "2026-04-15", "category": "Science",
+    "id": 15,
+    "date": "2026-04-15",
+    "category": "Science",
     "criterion": "Rank these elements by atomic number, lowest to highest.",
-    "unit": "", "source": "IUPAC",
+    "unit": "",
+    "source": "IUPAC",
     "items": [
-      { "name": "Hydrogen", "value": "1" },
-      { "name": "Carbon", "value": "6" },
-      { "name": "Iron", "value": "26" },
-      { "name": "Silver", "value": "47" },
-      { "name": "Gold", "value": "79" }
+      {
+        "name": "Hydrogen",
+        "value": "1"
+      },
+      {
+        "name": "Carbon",
+        "value": "6"
+      },
+      {
+        "name": "Iron",
+        "value": "26"
+      },
+      {
+        "name": "Silver",
+        "value": "47"
+      },
+      {
+        "name": "Gold",
+        "value": "79"
+      }
     ]
   },
   {
-    "id": 16, "date": "2026-04-16", "category": "Sports",
+    "id": 16,
+    "date": "2026-04-16",
+    "category": "Sports",
     "criterion": "Rank these countries by all-time Summer Olympic gold medals, most to fewest.",
-    "unit": "golds", "source": "Olympics.com",
+    "unit": "golds",
+    "source": "Olympics.com",
     "items": [
-      { "name": "United States", "value": "1,061" },
-      { "name": "Soviet Union", "value": "395" },
-      { "name": "Great Britain", "value": "296" },
-      { "name": "China", "value": "280" },
-      { "name": "France", "value": "258" }
+      {
+        "name": "United States",
+        "value": "1,061"
+      },
+      {
+        "name": "Soviet Union",
+        "value": "395"
+      },
+      {
+        "name": "Great Britain",
+        "value": "296"
+      },
+      {
+        "name": "China",
+        "value": "280"
+      },
+      {
+        "name": "France",
+        "value": "258"
+      }
     ]
   },
   {
-    "id": 17, "date": "2026-04-17", "category": "Food & Drink",
+    "id": 17,
+    "date": "2026-04-17",
+    "category": "Food & Drink",
     "criterion": "Rank these foods by calories per serving, highest to lowest.",
-    "unit": "cal", "source": "USDA",
+    "unit": "cal",
+    "source": "USDA",
     "items": [
-      { "name": "Avocado (1 whole)", "value": "322" },
-      { "name": "Slice of Pizza", "value": "285" },
-      { "name": "Peanut Butter (2 tbsp)", "value": "190" },
-      { "name": "Banana", "value": "105" },
-      { "name": "Egg (1 large)", "value": "72" }
+      {
+        "name": "Avocado (1 whole)",
+        "value": "322"
+      },
+      {
+        "name": "Slice of Pizza",
+        "value": "285"
+      },
+      {
+        "name": "Peanut Butter (2 tbsp)",
+        "value": "190"
+      },
+      {
+        "name": "Banana",
+        "value": "105"
+      },
+      {
+        "name": "Egg (1 large)",
+        "value": "72"
+      }
     ]
   },
   {
-    "id": 18, "date": "2026-04-18", "category": "History",
+    "id": 18,
+    "date": "2026-04-18",
+    "category": "History",
     "criterion": "Rank these US Presidents by year they took office, earliest to most recent.",
-    "unit": "", "source": "White House Historical Association",
+    "unit": "",
+    "source": "White House Historical Association",
     "items": [
-      { "name": "George Washington", "value": "1789" },
-      { "name": "Abraham Lincoln", "value": "1861" },
-      { "name": "Theodore Roosevelt", "value": "1901" },
-      { "name": "John F. Kennedy", "value": "1961" },
-      { "name": "Barack Obama", "value": "2009" }
+      {
+        "name": "George Washington",
+        "value": "1789"
+      },
+      {
+        "name": "Abraham Lincoln",
+        "value": "1861"
+      },
+      {
+        "name": "Theodore Roosevelt",
+        "value": "1901"
+      },
+      {
+        "name": "John F. Kennedy",
+        "value": "1961"
+      },
+      {
+        "name": "Barack Obama",
+        "value": "2009"
+      }
     ]
   },
   {
-    "id": 19, "date": "2026-04-19", "category": "Science",
+    "id": 19,
+    "date": "2026-04-19",
+    "category": "Science",
     "criterion": "Rank these bodies of water by depth, deepest to shallowest.",
-    "unit": "ft", "source": "NOAA",
+    "unit": "ft",
+    "source": "NOAA",
     "items": [
-      { "name": "Mariana Trench", "value": "36,037" },
-      { "name": "Caribbean Sea", "value": "25,216" },
-      { "name": "Lake Baikal", "value": "5,387" },
-      { "name": "Lake Superior", "value": "1,332" },
-      { "name": "Persian Gulf", "value": "295" }
+      {
+        "name": "Mariana Trench",
+        "value": "36,037"
+      },
+      {
+        "name": "Caribbean Sea",
+        "value": "25,216"
+      },
+      {
+        "name": "Lake Baikal",
+        "value": "5,387"
+      },
+      {
+        "name": "Lake Superior",
+        "value": "1,332"
+      },
+      {
+        "name": "Persian Gulf",
+        "value": "295"
+      }
     ]
   },
   {
-    "id": 20, "date": "2026-04-20", "category": "Pop Culture",
+    "id": 20,
+    "date": "2026-04-20",
+    "category": "Pop Culture",
     "criterion": "Rank these video games by units sold, most to fewest.",
-    "unit": "million", "source": "VGChartz / Nintendo",
+    "unit": "million",
+    "source": "VGChartz / Nintendo",
     "items": [
-      { "name": "Minecraft", "value": "300+" },
-      { "name": "Grand Theft Auto V", "value": "200+" },
-      { "name": "Tetris (EA Mobile)", "value": "100+" },
-      { "name": "Wii Sports", "value": "82.9" },
-      { "name": "The Legend of Zelda: TotK", "value": "20.8" }
+      {
+        "name": "Minecraft",
+        "value": "300+"
+      },
+      {
+        "name": "Grand Theft Auto V",
+        "value": "200+"
+      },
+      {
+        "name": "Tetris (EA Mobile)",
+        "value": "100+"
+      },
+      {
+        "name": "Wii Sports",
+        "value": "82.9"
+      },
+      {
+        "name": "The Legend of Zelda: TotK",
+        "value": "20.8"
+      }
     ]
   },
   {
-    "id": 21, "date": "2026-04-21", "category": "Geography",
+    "id": 21,
+    "date": "2026-04-21",
+    "category": "Geography",
     "criterion": "Rank these US states by population, largest to smallest.",
-    "unit": "million", "source": "US Census Bureau",
+    "unit": "million",
+    "source": "US Census Bureau",
     "items": [
-      { "name": "California", "value": "39.0" },
-      { "name": "Texas", "value": "30.5" },
-      { "name": "Florida", "value": "22.6" },
-      { "name": "New York", "value": "19.6" },
-      { "name": "Pennsylvania", "value": "12.9" }
+      {
+        "name": "California",
+        "value": "39.0"
+      },
+      {
+        "name": "Texas",
+        "value": "30.5"
+      },
+      {
+        "name": "Florida",
+        "value": "22.6"
+      },
+      {
+        "name": "New York",
+        "value": "19.6"
+      },
+      {
+        "name": "Pennsylvania",
+        "value": "12.9"
+      }
     ]
   },
   {
-    "id": 22, "date": "2026-04-22", "category": "Sports",
+    "id": 22,
+    "date": "2026-04-22",
+    "category": "Sports",
     "criterion": "Rank these marathons by year first held, earliest to most recent.",
-    "unit": "", "source": "World Athletics",
+    "unit": "",
+    "source": "World Athletics",
     "items": [
-      { "name": "Boston Marathon", "value": "1897" },
-      { "name": "New York City Marathon", "value": "1970" },
-      { "name": "Berlin Marathon", "value": "1974" },
-      { "name": "London Marathon", "value": "1981" },
-      { "name": "Tokyo Marathon", "value": "2007" }
+      {
+        "name": "Boston Marathon",
+        "value": "1897"
+      },
+      {
+        "name": "New York City Marathon",
+        "value": "1970"
+      },
+      {
+        "name": "Berlin Marathon",
+        "value": "1974"
+      },
+      {
+        "name": "London Marathon",
+        "value": "1981"
+      },
+      {
+        "name": "Tokyo Marathon",
+        "value": "2007"
+      }
     ]
   },
   {
-    "id": 23, "date": "2026-04-23", "category": "Science",
+    "id": 23,
+    "date": "2026-04-23",
+    "category": "Science",
     "criterion": "Rank these planets by number of known moons, most to fewest.",
-    "unit": "moons", "source": "NASA",
+    "unit": "moons",
+    "source": "NASA",
     "items": [
-      { "name": "Saturn", "value": "146" },
-      { "name": "Jupiter", "value": "95" },
-      { "name": "Uranus", "value": "28" },
-      { "name": "Neptune", "value": "16" },
-      { "name": "Mars", "value": "2" }
+      {
+        "name": "Saturn",
+        "value": "146"
+      },
+      {
+        "name": "Jupiter",
+        "value": "95"
+      },
+      {
+        "name": "Uranus",
+        "value": "28"
+      },
+      {
+        "name": "Neptune",
+        "value": "16"
+      },
+      {
+        "name": "Mars",
+        "value": "2"
+      }
     ]
   },
   {
-    "id": 24, "date": "2026-04-24", "category": "Food & Drink",
+    "id": 24,
+    "date": "2026-04-24",
+    "category": "Food & Drink",
     "criterion": "Rank these cheeses by age when typically sold, longest to shortest.",
-    "unit": "months", "source": "Cheese.com",
+    "unit": "months",
+    "source": "Cheese.com",
     "items": [
-      { "name": "Parmigiano-Reggiano", "value": "24" },
-      { "name": "Aged Cheddar", "value": "12" },
-      { "name": "Gouda", "value": "6" },
-      { "name": "Brie", "value": "2" },
-      { "name": "Mozzarella", "value": "0.25" }
+      {
+        "name": "Parmigiano-Reggiano",
+        "value": "24"
+      },
+      {
+        "name": "Aged Cheddar",
+        "value": "12"
+      },
+      {
+        "name": "Gouda",
+        "value": "6"
+      },
+      {
+        "name": "Brie",
+        "value": "2"
+      },
+      {
+        "name": "Mozzarella",
+        "value": "0.25"
+      }
     ]
   },
   {
-    "id": 25, "date": "2026-04-25", "category": "History",
+    "id": 25,
+    "date": "2026-04-25",
+    "category": "History",
     "criterion": "Rank these wars by duration, longest to shortest.",
-    "unit": "years", "source": "Encyclopedia Britannica",
+    "unit": "years",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Hundred Years' War", "value": "116" },
-      { "name": "Vietnam War (US)", "value": "20" },
-      { "name": "World War II", "value": "6" },
-      { "name": "Korean War", "value": "3" },
-      { "name": "Six-Day War", "value": "0.016" }
+      {
+        "name": "Hundred Years' War",
+        "value": "116"
+      },
+      {
+        "name": "Vietnam War (US)",
+        "value": "20"
+      },
+      {
+        "name": "World War II",
+        "value": "6"
+      },
+      {
+        "name": "Korean War",
+        "value": "3"
+      },
+      {
+        "name": "Six-Day War",
+        "value": "0.016"
+      }
     ]
   },
   {
-    "id": 26, "date": "2026-04-26", "category": "Pop Culture",
+    "id": 26,
+    "date": "2026-04-26",
+    "category": "Pop Culture",
     "criterion": "Rank these social media platforms by monthly active users, most to fewest.",
-    "unit": "billion", "source": "Statista",
+    "unit": "billion",
+    "source": "Statista",
     "items": [
-      { "name": "Facebook", "value": "3.07" },
-      { "name": "YouTube", "value": "2.50" },
-      { "name": "Instagram", "value": "2.00" },
-      { "name": "TikTok", "value": "1.60" },
-      { "name": "X (Twitter)", "value": "0.60" }
+      {
+        "name": "Facebook",
+        "value": "3.07"
+      },
+      {
+        "name": "YouTube",
+        "value": "2.50"
+      },
+      {
+        "name": "Instagram",
+        "value": "2.00"
+      },
+      {
+        "name": "TikTok",
+        "value": "1.60"
+      },
+      {
+        "name": "X (Twitter)",
+        "value": "0.60"
+      }
     ]
   },
   {
-    "id": 27, "date": "2026-04-27", "category": "Geography",
+    "id": 27,
+    "date": "2026-04-27",
+    "category": "Geography",
     "criterion": "Rank these deserts by area, largest to smallest.",
-    "unit": "million km²", "source": "World Atlas",
+    "unit": "million km\u00b2",
+    "source": "World Atlas",
     "items": [
-      { "name": "Antarctic Desert", "value": "14.2" },
-      { "name": "Sahara", "value": "9.2" },
-      { "name": "Arabian Desert", "value": "2.3" },
-      { "name": "Gobi Desert", "value": "1.3" },
-      { "name": "Kalahari Desert", "value": "0.9" }
+      {
+        "name": "Antarctic Desert",
+        "value": "14.2"
+      },
+      {
+        "name": "Sahara",
+        "value": "9.2"
+      },
+      {
+        "name": "Arabian Desert",
+        "value": "2.3"
+      },
+      {
+        "name": "Gobi Desert",
+        "value": "1.3"
+      },
+      {
+        "name": "Kalahari Desert",
+        "value": "0.9"
+      }
     ]
   },
   {
-    "id": 28, "date": "2026-04-28", "category": "Sports",
+    "id": 28,
+    "date": "2026-04-28",
+    "category": "Sports",
     "criterion": "Rank these athletes by career Grand Slam tennis titles, most to fewest.",
-    "unit": "titles", "source": "ATP / WTA",
+    "unit": "titles",
+    "source": "ATP / WTA",
     "items": [
-      { "name": "Novak Djokovic", "value": "24" },
-      { "name": "Serena Williams", "value": "23" },
-      { "name": "Rafael Nadal", "value": "22" },
-      { "name": "Roger Federer", "value": "20" },
-      { "name": "Pete Sampras", "value": "14" }
+      {
+        "name": "Novak Djokovic",
+        "value": "24"
+      },
+      {
+        "name": "Serena Williams",
+        "value": "23"
+      },
+      {
+        "name": "Rafael Nadal",
+        "value": "22"
+      },
+      {
+        "name": "Roger Federer",
+        "value": "20"
+      },
+      {
+        "name": "Pete Sampras",
+        "value": "14"
+      }
     ]
   },
   {
-    "id": 29, "date": "2026-04-29", "category": "Science",
+    "id": 29,
+    "date": "2026-04-29",
+    "category": "Science",
     "criterion": "Rank these materials by melting point, highest to lowest.",
-    "unit": "°F", "source": "CRC Handbook",
+    "unit": "\u00b0F",
+    "source": "CRC Handbook",
     "items": [
-      { "name": "Tungsten", "value": "6,192" },
-      { "name": "Iron", "value": "2,800" },
-      { "name": "Gold", "value": "1,948" },
-      { "name": "Aluminum", "value": "1,221" },
-      { "name": "Tin", "value": "449" }
+      {
+        "name": "Tungsten",
+        "value": "6,192"
+      },
+      {
+        "name": "Iron",
+        "value": "2,800"
+      },
+      {
+        "name": "Gold",
+        "value": "1,948"
+      },
+      {
+        "name": "Aluminum",
+        "value": "1,221"
+      },
+      {
+        "name": "Tin",
+        "value": "449"
+      }
     ]
   },
   {
-    "id": 30, "date": "2026-04-30", "category": "Pop Culture",
+    "id": 30,
+    "date": "2026-04-30",
+    "category": "Pop Culture",
     "criterion": "Rank these book series by total copies sold, most to fewest.",
-    "unit": "million", "source": "Publishers Weekly",
+    "unit": "million",
+    "source": "Publishers Weekly",
     "items": [
-      { "name": "Harry Potter", "value": "600" },
-      { "name": "Goosebumps", "value": "400" },
-      { "name": "Lord of the Rings", "value": "150" },
-      { "name": "The Hunger Games", "value": "100" },
-      { "name": "Diary of a Wimpy Kid", "value": "75" }
+      {
+        "name": "Harry Potter",
+        "value": "600"
+      },
+      {
+        "name": "Goosebumps",
+        "value": "400"
+      },
+      {
+        "name": "Lord of the Rings",
+        "value": "150"
+      },
+      {
+        "name": "The Hunger Games",
+        "value": "100"
+      },
+      {
+        "name": "Diary of a Wimpy Kid",
+        "value": "75"
+      }
     ]
   },
   {
-    "id": 31, "date": "2026-05-01", "category": "Geography",
+    "id": 31,
+    "date": "2026-05-01",
+    "category": "Geography",
     "criterion": "Rank these capital cities by elevation, highest to lowest.",
-    "unit": "ft", "source": "World Atlas",
+    "unit": "ft",
+    "source": "World Atlas",
     "items": [
-      { "name": "La Paz, Bolivia", "value": "11,975" },
-      { "name": "Bogotá, Colombia", "value": "8,612" },
-      { "name": "Mexico City, Mexico", "value": "7,350" },
-      { "name": "Madrid, Spain", "value": "2,188" },
-      { "name": "London, UK", "value": "36" }
+      {
+        "name": "La Paz, Bolivia",
+        "value": "11,975"
+      },
+      {
+        "name": "Bogot\u00e1, Colombia",
+        "value": "8,612"
+      },
+      {
+        "name": "Mexico City, Mexico",
+        "value": "7,350"
+      },
+      {
+        "name": "Madrid, Spain",
+        "value": "2,188"
+      },
+      {
+        "name": "London, UK",
+        "value": "36"
+      }
     ]
   },
   {
-    "id": 32, "date": "2026-05-02", "category": "Sports",
+    "id": 32,
+    "date": "2026-05-02",
+    "category": "Sports",
     "criterion": "Rank these tennis players by career singles titles, most to fewest.",
-    "unit": "titles", "source": "ATP",
+    "unit": "titles",
+    "source": "ATP",
     "items": [
-      { "name": "Jimmy Connors", "value": "109" },
-      { "name": "Roger Federer", "value": "103" },
-      { "name": "Novak Djokovic", "value": "99" },
-      { "name": "Ivan Lendl", "value": "94" },
-      { "name": "Rafael Nadal", "value": "92" }
+      {
+        "name": "Jimmy Connors",
+        "value": "109"
+      },
+      {
+        "name": "Roger Federer",
+        "value": "103"
+      },
+      {
+        "name": "Novak Djokovic",
+        "value": "99"
+      },
+      {
+        "name": "Ivan Lendl",
+        "value": "94"
+      },
+      {
+        "name": "Rafael Nadal",
+        "value": "92"
+      }
     ]
   },
   {
-    "id": 33, "date": "2026-05-03", "category": "Pop Culture",
+    "id": 33,
+    "date": "2026-05-03",
+    "category": "Pop Culture",
     "criterion": "Rank these Pixar films by US box office gross, highest to lowest.",
-    "unit": "million $", "source": "Box Office Mojo",
+    "unit": "million $",
+    "source": "Box Office Mojo",
     "items": [
-      { "name": "Incredibles 2", "value": "608" },
-      { "name": "Finding Dory", "value": "486" },
-      { "name": "Toy Story 3", "value": "415" },
-      { "name": "Inside Out", "value": "356" },
-      { "name": "Up", "value": "293" }
+      {
+        "name": "Incredibles 2",
+        "value": "608"
+      },
+      {
+        "name": "Finding Dory",
+        "value": "486"
+      },
+      {
+        "name": "Toy Story 3",
+        "value": "415"
+      },
+      {
+        "name": "Inside Out",
+        "value": "356"
+      },
+      {
+        "name": "Up",
+        "value": "293"
+      }
     ]
   },
   {
-    "id": 34, "date": "2026-05-04", "category": "Science",
+    "id": 34,
+    "date": "2026-05-04",
+    "category": "Science",
     "criterion": "Rank these planets by diameter, largest to smallest.",
-    "unit": "mi", "source": "NASA",
+    "unit": "mi",
+    "source": "NASA",
     "items": [
-      { "name": "Jupiter", "value": "86,881" },
-      { "name": "Saturn", "value": "72,367" },
-      { "name": "Uranus", "value": "31,518" },
-      { "name": "Neptune", "value": "30,599" },
-      { "name": "Earth", "value": "7,918" }
+      {
+        "name": "Jupiter",
+        "value": "86,881"
+      },
+      {
+        "name": "Saturn",
+        "value": "72,367"
+      },
+      {
+        "name": "Uranus",
+        "value": "31,518"
+      },
+      {
+        "name": "Neptune",
+        "value": "30,599"
+      },
+      {
+        "name": "Earth",
+        "value": "7,918"
+      }
     ]
   },
   {
-    "id": 35, "date": "2026-05-05", "category": "History",
+    "id": 35,
+    "date": "2026-05-05",
+    "category": "History",
     "criterion": "Rank these empires by year of founding, earliest to most recent.",
-    "unit": "", "source": "Encyclopedia Britannica",
+    "unit": "",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Roman Republic", "value": "509 BC" },
-      { "name": "Mongol Empire", "value": "1206" },
-      { "name": "Ottoman Empire", "value": "1299" },
-      { "name": "British Empire", "value": "1583" },
-      { "name": "Russian Empire", "value": "1721" }
+      {
+        "name": "Roman Republic",
+        "value": "509 BC"
+      },
+      {
+        "name": "Mongol Empire",
+        "value": "1206"
+      },
+      {
+        "name": "Ottoman Empire",
+        "value": "1299"
+      },
+      {
+        "name": "British Empire",
+        "value": "1583"
+      },
+      {
+        "name": "Russian Empire",
+        "value": "1721"
+      }
     ]
   },
   {
-    "id": 36, "date": "2026-05-06", "category": "Food & Drink",
+    "id": 36,
+    "date": "2026-05-06",
+    "category": "Food & Drink",
     "criterion": "Rank these peppers by Scoville heat rating, hottest to mildest.",
-    "unit": "SHU", "source": "Guinness World Records",
+    "unit": "SHU",
+    "source": "Guinness World Records",
     "items": [
-      { "name": "Carolina Reaper", "value": "2,200,000" },
-      { "name": "Ghost Pepper", "value": "1,000,000" },
-      { "name": "Habanero", "value": "200,000" },
-      { "name": "Jalapeño", "value": "5,000" },
-      { "name": "Bell Pepper", "value": "0" }
+      {
+        "name": "Carolina Reaper",
+        "value": "2,200,000"
+      },
+      {
+        "name": "Ghost Pepper",
+        "value": "1,000,000"
+      },
+      {
+        "name": "Habanero",
+        "value": "200,000"
+      },
+      {
+        "name": "Jalape\u00f1o",
+        "value": "5,000"
+      },
+      {
+        "name": "Bell Pepper",
+        "value": "0"
+      }
     ]
   },
   {
-    "id": 37, "date": "2026-05-07", "category": "Geography",
+    "id": 37,
+    "date": "2026-05-07",
+    "category": "Geography",
     "criterion": "Rank these US national parks by area, largest to smallest.",
-    "unit": "sq mi", "source": "National Park Service",
+    "unit": "sq mi",
+    "source": "National Park Service",
     "items": [
-      { "name": "Wrangell–St. Elias", "value": "13,200" },
-      { "name": "Gates of the Arctic", "value": "8,472" },
-      { "name": "Denali", "value": "7,408" },
-      { "name": "Death Valley", "value": "5,270" },
-      { "name": "Yellowstone", "value": "3,468" }
+      {
+        "name": "Wrangell\u2013St. Elias",
+        "value": "13,200"
+      },
+      {
+        "name": "Gates of the Arctic",
+        "value": "8,472"
+      },
+      {
+        "name": "Denali",
+        "value": "7,408"
+      },
+      {
+        "name": "Death Valley",
+        "value": "5,270"
+      },
+      {
+        "name": "Yellowstone",
+        "value": "3,468"
+      }
     ]
   },
   {
-    "id": 38, "date": "2026-05-08", "category": "Pop Culture",
+    "id": 38,
+    "date": "2026-05-08",
+    "category": "Pop Culture",
     "criterion": "Rank these Marvel films by US opening weekend, highest to lowest.",
-    "unit": "million $", "source": "Box Office Mojo",
+    "unit": "million $",
+    "source": "Box Office Mojo",
     "items": [
-      { "name": "Avengers: Endgame", "value": "357" },
-      { "name": "Avengers: Infinity War", "value": "258" },
-      { "name": "Black Panther", "value": "202" },
-      { "name": "Iron Man 3", "value": "174" },
-      { "name": "Captain Marvel", "value": "153" }
+      {
+        "name": "Avengers: Endgame",
+        "value": "357"
+      },
+      {
+        "name": "Avengers: Infinity War",
+        "value": "258"
+      },
+      {
+        "name": "Black Panther",
+        "value": "202"
+      },
+      {
+        "name": "Iron Man 3",
+        "value": "174"
+      },
+      {
+        "name": "Captain Marvel",
+        "value": "153"
+      }
     ]
   },
   {
-    "id": 39, "date": "2026-05-09", "category": "Science",
+    "id": 39,
+    "date": "2026-05-09",
+    "category": "Science",
     "criterion": "Rank these dinosaurs by length, longest to shortest.",
-    "unit": "ft", "source": "Natural History Museum",
+    "unit": "ft",
+    "source": "Natural History Museum",
     "items": [
-      { "name": "Argentinosaurus", "value": "115" },
-      { "name": "Diplodocus", "value": "90" },
-      { "name": "Brachiosaurus", "value": "85" },
-      { "name": "Tyrannosaurus rex", "value": "40" },
-      { "name": "Velociraptor", "value": "6" }
+      {
+        "name": "Argentinosaurus",
+        "value": "115"
+      },
+      {
+        "name": "Diplodocus",
+        "value": "90"
+      },
+      {
+        "name": "Brachiosaurus",
+        "value": "85"
+      },
+      {
+        "name": "Tyrannosaurus rex",
+        "value": "40"
+      },
+      {
+        "name": "Velociraptor",
+        "value": "6"
+      }
     ]
   },
   {
-    "id": 40, "date": "2026-05-10", "category": "History",
+    "id": 40,
+    "date": "2026-05-10",
+    "category": "History",
     "criterion": "Rank these famous battles by year, earliest to most recent.",
-    "unit": "", "source": "Encyclopedia Britannica",
+    "unit": "",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Battle of Marathon", "value": "490 BC" },
-      { "name": "Battle of Hastings", "value": "1066" },
-      { "name": "Battle of Waterloo", "value": "1815" },
-      { "name": "Battle of Gettysburg", "value": "1863" },
-      { "name": "D-Day (Normandy)", "value": "1944" }
+      {
+        "name": "Battle of Marathon",
+        "value": "490 BC"
+      },
+      {
+        "name": "Battle of Hastings",
+        "value": "1066"
+      },
+      {
+        "name": "Battle of Waterloo",
+        "value": "1815"
+      },
+      {
+        "name": "Battle of Gettysburg",
+        "value": "1863"
+      },
+      {
+        "name": "D-Day (Normandy)",
+        "value": "1944"
+      }
     ]
   },
   {
-    "id": 41, "date": "2026-05-11", "category": "Sports",
+    "id": 41,
+    "date": "2026-05-11",
+    "category": "Sports",
     "criterion": "Rank these NFL quarterbacks by career passing yards, most to fewest.",
-    "unit": "yards", "source": "Pro Football Reference",
+    "unit": "yards",
+    "source": "Pro Football Reference",
     "items": [
-      { "name": "Tom Brady", "value": "89,214" },
-      { "name": "Drew Brees", "value": "80,358" },
-      { "name": "Peyton Manning", "value": "71,940" },
-      { "name": "Brett Favre", "value": "71,838" },
-      { "name": "Aaron Rodgers", "value": "62,000+" }
+      {
+        "name": "Tom Brady",
+        "value": "89,214"
+      },
+      {
+        "name": "Drew Brees",
+        "value": "80,358"
+      },
+      {
+        "name": "Peyton Manning",
+        "value": "71,940"
+      },
+      {
+        "name": "Brett Favre",
+        "value": "71,838"
+      },
+      {
+        "name": "Aaron Rodgers",
+        "value": "62,000+"
+      }
     ]
   },
   {
-    "id": 42, "date": "2026-05-12", "category": "Food & Drink",
+    "id": 42,
+    "date": "2026-05-12",
+    "category": "Food & Drink",
     "criterion": "Rank these foods by vitamin C content per 100g, highest to lowest.",
-    "unit": "mg", "source": "USDA",
+    "unit": "mg",
+    "source": "USDA",
     "items": [
-      { "name": "Red Bell Pepper", "value": "128" },
-      { "name": "Broccoli", "value": "89" },
-      { "name": "Brussels Sprouts", "value": "85" },
-      { "name": "Cauliflower", "value": "48" },
-      { "name": "Spinach", "value": "28" }
+      {
+        "name": "Red Bell Pepper",
+        "value": "128"
+      },
+      {
+        "name": "Broccoli",
+        "value": "89"
+      },
+      {
+        "name": "Brussels Sprouts",
+        "value": "85"
+      },
+      {
+        "name": "Cauliflower",
+        "value": "48"
+      },
+      {
+        "name": "Spinach",
+        "value": "28"
+      }
     ]
   },
   {
-    "id": 43, "date": "2026-05-13", "category": "Geography",
+    "id": 43,
+    "date": "2026-05-13",
+    "category": "Geography",
     "criterion": "Rank these airports by annual passenger traffic, busiest to least busy.",
-    "unit": "million", "source": "ACI World",
+    "unit": "million",
+    "source": "ACI World",
     "items": [
-      { "name": "Atlanta (ATL)", "value": "104.7" },
-      { "name": "Dubai (DXB)", "value": "86.9" },
-      { "name": "Dallas/Fort Worth (DFW)", "value": "81.8" },
-      { "name": "London Heathrow (LHR)", "value": "79.2" },
-      { "name": "Tokyo Haneda (HND)", "value": "78.7" }
+      {
+        "name": "Atlanta (ATL)",
+        "value": "104.7"
+      },
+      {
+        "name": "Dubai (DXB)",
+        "value": "86.9"
+      },
+      {
+        "name": "Dallas/Fort Worth (DFW)",
+        "value": "81.8"
+      },
+      {
+        "name": "London Heathrow (LHR)",
+        "value": "79.2"
+      },
+      {
+        "name": "Tokyo Haneda (HND)",
+        "value": "78.7"
+      }
     ]
   },
   {
-    "id": 44, "date": "2026-05-14", "category": "Pop Culture",
+    "id": 44,
+    "date": "2026-05-14",
+    "category": "Pop Culture",
     "criterion": "Rank these Beatles albums by year of release, earliest to most recent.",
-    "unit": "", "source": "Apple Records",
+    "unit": "",
+    "source": "Apple Records",
     "items": [
-      { "name": "Please Please Me", "value": "1963" },
-      { "name": "A Hard Day's Night", "value": "1964" },
-      { "name": "Sgt. Pepper's Lonely Hearts Club Band", "value": "1967" },
-      { "name": "Abbey Road", "value": "1969" },
-      { "name": "Let It Be", "value": "1970" }
+      {
+        "name": "Please Please Me",
+        "value": "1963"
+      },
+      {
+        "name": "A Hard Day's Night",
+        "value": "1964"
+      },
+      {
+        "name": "Sgt. Pepper's Lonely Hearts Club Band",
+        "value": "1967"
+      },
+      {
+        "name": "Abbey Road",
+        "value": "1969"
+      },
+      {
+        "name": "Let It Be",
+        "value": "1970"
+      }
     ]
   },
   {
-    "id": 45, "date": "2026-05-15", "category": "Science",
+    "id": 45,
+    "date": "2026-05-15",
+    "category": "Science",
     "criterion": "Rank these stars by distance from Earth, closest to farthest.",
-    "unit": "light years", "source": "NASA",
+    "unit": "light years",
+    "source": "NASA",
     "items": [
-      { "name": "Proxima Centauri", "value": "4.24" },
-      { "name": "Sirius", "value": "8.6" },
-      { "name": "Vega", "value": "25" },
-      { "name": "Arcturus", "value": "37" },
-      { "name": "Polaris", "value": "433" }
+      {
+        "name": "Proxima Centauri",
+        "value": "4.24"
+      },
+      {
+        "name": "Sirius",
+        "value": "8.6"
+      },
+      {
+        "name": "Vega",
+        "value": "25"
+      },
+      {
+        "name": "Arcturus",
+        "value": "37"
+      },
+      {
+        "name": "Polaris",
+        "value": "433"
+      }
     ]
   },
   {
-    "id": 46, "date": "2026-05-16", "category": "History",
+    "id": 46,
+    "date": "2026-05-16",
+    "category": "History",
     "criterion": "Rank these documents by year signed, earliest to most recent.",
-    "unit": "", "source": "World History Encyclopedia",
+    "unit": "",
+    "source": "World History Encyclopedia",
     "items": [
-      { "name": "Magna Carta", "value": "1215" },
-      { "name": "Declaration of Independence", "value": "1776" },
-      { "name": "Treaty of Versailles", "value": "1919" },
-      { "name": "UN Charter", "value": "1945" },
-      { "name": "Maastricht Treaty", "value": "1992" }
+      {
+        "name": "Magna Carta",
+        "value": "1215"
+      },
+      {
+        "name": "Declaration of Independence",
+        "value": "1776"
+      },
+      {
+        "name": "Treaty of Versailles",
+        "value": "1919"
+      },
+      {
+        "name": "UN Charter",
+        "value": "1945"
+      },
+      {
+        "name": "Maastricht Treaty",
+        "value": "1992"
+      }
     ]
   },
   {
-    "id": 47, "date": "2026-05-17", "category": "Sports",
+    "id": 47,
+    "date": "2026-05-17",
+    "category": "Sports",
     "criterion": "Rank these golfers by career major championships, most to fewest.",
-    "unit": "majors", "source": "PGA Tour",
+    "unit": "majors",
+    "source": "PGA Tour",
     "items": [
-      { "name": "Jack Nicklaus", "value": "18" },
-      { "name": "Tiger Woods", "value": "15" },
-      { "name": "Walter Hagen", "value": "11" },
-      { "name": "Ben Hogan", "value": "9" },
-      { "name": "Sam Snead", "value": "7" }
+      {
+        "name": "Jack Nicklaus",
+        "value": "18"
+      },
+      {
+        "name": "Tiger Woods",
+        "value": "15"
+      },
+      {
+        "name": "Walter Hagen",
+        "value": "11"
+      },
+      {
+        "name": "Ben Hogan",
+        "value": "9"
+      },
+      {
+        "name": "Sam Snead",
+        "value": "7"
+      }
     ]
   },
   {
-    "id": 48, "date": "2026-05-18", "category": "Food & Drink",
+    "id": 48,
+    "date": "2026-05-18",
+    "category": "Food & Drink",
     "criterion": "Rank these countries by chocolate consumption per capita, highest to lowest.",
-    "unit": "lbs / person / yr", "source": "Statista",
+    "unit": "lbs / person / yr",
+    "source": "Statista",
     "items": [
-      { "name": "Switzerland", "value": "19.4" },
-      { "name": "Austria", "value": "18.7" },
-      { "name": "Germany", "value": "17.8" },
-      { "name": "Norway", "value": "14.6" },
-      { "name": "United States", "value": "9.1" }
+      {
+        "name": "Switzerland",
+        "value": "19.4"
+      },
+      {
+        "name": "Austria",
+        "value": "18.7"
+      },
+      {
+        "name": "Germany",
+        "value": "17.8"
+      },
+      {
+        "name": "Norway",
+        "value": "14.6"
+      },
+      {
+        "name": "United States",
+        "value": "9.1"
+      }
     ]
   },
   {
-    "id": 49, "date": "2026-05-19", "category": "Geography",
+    "id": 49,
+    "date": "2026-05-19",
+    "category": "Geography",
     "criterion": "Rank these languages by number of native speakers, most to fewest.",
-    "unit": "million", "source": "Ethnologue",
+    "unit": "million",
+    "source": "Ethnologue",
     "items": [
-      { "name": "Mandarin Chinese", "value": "939" },
-      { "name": "Spanish", "value": "485" },
-      { "name": "English", "value": "380" },
-      { "name": "Hindi", "value": "345" },
-      { "name": "Bengali", "value": "234" }
+      {
+        "name": "Mandarin Chinese",
+        "value": "939"
+      },
+      {
+        "name": "Spanish",
+        "value": "485"
+      },
+      {
+        "name": "English",
+        "value": "380"
+      },
+      {
+        "name": "Hindi",
+        "value": "345"
+      },
+      {
+        "name": "Bengali",
+        "value": "234"
+      }
     ]
   },
   {
-    "id": 50, "date": "2026-05-20", "category": "Pop Culture",
+    "id": 50,
+    "date": "2026-05-20",
+    "category": "Pop Culture",
     "criterion": "Rank these Disney animated films by year of release, oldest to newest.",
-    "unit": "", "source": "Walt Disney Animation Studios",
+    "unit": "",
+    "source": "Walt Disney Animation Studios",
     "items": [
-      { "name": "Snow White and the Seven Dwarfs", "value": "1937" },
-      { "name": "Cinderella", "value": "1950" },
-      { "name": "The Lion King", "value": "1994" },
-      { "name": "Frozen", "value": "2013" },
-      { "name": "Moana", "value": "2016" }
+      {
+        "name": "Snow White and the Seven Dwarfs",
+        "value": "1937"
+      },
+      {
+        "name": "Cinderella",
+        "value": "1950"
+      },
+      {
+        "name": "The Lion King",
+        "value": "1994"
+      },
+      {
+        "name": "Frozen",
+        "value": "2013"
+      },
+      {
+        "name": "Moana",
+        "value": "2016"
+      }
     ]
   },
   {
-    "id": 51, "date": "2026-05-21", "category": "Science",
+    "id": 51,
+    "date": "2026-05-21",
+    "category": "Science",
     "criterion": "Rank these animals by top running speed, fastest to slowest.",
-    "unit": "mph", "source": "National Geographic",
+    "unit": "mph",
+    "source": "National Geographic",
     "items": [
-      { "name": "Cheetah", "value": "75" },
-      { "name": "Pronghorn Antelope", "value": "55" },
-      { "name": "Lion", "value": "50" },
-      { "name": "Greyhound", "value": "45" },
-      { "name": "Human (Usain Bolt)", "value": "27" }
+      {
+        "name": "Cheetah",
+        "value": "75"
+      },
+      {
+        "name": "Pronghorn Antelope",
+        "value": "55"
+      },
+      {
+        "name": "Lion",
+        "value": "50"
+      },
+      {
+        "name": "Greyhound",
+        "value": "45"
+      },
+      {
+        "name": "Human (Usain Bolt)",
+        "value": "27"
+      }
     ]
   },
   {
-    "id": 52, "date": "2026-05-22", "category": "History",
+    "id": 52,
+    "date": "2026-05-22",
+    "category": "History",
     "criterion": "Rank these scientists by birth year, earliest to most recent.",
-    "unit": "", "source": "Encyclopedia Britannica",
+    "unit": "",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Galileo Galilei", "value": "1564" },
-      { "name": "Isaac Newton", "value": "1643" },
-      { "name": "Charles Darwin", "value": "1809" },
-      { "name": "Marie Curie", "value": "1867" },
-      { "name": "Albert Einstein", "value": "1879" }
+      {
+        "name": "Galileo Galilei",
+        "value": "1564"
+      },
+      {
+        "name": "Isaac Newton",
+        "value": "1643"
+      },
+      {
+        "name": "Charles Darwin",
+        "value": "1809"
+      },
+      {
+        "name": "Marie Curie",
+        "value": "1867"
+      },
+      {
+        "name": "Albert Einstein",
+        "value": "1879"
+      }
     ]
   },
   {
-    "id": 53, "date": "2026-05-23", "category": "Sports",
+    "id": 53,
+    "date": "2026-05-23",
+    "category": "Sports",
     "criterion": "Rank these Premier League clubs by all-time English top-flight titles, most to fewest.",
-    "unit": "titles", "source": "Premier League",
+    "unit": "titles",
+    "source": "Premier League",
     "items": [
-      { "name": "Manchester United", "value": "20" },
-      { "name": "Liverpool", "value": "19" },
-      { "name": "Arsenal", "value": "13" },
-      { "name": "Manchester City", "value": "8" },
-      { "name": "Chelsea", "value": "6" }
+      {
+        "name": "Manchester United",
+        "value": "20"
+      },
+      {
+        "name": "Liverpool",
+        "value": "19"
+      },
+      {
+        "name": "Arsenal",
+        "value": "13"
+      },
+      {
+        "name": "Manchester City",
+        "value": "8"
+      },
+      {
+        "name": "Chelsea",
+        "value": "6"
+      }
     ]
   },
   {
-    "id": 54, "date": "2026-05-24", "category": "Food & Drink",
+    "id": 54,
+    "date": "2026-05-24",
+    "category": "Food & Drink",
     "criterion": "Rank these alcoholic beverages by typical alcohol content, highest to lowest.",
-    "unit": "% ABV", "source": "Encyclopedia Britannica",
+    "unit": "% ABV",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Everclear", "value": "95" },
-      { "name": "Whiskey", "value": "40" },
-      { "name": "Sake", "value": "15" },
-      { "name": "Wine", "value": "12" },
-      { "name": "Beer (Lager)", "value": "5" }
+      {
+        "name": "Everclear",
+        "value": "95"
+      },
+      {
+        "name": "Whiskey",
+        "value": "40"
+      },
+      {
+        "name": "Sake",
+        "value": "15"
+      },
+      {
+        "name": "Wine",
+        "value": "12"
+      },
+      {
+        "name": "Beer (Lager)",
+        "value": "5"
+      }
     ]
   },
   {
-    "id": 55, "date": "2026-05-25", "category": "Geography",
+    "id": 55,
+    "date": "2026-05-25",
+    "category": "Geography",
     "criterion": "Rank these suspension bridges by main span length, longest to shortest.",
-    "unit": "ft", "source": "Engineering News-Record",
+    "unit": "ft",
+    "source": "Engineering News-Record",
     "items": [
-      { "name": "1915 Çanakkale Bridge", "value": "6,637" },
-      { "name": "Akashi Kaikyō Bridge", "value": "6,532" },
-      { "name": "Xihoumen Bridge", "value": "5,413" },
-      { "name": "Great Belt Bridge", "value": "5,328" },
-      { "name": "Golden Gate Bridge", "value": "4,200" }
+      {
+        "name": "1915 \u00c7anakkale Bridge",
+        "value": "6,637"
+      },
+      {
+        "name": "Akashi Kaiky\u014d Bridge",
+        "value": "6,532"
+      },
+      {
+        "name": "Xihoumen Bridge",
+        "value": "5,413"
+      },
+      {
+        "name": "Great Belt Bridge",
+        "value": "5,328"
+      },
+      {
+        "name": "Golden Gate Bridge",
+        "value": "4,200"
+      }
     ]
   },
   {
-    "id": 56, "date": "2026-05-26", "category": "Pop Culture",
+    "id": 56,
+    "date": "2026-05-26",
+    "category": "Pop Culture",
     "criterion": "Rank these Broadway musicals by total performances, most to fewest.",
-    "unit": "performances", "source": "Internet Broadway Database",
+    "unit": "performances",
+    "source": "Internet Broadway Database",
     "items": [
-      { "name": "The Phantom of the Opera", "value": "13,981" },
-      { "name": "Chicago (Revival)", "value": "11,000+" },
-      { "name": "The Lion King", "value": "10,500+" },
-      { "name": "Wicked", "value": "8,000+" },
-      { "name": "Cats", "value": "7,485" }
+      {
+        "name": "The Phantom of the Opera",
+        "value": "13,981"
+      },
+      {
+        "name": "Chicago (Revival)",
+        "value": "11,000+"
+      },
+      {
+        "name": "The Lion King",
+        "value": "10,500+"
+      },
+      {
+        "name": "Wicked",
+        "value": "8,000+"
+      },
+      {
+        "name": "Cats",
+        "value": "7,485"
+      }
     ]
   },
   {
-    "id": 57, "date": "2026-05-27", "category": "Science",
+    "id": 57,
+    "date": "2026-05-27",
+    "category": "Science",
     "criterion": "Rank these animals by gestation period, longest to shortest.",
-    "unit": "months", "source": "San Diego Zoo",
+    "unit": "months",
+    "source": "San Diego Zoo",
     "items": [
-      { "name": "African Elephant", "value": "22" },
-      { "name": "Sperm Whale", "value": "16" },
-      { "name": "Giraffe", "value": "15" },
-      { "name": "Cow", "value": "9" },
-      { "name": "Domestic Dog", "value": "2" }
+      {
+        "name": "African Elephant",
+        "value": "22"
+      },
+      {
+        "name": "Sperm Whale",
+        "value": "16"
+      },
+      {
+        "name": "Giraffe",
+        "value": "15"
+      },
+      {
+        "name": "Cow",
+        "value": "9"
+      },
+      {
+        "name": "Domestic Dog",
+        "value": "2"
+      }
     ]
   },
   {
-    "id": 58, "date": "2026-05-28", "category": "History",
+    "id": 58,
+    "date": "2026-05-28",
+    "category": "History",
     "criterion": "Rank these explorers by birth year, earliest to most recent.",
-    "unit": "", "source": "Encyclopedia Britannica",
+    "unit": "",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Marco Polo", "value": "1254" },
-      { "name": "Christopher Columbus", "value": "1451" },
-      { "name": "Ferdinand Magellan", "value": "1480" },
-      { "name": "James Cook", "value": "1728" },
-      { "name": "Roald Amundsen", "value": "1872" }
+      {
+        "name": "Marco Polo",
+        "value": "1254"
+      },
+      {
+        "name": "Christopher Columbus",
+        "value": "1451"
+      },
+      {
+        "name": "Ferdinand Magellan",
+        "value": "1480"
+      },
+      {
+        "name": "James Cook",
+        "value": "1728"
+      },
+      {
+        "name": "Roald Amundsen",
+        "value": "1872"
+      }
     ]
   },
   {
-    "id": 59, "date": "2026-05-29", "category": "Sports",
+    "id": 59,
+    "date": "2026-05-29",
+    "category": "Sports",
     "criterion": "Rank these stadiums by seating capacity, largest to smallest.",
-    "unit": "seats", "source": "World Stadiums",
+    "unit": "seats",
+    "source": "World Stadiums",
     "items": [
-      { "name": "Rungrado May Day Stadium", "value": "114,000" },
-      { "name": "Michigan Stadium", "value": "107,601" },
-      { "name": "Beaver Stadium", "value": "106,572" },
-      { "name": "Ohio Stadium", "value": "102,780" },
-      { "name": "Wembley Stadium", "value": "90,000" }
+      {
+        "name": "Rungrado May Day Stadium",
+        "value": "114,000"
+      },
+      {
+        "name": "Michigan Stadium",
+        "value": "107,601"
+      },
+      {
+        "name": "Beaver Stadium",
+        "value": "106,572"
+      },
+      {
+        "name": "Ohio Stadium",
+        "value": "102,780"
+      },
+      {
+        "name": "Wembley Stadium",
+        "value": "90,000"
+      }
     ]
   },
   {
-    "id": 60, "date": "2026-05-30", "category": "Food & Drink",
+    "id": 60,
+    "date": "2026-05-30",
+    "category": "Food & Drink",
     "criterion": "Rank these countries by annual coffee production, most to fewest.",
-    "unit": "million tons", "source": "International Coffee Organization",
+    "unit": "million tons",
+    "source": "International Coffee Organization",
     "items": [
-      { "name": "Brazil", "value": "3.7" },
-      { "name": "Vietnam", "value": "1.8" },
-      { "name": "Colombia", "value": "0.9" },
-      { "name": "Indonesia", "value": "0.8" },
-      { "name": "Ethiopia", "value": "0.5" }
+      {
+        "name": "Brazil",
+        "value": "3.7"
+      },
+      {
+        "name": "Vietnam",
+        "value": "1.8"
+      },
+      {
+        "name": "Colombia",
+        "value": "0.9"
+      },
+      {
+        "name": "Indonesia",
+        "value": "0.8"
+      },
+      {
+        "name": "Ethiopia",
+        "value": "0.5"
+      }
     ]
   },
   {
-    "id": 61, "date": "2026-05-31", "category": "Pop Culture",
+    "id": 61,
+    "date": "2026-05-31",
+    "category": "Pop Culture",
     "criterion": "Rank these artists by career Grammy wins, most to fewest.",
-    "unit": "Grammys", "source": "Recording Academy",
+    "unit": "Grammys",
+    "source": "Recording Academy",
     "items": [
-      { "name": "Beyoncé", "value": "32" },
-      { "name": "Quincy Jones", "value": "28" },
-      { "name": "Alison Krauss", "value": "27" },
-      { "name": "Stevie Wonder", "value": "25" },
-      { "name": "Jay-Z", "value": "24" }
+      {
+        "name": "Beyonc\u00e9",
+        "value": "32"
+      },
+      {
+        "name": "Quincy Jones",
+        "value": "28"
+      },
+      {
+        "name": "Alison Krauss",
+        "value": "27"
+      },
+      {
+        "name": "Stevie Wonder",
+        "value": "25"
+      },
+      {
+        "name": "Jay-Z",
+        "value": "24"
+      }
     ]
   },
   {
-    "id": 62, "date": "2026-06-01", "category": "Geography",
+    "id": 62,
+    "date": "2026-06-01",
+    "category": "Geography",
     "criterion": "Rank these lakes by surface area, largest to smallest.",
-    "unit": "sq mi", "source": "National Geographic",
+    "unit": "sq mi",
+    "source": "National Geographic",
     "items": [
-      { "name": "Caspian Sea", "value": "143,244" },
-      { "name": "Lake Superior", "value": "31,700" },
-      { "name": "Lake Victoria", "value": "26,590" },
-      { "name": "Lake Huron", "value": "23,010" },
-      { "name": "Lake Michigan", "value": "22,404" }
+      {
+        "name": "Caspian Sea",
+        "value": "143,244"
+      },
+      {
+        "name": "Lake Superior",
+        "value": "31,700"
+      },
+      {
+        "name": "Lake Victoria",
+        "value": "26,590"
+      },
+      {
+        "name": "Lake Huron",
+        "value": "23,010"
+      },
+      {
+        "name": "Lake Michigan",
+        "value": "22,404"
+      }
     ]
   },
   {
-    "id": 63, "date": "2026-06-02", "category": "Science",
+    "id": 63,
+    "date": "2026-06-02",
+    "category": "Science",
     "criterion": "Rank these human organs by weight, heaviest to lightest.",
-    "unit": "g", "source": "Gray's Anatomy",
+    "unit": "g",
+    "source": "Gray's Anatomy",
     "items": [
-      { "name": "Skin", "value": "8,000" },
-      { "name": "Liver", "value": "1,500" },
-      { "name": "Brain", "value": "1,400" },
-      { "name": "Lungs (pair)", "value": "1,000" },
-      { "name": "Heart", "value": "300" }
+      {
+        "name": "Skin",
+        "value": "8,000"
+      },
+      {
+        "name": "Liver",
+        "value": "1,500"
+      },
+      {
+        "name": "Brain",
+        "value": "1,400"
+      },
+      {
+        "name": "Lungs (pair)",
+        "value": "1,000"
+      },
+      {
+        "name": "Heart",
+        "value": "300"
+      }
     ]
   },
   {
-    "id": 64, "date": "2026-06-03", "category": "History",
+    "id": 64,
+    "date": "2026-06-03",
+    "category": "History",
     "criterion": "Rank these Seven Wonders of the Ancient World by year built, oldest to most recent.",
-    "unit": "", "source": "World History Encyclopedia",
+    "unit": "",
+    "source": "World History Encyclopedia",
     "items": [
-      { "name": "Great Pyramid of Giza", "value": "~2560 BC" },
-      { "name": "Temple of Artemis", "value": "~550 BC" },
-      { "name": "Statue of Zeus", "value": "~435 BC" },
-      { "name": "Mausoleum at Halicarnassus", "value": "~350 BC" },
-      { "name": "Colossus of Rhodes", "value": "~280 BC" }
+      {
+        "name": "Great Pyramid of Giza",
+        "value": "~2560 BC"
+      },
+      {
+        "name": "Temple of Artemis",
+        "value": "~550 BC"
+      },
+      {
+        "name": "Statue of Zeus",
+        "value": "~435 BC"
+      },
+      {
+        "name": "Mausoleum at Halicarnassus",
+        "value": "~350 BC"
+      },
+      {
+        "name": "Colossus of Rhodes",
+        "value": "~280 BC"
+      }
     ]
   },
   {
-    "id": 65, "date": "2026-06-04", "category": "Sports",
+    "id": 65,
+    "date": "2026-06-04",
+    "category": "Sports",
     "criterion": "Rank these NASCAR Cup Series drivers by career wins, most to fewest.",
-    "unit": "wins", "source": "NASCAR",
+    "unit": "wins",
+    "source": "NASCAR",
     "items": [
-      { "name": "Richard Petty", "value": "200" },
-      { "name": "David Pearson", "value": "105" },
-      { "name": "Jeff Gordon", "value": "93" },
-      { "name": "Jimmie Johnson", "value": "83" },
-      { "name": "Dale Earnhardt Sr.", "value": "76" }
+      {
+        "name": "Richard Petty",
+        "value": "200"
+      },
+      {
+        "name": "David Pearson",
+        "value": "105"
+      },
+      {
+        "name": "Jeff Gordon",
+        "value": "93"
+      },
+      {
+        "name": "Jimmie Johnson",
+        "value": "83"
+      },
+      {
+        "name": "Dale Earnhardt Sr.",
+        "value": "76"
+      }
     ]
   },
   {
-    "id": 66, "date": "2026-06-05", "category": "Food & Drink",
+    "id": 66,
+    "date": "2026-06-05",
+    "category": "Food & Drink",
     "criterion": "Rank these cooking oils by smoke point, highest to lowest.",
-    "unit": "°F", "source": "USDA",
+    "unit": "\u00b0F",
+    "source": "USDA",
     "items": [
-      { "name": "Avocado oil", "value": "520" },
-      { "name": "Refined coconut oil", "value": "450" },
-      { "name": "Canola oil", "value": "400" },
-      { "name": "Extra virgin olive oil", "value": "375" },
-      { "name": "Flaxseed oil", "value": "225" }
+      {
+        "name": "Avocado oil",
+        "value": "520"
+      },
+      {
+        "name": "Refined coconut oil",
+        "value": "450"
+      },
+      {
+        "name": "Canola oil",
+        "value": "400"
+      },
+      {
+        "name": "Extra virgin olive oil",
+        "value": "375"
+      },
+      {
+        "name": "Flaxseed oil",
+        "value": "225"
+      }
     ]
   },
   {
-    "id": 67, "date": "2026-06-06", "category": "Pop Culture",
+    "id": 67,
+    "date": "2026-06-06",
+    "category": "Pop Culture",
     "criterion": "Rank these classic novels by year of first publication, oldest to newest.",
-    "unit": "", "source": "Encyclopedia Britannica",
+    "unit": "",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Don Quixote", "value": "1605" },
-      { "name": "Pride and Prejudice", "value": "1813" },
-      { "name": "Moby Dick", "value": "1851" },
-      { "name": "1984", "value": "1949" },
-      { "name": "To Kill a Mockingbird", "value": "1960" }
+      {
+        "name": "Don Quixote",
+        "value": "1605"
+      },
+      {
+        "name": "Pride and Prejudice",
+        "value": "1813"
+      },
+      {
+        "name": "Moby Dick",
+        "value": "1851"
+      },
+      {
+        "name": "1984",
+        "value": "1949"
+      },
+      {
+        "name": "To Kill a Mockingbird",
+        "value": "1960"
+      }
     ]
   },
   {
-    "id": 68, "date": "2026-06-07", "category": "Science",
+    "id": 68,
+    "date": "2026-06-07",
+    "category": "Science",
     "criterion": "Rank these planets by rotation period (length of day), longest to shortest.",
-    "unit": "hrs", "source": "NASA",
+    "unit": "hrs",
+    "source": "NASA",
     "items": [
-      { "name": "Venus", "value": "5,832" },
-      { "name": "Mercury", "value": "1,407" },
-      { "name": "Earth", "value": "24" },
-      { "name": "Neptune", "value": "16" },
-      { "name": "Jupiter", "value": "9.9" }
+      {
+        "name": "Venus",
+        "value": "5,832"
+      },
+      {
+        "name": "Mercury",
+        "value": "1,407"
+      },
+      {
+        "name": "Earth",
+        "value": "24"
+      },
+      {
+        "name": "Neptune",
+        "value": "16"
+      },
+      {
+        "name": "Jupiter",
+        "value": "9.9"
+      }
     ]
   },
   {
-    "id": 69, "date": "2026-06-08", "category": "Geography",
+    "id": 69,
+    "date": "2026-06-08",
+    "category": "Geography",
     "criterion": "Rank these U.S. states by population density, highest to lowest.",
-    "unit": "people/sq mi", "source": "U.S. Census Bureau (2020)",
+    "unit": "people/sq mi",
+    "source": "U.S. Census Bureau (2020)",
     "items": [
-      { "name": "New Jersey", "value": "1,263" },
-      { "name": "Rhode Island", "value": "1,061" },
-      { "name": "Massachusetts", "value": "902" },
-      { "name": "Connecticut", "value": "742" },
-      { "name": "Maryland", "value": "636" }
+      {
+        "name": "New Jersey",
+        "value": "1,263"
+      },
+      {
+        "name": "Rhode Island",
+        "value": "1,061"
+      },
+      {
+        "name": "Massachusetts",
+        "value": "902"
+      },
+      {
+        "name": "Connecticut",
+        "value": "742"
+      },
+      {
+        "name": "Maryland",
+        "value": "636"
+      }
     ]
   },
   {
-    "id": 70, "date": "2026-06-09", "category": "Sports",
+    "id": 70,
+    "date": "2026-06-09",
+    "category": "Sports",
     "criterion": "Rank these NFL quarterbacks by career touchdown passes, most to fewest.",
-    "unit": "TDs", "source": "Pro Football Reference",
+    "unit": "TDs",
+    "source": "Pro Football Reference",
     "items": [
-      { "name": "Tom Brady", "value": "649" },
-      { "name": "Drew Brees", "value": "571" },
-      { "name": "Peyton Manning", "value": "539" },
-      { "name": "Brett Favre", "value": "508" },
-      { "name": "Aaron Rodgers", "value": "475" }
+      {
+        "name": "Tom Brady",
+        "value": "649"
+      },
+      {
+        "name": "Drew Brees",
+        "value": "571"
+      },
+      {
+        "name": "Peyton Manning",
+        "value": "539"
+      },
+      {
+        "name": "Brett Favre",
+        "value": "508"
+      },
+      {
+        "name": "Aaron Rodgers",
+        "value": "475"
+      }
     ]
   },
   {
-    "id": 71, "date": "2026-06-10", "category": "History",
+    "id": 71,
+    "date": "2026-06-10",
+    "category": "History",
     "criterion": "Rank these U.S. wars by American military deaths, most to fewest.",
-    "unit": "deaths", "source": "U.S. Dept. of Veterans Affairs",
+    "unit": "deaths",
+    "source": "U.S. Dept. of Veterans Affairs",
     "items": [
-      { "name": "Civil War", "value": "620,000" },
-      { "name": "World War II", "value": "405,399" },
-      { "name": "World War I", "value": "116,516" },
-      { "name": "Vietnam War", "value": "58,220" },
-      { "name": "Korean War", "value": "36,574" }
+      {
+        "name": "Civil War",
+        "value": "620,000"
+      },
+      {
+        "name": "World War II",
+        "value": "405,399"
+      },
+      {
+        "name": "World War I",
+        "value": "116,516"
+      },
+      {
+        "name": "Vietnam War",
+        "value": "58,220"
+      },
+      {
+        "name": "Korean War",
+        "value": "36,574"
+      }
     ]
   },
   {
-    "id": 72, "date": "2026-06-11", "category": "Food & Drink",
+    "id": 72,
+    "date": "2026-06-11",
+    "category": "Food & Drink",
     "criterion": "Rank these countries by annual coffee consumption per capita, highest to lowest.",
-    "unit": "lbs/person/yr", "source": "International Coffee Organization (2023)",
+    "unit": "lbs/person/yr",
+    "source": "International Coffee Organization (2023)",
     "items": [
-      { "name": "Finland", "value": "26.4" },
-      { "name": "Norway", "value": "21.8" },
-      { "name": "Iceland", "value": "19.8" },
-      { "name": "Denmark", "value": "19.2" },
-      { "name": "Netherlands", "value": "18.5" }
+      {
+        "name": "Finland",
+        "value": "26.4"
+      },
+      {
+        "name": "Norway",
+        "value": "21.8"
+      },
+      {
+        "name": "Iceland",
+        "value": "19.8"
+      },
+      {
+        "name": "Denmark",
+        "value": "19.2"
+      },
+      {
+        "name": "Netherlands",
+        "value": "18.5"
+      }
     ]
   },
   {
-    "id": 73, "date": "2026-06-12", "category": "Pop Culture",
+    "id": 73,
+    "date": "2026-06-12",
+    "category": "Pop Culture",
     "criterion": "Rank these Disney animated films by worldwide box office gross, highest to lowest.",
-    "unit": "$M", "source": "Box Office Mojo",
+    "unit": "$M",
+    "source": "Box Office Mojo",
     "items": [
-      { "name": "Frozen II", "value": "1,450" },
-      { "name": "Frozen", "value": "1,280" },
-      { "name": "Incredibles 2", "value": "1,243" },
-      { "name": "Zootopia", "value": "1,024" },
-      { "name": "Moana", "value": "643" }
+      {
+        "name": "Frozen II",
+        "value": "1,450"
+      },
+      {
+        "name": "Frozen",
+        "value": "1,280"
+      },
+      {
+        "name": "Incredibles 2",
+        "value": "1,243"
+      },
+      {
+        "name": "Zootopia",
+        "value": "1,024"
+      },
+      {
+        "name": "Moana",
+        "value": "643"
+      }
     ]
   },
   {
-    "id": 74, "date": "2026-06-13", "category": "Science",
+    "id": 74,
+    "date": "2026-06-13",
+    "category": "Science",
     "criterion": "Rank these metals by density, heaviest to lightest.",
-    "unit": "g/cm³", "source": "CRC Handbook of Chemistry and Physics",
+    "unit": "g/cm\u00b3",
+    "source": "CRC Handbook of Chemistry and Physics",
     "items": [
-      { "name": "Osmium", "value": "22.59" },
-      { "name": "Platinum", "value": "21.45" },
-      { "name": "Gold", "value": "19.32" },
-      { "name": "Iron", "value": "7.87" },
-      { "name": "Aluminum", "value": "2.70" }
+      {
+        "name": "Osmium",
+        "value": "22.59"
+      },
+      {
+        "name": "Platinum",
+        "value": "21.45"
+      },
+      {
+        "name": "Gold",
+        "value": "19.32"
+      },
+      {
+        "name": "Iron",
+        "value": "7.87"
+      },
+      {
+        "name": "Aluminum",
+        "value": "2.70"
+      }
     ]
   },
   {
-    "id": 75, "date": "2026-06-14", "category": "Geography",
+    "id": 75,
+    "date": "2026-06-14",
+    "category": "Geography",
     "criterion": "Rank these countries by number of islands, most to fewest.",
-    "unit": "islands", "source": "national geographic surveys",
+    "unit": "islands",
+    "source": "national geographic surveys",
     "items": [
-      { "name": "Sweden", "value": "220,000" },
-      { "name": "Finland", "value": "188,000" },
-      { "name": "Norway", "value": "50,000" },
-      { "name": "Indonesia", "value": "17,508" },
-      { "name": "Philippines", "value": "7,641" }
+      {
+        "name": "Sweden",
+        "value": "220,000"
+      },
+      {
+        "name": "Finland",
+        "value": "188,000"
+      },
+      {
+        "name": "Norway",
+        "value": "50,000"
+      },
+      {
+        "name": "Indonesia",
+        "value": "17,508"
+      },
+      {
+        "name": "Philippines",
+        "value": "7,641"
+      }
     ]
   },
   {
-    "id": 76, "date": "2026-06-15", "category": "Sports",
+    "id": 76,
+    "date": "2026-06-15",
+    "category": "Sports",
     "criterion": "Rank these Formula 1 drivers by career race wins, most to fewest.",
-    "unit": "wins", "source": "Formula 1 official records (2024)",
+    "unit": "wins",
+    "source": "Formula 1 official records (2024)",
     "items": [
-      { "name": "Lewis Hamilton", "value": "103" },
-      { "name": "Michael Schumacher", "value": "91" },
-      { "name": "Sebastian Vettel", "value": "53" },
-      { "name": "Alain Prost", "value": "51" },
-      { "name": "Ayrton Senna", "value": "41" }
+      {
+        "name": "Lewis Hamilton",
+        "value": "103"
+      },
+      {
+        "name": "Michael Schumacher",
+        "value": "91"
+      },
+      {
+        "name": "Sebastian Vettel",
+        "value": "53"
+      },
+      {
+        "name": "Alain Prost",
+        "value": "51"
+      },
+      {
+        "name": "Ayrton Senna",
+        "value": "41"
+      }
     ]
   },
   {
-    "id": 77, "date": "2026-06-16", "category": "History",
+    "id": 77,
+    "date": "2026-06-16",
+    "category": "History",
     "criterion": "Rank these Nobel Peace Prize winners by year awarded, earliest to most recent.",
-    "unit": "year", "source": "Nobel Prize organization",
+    "unit": "year",
+    "source": "Nobel Prize organization",
     "items": [
-      { "name": "Henri Dunant", "value": "1901" },
-      { "name": "Albert Schweitzer", "value": "1952" },
-      { "name": "Mother Teresa", "value": "1979" },
-      { "name": "Nelson Mandela", "value": "1993" },
-      { "name": "Malala Yousafzai", "value": "2014" }
+      {
+        "name": "Henri Dunant",
+        "value": "1901"
+      },
+      {
+        "name": "Albert Schweitzer",
+        "value": "1952"
+      },
+      {
+        "name": "Mother Teresa",
+        "value": "1979"
+      },
+      {
+        "name": "Nelson Mandela",
+        "value": "1993"
+      },
+      {
+        "name": "Malala Yousafzai",
+        "value": "2014"
+      }
     ]
   },
   {
-    "id": 78, "date": "2026-06-17", "category": "Food & Drink",
+    "id": 78,
+    "date": "2026-06-17",
+    "category": "Food & Drink",
     "criterion": "Rank these countries by annual wine production, most to least.",
-    "unit": "billion liters/yr", "source": "OIV World Wine Report (2023)",
+    "unit": "billion liters/yr",
+    "source": "OIV World Wine Report (2023)",
     "items": [
-      { "name": "Italy", "value": "4.9" },
-      { "name": "France", "value": "4.5" },
-      { "name": "Spain", "value": "3.4" },
-      { "name": "United States", "value": "2.4" },
-      { "name": "Argentina", "value": "1.5" }
+      {
+        "name": "Italy",
+        "value": "4.9"
+      },
+      {
+        "name": "France",
+        "value": "4.5"
+      },
+      {
+        "name": "Spain",
+        "value": "3.4"
+      },
+      {
+        "name": "United States",
+        "value": "2.4"
+      },
+      {
+        "name": "Argentina",
+        "value": "1.5"
+      }
     ]
   },
   {
-    "id": 79, "date": "2026-06-18", "category": "Science",
+    "id": 79,
+    "date": "2026-06-18",
+    "category": "Science",
     "criterion": "Rank these elements by atomic weight, lightest to heaviest.",
-    "unit": "atomic mass units", "source": "IUPAC periodic table",
+    "unit": "atomic mass units",
+    "source": "IUPAC periodic table",
     "items": [
-      { "name": "Hydrogen", "value": "1" },
-      { "name": "Carbon", "value": "12" },
-      { "name": "Oxygen", "value": "16" },
-      { "name": "Iron", "value": "56" },
-      { "name": "Gold", "value": "197" }
+      {
+        "name": "Hydrogen",
+        "value": "1"
+      },
+      {
+        "name": "Carbon",
+        "value": "12"
+      },
+      {
+        "name": "Oxygen",
+        "value": "16"
+      },
+      {
+        "name": "Iron",
+        "value": "56"
+      },
+      {
+        "name": "Gold",
+        "value": "197"
+      }
     ]
   },
   {
-    "id": 80, "date": "2026-06-19", "category": "Pop Culture",
+    "id": 80,
+    "date": "2026-06-19",
+    "category": "Pop Culture",
     "criterion": "Rank these streaming services by global subscribers, most to fewest.",
-    "unit": "million subscribers", "source": "company earnings reports (Q3 2024)",
+    "unit": "million subscribers",
+    "source": "company earnings reports (Q3 2024)",
     "items": [
-      { "name": "Netflix", "value": "269" },
-      { "name": "Disney+", "value": "122" },
-      { "name": "Max", "value": "103" },
-      { "name": "Peacock", "value": "33" },
-      { "name": "Apple TV+", "value": "~25" }
+      {
+        "name": "Netflix",
+        "value": "269"
+      },
+      {
+        "name": "Disney+",
+        "value": "122"
+      },
+      {
+        "name": "Max",
+        "value": "103"
+      },
+      {
+        "name": "Peacock",
+        "value": "33"
+      },
+      {
+        "name": "Apple TV+",
+        "value": "~25"
+      }
     ]
   },
   {
-    "id": 81, "date": "2026-06-20", "category": "Geography",
+    "id": 81,
+    "date": "2026-06-20",
+    "category": "Geography",
     "criterion": "Rank these waterfalls by height, tallest to shortest.",
-    "unit": "ft", "source": "UNESCO / National Geographic",
+    "unit": "ft",
+    "source": "UNESCO / National Geographic",
     "items": [
-      { "name": "Angel Falls", "value": "3,212" },
-      { "name": "Tugela Falls", "value": "3,110" },
-      { "name": "Yosemite Falls", "value": "2,425" },
-      { "name": "Iguazu Falls", "value": "269" },
-      { "name": "Niagara Falls", "value": "167" }
+      {
+        "name": "Angel Falls",
+        "value": "3,212"
+      },
+      {
+        "name": "Tugela Falls",
+        "value": "3,110"
+      },
+      {
+        "name": "Yosemite Falls",
+        "value": "2,425"
+      },
+      {
+        "name": "Iguazu Falls",
+        "value": "269"
+      },
+      {
+        "name": "Niagara Falls",
+        "value": "167"
+      }
     ]
   },
   {
-    "id": 82, "date": "2026-06-21", "category": "History",
+    "id": 82,
+    "date": "2026-06-21",
+    "category": "History",
     "criterion": "Rank these U.S. Presidents by age at inauguration, youngest to oldest.",
-    "unit": "years old", "source": "White House Historical Association",
+    "unit": "years old",
+    "source": "White House Historical Association",
     "items": [
-      { "name": "Theodore Roosevelt", "value": "42" },
-      { "name": "John F. Kennedy", "value": "43" },
-      { "name": "Bill Clinton", "value": "46" },
-      { "name": "Barack Obama", "value": "47" },
-      { "name": "Ronald Reagan", "value": "69" }
+      {
+        "name": "Theodore Roosevelt",
+        "value": "42"
+      },
+      {
+        "name": "John F. Kennedy",
+        "value": "43"
+      },
+      {
+        "name": "Bill Clinton",
+        "value": "46"
+      },
+      {
+        "name": "Barack Obama",
+        "value": "47"
+      },
+      {
+        "name": "Ronald Reagan",
+        "value": "69"
+      }
     ]
   },
   {
-    "id": 83, "date": "2026-06-22", "category": "Science",
+    "id": 83,
+    "date": "2026-06-22",
+    "category": "Science",
     "criterion": "Rank these materials by the speed of sound through them, slowest to fastest.",
-    "unit": "m/s", "source": "Physics textbooks / Engineering reference",
+    "unit": "m/s",
+    "source": "Physics textbooks / Engineering reference",
     "items": [
-      { "name": "Air (20°C)", "value": "343" },
-      { "name": "Water", "value": "1,480" },
-      { "name": "Wood (oak)", "value": "3,850" },
-      { "name": "Aluminum", "value": "6,320" },
-      { "name": "Diamond", "value": "12,000" }
+      {
+        "name": "Air (20\u00b0C)",
+        "value": "343"
+      },
+      {
+        "name": "Water",
+        "value": "1,480"
+      },
+      {
+        "name": "Wood (oak)",
+        "value": "3,850"
+      },
+      {
+        "name": "Aluminum",
+        "value": "6,320"
+      },
+      {
+        "name": "Diamond",
+        "value": "12,000"
+      }
     ]
   },
   {
-    "id": 84, "date": "2026-06-23", "category": "Pop Culture",
+    "id": 84,
+    "date": "2026-06-23",
+    "category": "Pop Culture",
     "criterion": "Rank these films by runtime, longest to shortest.",
-    "unit": "minutes", "source": "IMDb",
+    "unit": "minutes",
+    "source": "IMDb",
     "items": [
-      { "name": "Gone with the Wind", "value": "238" },
-      { "name": "The Godfather Part II", "value": "202" },
-      { "name": "Avengers: Endgame", "value": "181" },
-      { "name": "Pulp Fiction", "value": "154" },
-      { "name": "The Dark Knight", "value": "152" }
+      {
+        "name": "Gone with the Wind",
+        "value": "238"
+      },
+      {
+        "name": "The Godfather Part II",
+        "value": "202"
+      },
+      {
+        "name": "Avengers: Endgame",
+        "value": "181"
+      },
+      {
+        "name": "Pulp Fiction",
+        "value": "154"
+      },
+      {
+        "name": "The Dark Knight",
+        "value": "152"
+      }
     ]
   },
   {
-    "id": 85, "date": "2026-06-24", "category": "Sports",
+    "id": 85,
+    "date": "2026-06-24",
+    "category": "Sports",
     "criterion": "Rank these NHL players by career goals scored, most to fewest.",
-    "unit": "career goals", "source": "NHL.com",
+    "unit": "career goals",
+    "source": "NHL.com",
     "items": [
-      { "name": "Wayne Gretzky", "value": "894" },
-      { "name": "Gordie Howe", "value": "801" },
-      { "name": "Jaromir Jagr", "value": "766" },
-      { "name": "Brett Hull", "value": "741" },
-      { "name": "Marcel Dionne", "value": "731" }
+      {
+        "name": "Wayne Gretzky",
+        "value": "894"
+      },
+      {
+        "name": "Gordie Howe",
+        "value": "801"
+      },
+      {
+        "name": "Jaromir Jagr",
+        "value": "766"
+      },
+      {
+        "name": "Brett Hull",
+        "value": "741"
+      },
+      {
+        "name": "Marcel Dionne",
+        "value": "731"
+      }
     ]
   },
   {
-    "id": 86, "date": "2026-06-25", "category": "Geography",
+    "id": 86,
+    "date": "2026-06-25",
+    "category": "Geography",
     "criterion": "Rank these oceans by average depth, deepest to shallowest.",
-    "unit": "m", "source": "NOAA",
+    "unit": "m",
+    "source": "NOAA",
     "items": [
-      { "name": "Pacific Ocean", "value": "4,280" },
-      { "name": "Indian Ocean", "value": "3,963" },
-      { "name": "Atlantic Ocean", "value": "3,332" },
-      { "name": "Southern Ocean", "value": "3,270" },
-      { "name": "Arctic Ocean", "value": "1,205" }
+      {
+        "name": "Pacific Ocean",
+        "value": "4,280"
+      },
+      {
+        "name": "Indian Ocean",
+        "value": "3,963"
+      },
+      {
+        "name": "Atlantic Ocean",
+        "value": "3,332"
+      },
+      {
+        "name": "Southern Ocean",
+        "value": "3,270"
+      },
+      {
+        "name": "Arctic Ocean",
+        "value": "1,205"
+      }
     ]
   },
   {
-    "id": 87, "date": "2026-06-26", "category": "Food & Drink",
+    "id": 87,
+    "date": "2026-06-26",
+    "category": "Food & Drink",
     "criterion": "Rank these foods by calories per 100g, lowest to highest.",
-    "unit": "calories per 100g", "source": "USDA FoodData Central",
+    "unit": "calories per 100g",
+    "source": "USDA FoodData Central",
     "items": [
-      { "name": "Cucumber", "value": "15" },
-      { "name": "Strawberry", "value": "33" },
-      { "name": "Apple", "value": "52" },
-      { "name": "Banana", "value": "89" },
-      { "name": "Peanut butter", "value": "588" }
+      {
+        "name": "Cucumber",
+        "value": "15"
+      },
+      {
+        "name": "Strawberry",
+        "value": "33"
+      },
+      {
+        "name": "Apple",
+        "value": "52"
+      },
+      {
+        "name": "Banana",
+        "value": "89"
+      },
+      {
+        "name": "Peanut butter",
+        "value": "588"
+      }
     ]
   },
   {
-    "id": 88, "date": "2026-06-27", "category": "Science",
+    "id": 88,
+    "date": "2026-06-27",
+    "category": "Science",
     "criterion": "Rank these elements by boiling point, lowest to highest.",
-    "unit": "°C", "source": "CRC Handbook of Chemistry and Physics",
+    "unit": "\u00b0C",
+    "source": "CRC Handbook of Chemistry and Physics",
     "items": [
-      { "name": "Hydrogen", "value": "-253" },
-      { "name": "Nitrogen", "value": "-196" },
-      { "name": "Oxygen", "value": "-183" },
-      { "name": "Mercury", "value": "357" },
-      { "name": "Iron", "value": "2,862" }
+      {
+        "name": "Hydrogen",
+        "value": "-253"
+      },
+      {
+        "name": "Nitrogen",
+        "value": "-196"
+      },
+      {
+        "name": "Oxygen",
+        "value": "-183"
+      },
+      {
+        "name": "Mercury",
+        "value": "357"
+      },
+      {
+        "name": "Iron",
+        "value": "2,862"
+      }
     ]
   },
   {
-    "id": 89, "date": "2026-06-28", "category": "History",
+    "id": 89,
+    "date": "2026-06-28",
+    "category": "History",
     "criterion": "Rank these U.S. states by year admitted to the Union, earliest to latest.",
-    "unit": "year admitted", "source": "U.S. National Archives",
+    "unit": "year admitted",
+    "source": "U.S. National Archives",
     "items": [
-      { "name": "Delaware", "value": "1787" },
-      { "name": "Ohio", "value": "1803" },
-      { "name": "Texas", "value": "1845" },
-      { "name": "California", "value": "1850" },
-      { "name": "Hawaii", "value": "1959" }
+      {
+        "name": "Delaware",
+        "value": "1787"
+      },
+      {
+        "name": "Ohio",
+        "value": "1803"
+      },
+      {
+        "name": "Texas",
+        "value": "1845"
+      },
+      {
+        "name": "California",
+        "value": "1850"
+      },
+      {
+        "name": "Hawaii",
+        "value": "1959"
+      }
     ]
   },
   {
-    "id": 90, "date": "2026-06-29", "category": "Sports",
+    "id": 90,
+    "date": "2026-06-29",
+    "category": "Sports",
     "criterion": "Rank these MLB players by career home runs, most to fewest.",
-    "unit": "career HR", "source": "Baseball Reference",
+    "unit": "career HR",
+    "source": "Baseball Reference",
     "items": [
-      { "name": "Barry Bonds", "value": "762" },
-      { "name": "Hank Aaron", "value": "755" },
-      { "name": "Babe Ruth", "value": "714" },
-      { "name": "Alex Rodriguez", "value": "696" },
-      { "name": "Willie Mays", "value": "660" }
+      {
+        "name": "Barry Bonds",
+        "value": "762"
+      },
+      {
+        "name": "Hank Aaron",
+        "value": "755"
+      },
+      {
+        "name": "Babe Ruth",
+        "value": "714"
+      },
+      {
+        "name": "Alex Rodriguez",
+        "value": "696"
+      },
+      {
+        "name": "Willie Mays",
+        "value": "660"
+      }
     ]
   },
   {
-    "id": 91, "date": "2026-06-30", "category": "Geography",
+    "id": 91,
+    "date": "2026-06-30",
+    "category": "Geography",
     "criterion": "Rank these countries by total coastline length, longest to shortest.",
-    "unit": "km", "source": "CIA World Factbook",
+    "unit": "km",
+    "source": "CIA World Factbook",
     "items": [
-      { "name": "Canada", "value": "202,080" },
-      { "name": "Indonesia", "value": "54,716" },
-      { "name": "Russia", "value": "37,653" },
-      { "name": "Philippines", "value": "36,289" },
-      { "name": "Japan", "value": "29,751" }
+      {
+        "name": "Canada",
+        "value": "202,080"
+      },
+      {
+        "name": "Indonesia",
+        "value": "54,716"
+      },
+      {
+        "name": "Russia",
+        "value": "37,653"
+      },
+      {
+        "name": "Philippines",
+        "value": "36,289"
+      },
+      {
+        "name": "Japan",
+        "value": "29,751"
+      }
     ]
   },
   {
-    "id": 92, "date": "2026-07-01", "category": "Science",
+    "id": 92,
+    "date": "2026-07-01",
+    "category": "Science",
     "criterion": "Rank these animals by maximum recorded diving depth, deepest to shallowest.",
-    "unit": "m", "source": "NOAA / peer-reviewed marine biology studies",
+    "unit": "m",
+    "source": "NOAA / peer-reviewed marine biology studies",
     "items": [
-      { "name": "Cuvier's beaked whale", "value": "2,992" },
-      { "name": "Southern elephant seal", "value": "2,388" },
-      { "name": "Leatherback sea turtle", "value": "1,200" },
-      { "name": "Emperor penguin", "value": "564" },
-      { "name": "Bottlenose dolphin", "value": "300" }
+      {
+        "name": "Cuvier's beaked whale",
+        "value": "2,992"
+      },
+      {
+        "name": "Southern elephant seal",
+        "value": "2,388"
+      },
+      {
+        "name": "Leatherback sea turtle",
+        "value": "1,200"
+      },
+      {
+        "name": "Emperor penguin",
+        "value": "564"
+      },
+      {
+        "name": "Bottlenose dolphin",
+        "value": "300"
+      }
     ]
   },
   {
-    "id": 93, "date": "2026-07-02", "category": "Pop Culture",
+    "id": 93,
+    "date": "2026-07-02",
+    "category": "Pop Culture",
     "criterion": "Rank these video game consoles by lifetime units sold, most to fewest.",
-    "unit": "million units sold", "source": "Nintendo / Sony official sales figures",
+    "unit": "million units sold",
+    "source": "Nintendo / Sony official sales figures",
     "items": [
-      { "name": "PlayStation 2", "value": "155" },
-      { "name": "Nintendo DS", "value": "154" },
-      { "name": "Game Boy / Game Boy Color", "value": "119" },
-      { "name": "PlayStation", "value": "102" },
-      { "name": "Game Boy Advance", "value": "82" }
+      {
+        "name": "PlayStation 2",
+        "value": "155"
+      },
+      {
+        "name": "Nintendo DS",
+        "value": "154"
+      },
+      {
+        "name": "Game Boy / Game Boy Color",
+        "value": "119"
+      },
+      {
+        "name": "PlayStation",
+        "value": "102"
+      },
+      {
+        "name": "Game Boy Advance",
+        "value": "82"
+      }
     ]
   },
   {
-    "id": 94, "date": "2026-07-03", "category": "History",
+    "id": 94,
+    "date": "2026-07-03",
+    "category": "History",
     "criterion": "Rank these classical composers by birth year, earliest to most recent.",
-    "unit": "birth year", "source": "Encyclopedia Britannica",
+    "unit": "birth year",
+    "source": "Encyclopedia Britannica",
     "items": [
-      { "name": "Johann Sebastian Bach", "value": "1685" },
-      { "name": "Wolfgang Amadeus Mozart", "value": "1756" },
-      { "name": "Ludwig van Beethoven", "value": "1770" },
-      { "name": "Frédéric Chopin", "value": "1810" },
-      { "name": "Johannes Brahms", "value": "1833" }
+      {
+        "name": "Johann Sebastian Bach",
+        "value": "1685"
+      },
+      {
+        "name": "Wolfgang Amadeus Mozart",
+        "value": "1756"
+      },
+      {
+        "name": "Ludwig van Beethoven",
+        "value": "1770"
+      },
+      {
+        "name": "Fr\u00e9d\u00e9ric Chopin",
+        "value": "1810"
+      },
+      {
+        "name": "Johannes Brahms",
+        "value": "1833"
+      }
     ]
   },
   {
-    "id": 95, "date": "2026-07-04", "category": "Food & Drink",
+    "id": 95,
+    "date": "2026-07-04",
+    "category": "Food & Drink",
     "criterion": "Rank these countries by annual beer consumption per capita, highest to lowest.",
-    "unit": "liters per person per year", "source": "Statista / Kirin Beer University Report",
+    "unit": "liters per person per year",
+    "source": "Statista / Kirin Beer University Report",
     "items": [
-      { "name": "Czech Republic", "value": "143" },
-      { "name": "Austria", "value": "108" },
-      { "name": "Germany", "value": "99" },
-      { "name": "Ireland", "value": "87" },
-      { "name": "Denmark", "value": "72" }
+      {
+        "name": "Czech Republic",
+        "value": "143"
+      },
+      {
+        "name": "Austria",
+        "value": "108"
+      },
+      {
+        "name": "Germany",
+        "value": "99"
+      },
+      {
+        "name": "Ireland",
+        "value": "87"
+      },
+      {
+        "name": "Denmark",
+        "value": "72"
+      }
     ]
   },
   {
-    "id": 96, "date": "2026-07-05", "category": "Science",
+    "id": 96,
+    "date": "2026-07-05",
+    "category": "Science",
     "criterion": "Rank these solar system moons by diameter, largest to smallest.",
-    "unit": "km", "source": "NASA Solar System Exploration",
+    "unit": "km",
+    "source": "NASA Solar System Exploration",
     "items": [
-      { "name": "Ganymede", "value": "5,268" },
-      { "name": "Titan", "value": "5,150" },
-      { "name": "Callisto", "value": "4,821" },
-      { "name": "Io", "value": "3,643" },
-      { "name": "Moon (Earth)", "value": "3,474" }
+      {
+        "name": "Ganymede",
+        "value": "5,268"
+      },
+      {
+        "name": "Titan",
+        "value": "5,150"
+      },
+      {
+        "name": "Callisto",
+        "value": "4,821"
+      },
+      {
+        "name": "Io",
+        "value": "3,643"
+      },
+      {
+        "name": "Moon (Earth)",
+        "value": "3,474"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "date": "2026-07-06",
+    "category": "Geography",
+    "criterion": "Rank these countries by population, largest to smallest.",
+    "unit": "million people",
+    "source": "UN World Population Prospects",
+    "items": [
+      {
+        "name": "India",
+        "value": "1,428"
+      },
+      {
+        "name": "China",
+        "value": "1,411"
+      },
+      {
+        "name": "United States",
+        "value": "339"
+      },
+      {
+        "name": "Indonesia",
+        "value": "277"
+      },
+      {
+        "name": "Pakistan",
+        "value": "240"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "date": "2026-07-07",
+    "category": "History",
+    "criterion": "Rank these revolutions by start year, earliest to most recent.",
+    "unit": "year",
+    "source": "Encyclopaedia Britannica",
+    "items": [
+      {
+        "name": "Glorious Revolution",
+        "value": "1688"
+      },
+      {
+        "name": "American Revolution",
+        "value": "1775"
+      },
+      {
+        "name": "French Revolution",
+        "value": "1789"
+      },
+      {
+        "name": "Russian Revolution",
+        "value": "1917"
+      },
+      {
+        "name": "Cuban Revolution",
+        "value": "1953"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "date": "2026-07-08",
+    "category": "Science",
+    "criterion": "Rank these planets by surface gravity, highest to lowest.",
+    "unit": "m/s\u00b2",
+    "source": "NASA Planetary Fact Sheet",
+    "items": [
+      {
+        "name": "Jupiter",
+        "value": "24.79"
+      },
+      {
+        "name": "Neptune",
+        "value": "11.15"
+      },
+      {
+        "name": "Saturn",
+        "value": "10.44"
+      },
+      {
+        "name": "Earth",
+        "value": "9.81"
+      },
+      {
+        "name": "Venus",
+        "value": "8.87"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "date": "2026-07-09",
+    "category": "Pop Culture",
+    "criterion": "Rank these board games by year invented, earliest to most recent.",
+    "unit": "year",
+    "source": "Hasbro / company histories",
+    "items": [
+      {
+        "name": "Monopoly",
+        "value": "1935"
+      },
+      {
+        "name": "Scrabble",
+        "value": "1938"
+      },
+      {
+        "name": "Risk",
+        "value": "1959"
+      },
+      {
+        "name": "Trivial Pursuit",
+        "value": "1981"
+      },
+      {
+        "name": "Pictionary",
+        "value": "1985"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "date": "2026-07-10",
+    "category": "Sports",
+    "criterion": "Rank these NBA teams by total championships won, most to fewest.",
+    "unit": "titles",
+    "source": "NBA.com",
+    "items": [
+      {
+        "name": "Boston Celtics",
+        "value": "18"
+      },
+      {
+        "name": "Los Angeles Lakers",
+        "value": "17"
+      },
+      {
+        "name": "Golden State Warriors",
+        "value": "7"
+      },
+      {
+        "name": "Chicago Bulls",
+        "value": "6"
+      },
+      {
+        "name": "San Antonio Spurs",
+        "value": "5"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "date": "2026-07-11",
+    "category": "Food & Drink",
+    "criterion": "Rank these countries by tea consumption per capita, highest to lowest.",
+    "unit": "kg per person per year",
+    "source": "World Population Review",
+    "items": [
+      {
+        "name": "Turkey",
+        "value": "3.5"
+      },
+      {
+        "name": "Ireland",
+        "value": "2.2"
+      },
+      {
+        "name": "United Kingdom",
+        "value": "1.9"
+      },
+      {
+        "name": "Russia",
+        "value": "1.4"
+      },
+      {
+        "name": "Morocco",
+        "value": "1.2"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "date": "2026-07-12",
+    "category": "Geography",
+    "criterion": "Rank these islands by area, largest to smallest.",
+    "unit": "km\u00b2",
+    "source": "Encyclopaedia Britannica",
+    "items": [
+      {
+        "name": "Greenland",
+        "value": "2,166,086"
+      },
+      {
+        "name": "New Guinea",
+        "value": "785,753"
+      },
+      {
+        "name": "Borneo",
+        "value": "748,168"
+      },
+      {
+        "name": "Madagascar",
+        "value": "587,041"
+      },
+      {
+        "name": "Baffin Island",
+        "value": "507,451"
+      }
     ]
   }
 ]
